@@ -1,0 +1,73 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #ffffff;
+  color: #222;
+  text-align: center;
+}
+
+.hero {
+  padding: 60px 20px;
+  background: #1f2394;
+  color: white;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.btn {
+  background: white;
+  color: #1f2394;
+  padding: 15px 25px;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.features {
+  padding: 50px 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  max-width: 700px;
+  margin: auto;
+}
+
+.card {
+  padding: 20px;
+  background: #f5f5f5;
+  border-radius: 10px;
+}
+
+.install {
+  padding: 50px 20px;
+  background: #fafafa;
+}
+
+.install ol {
+  max-width: 400px;
+  margin: auto;
+  text-align: left;
+}
+
+.note {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+footer {
+  padding: 20px;
+  font-size: 0.9rem;
+  background: #eee;
+}
