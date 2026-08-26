@@ -1,49 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FASTable – FAST Timetable App</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fastable - Download</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased selection:bg-blue-200">
 
-  <section class="hero">
-    <h1>FASTable</h1>
-    <p>Your FAST timetable. Simplified.</p>
-    <a class="btn" href="https://github.com/AHSANooo/FASTable-apk/releases/download/v1.0.7/FASTable-v1.0.7.apk">
-      Download FASTable (Android)
-    </a>
-  </section>
+    <div class="min-h-screen flex flex-col items-center justify-center p-6 py-12">
+        
+        <div class="text-center max-w-2xl mt-8">
+            <h1 class="text-5xl font-extrabold text-gray-900 tracking-tight mb-4">
+                FASTable
+            </h1>
+            <p class="text-xl text-gray-600 mb-10">
+                Your dynamic university timetable manager. Stay organized with zero friction.
+            </p>
+        </div>
 
-  <section class="features">
-    <h2>Features</h2>
-    <div class="grid">
-      <div class="card">📅 Batch Timetable</div>
-      <div class="card">🧩 Custom Timetable</div>
-      <div class="card">⚠️ Clash Detector</div>
-      <div class="card">🆓 Free Rooms</div>
-      <div class="card">🗺️ Campus Map</div>
-      <div class="card">📖 User Manual</div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 w-full max-w-5xl">
+            
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-start">
+                <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-4 text-xl">📅</div>
+                <h3 class="font-bold text-gray-900 mb-1">Smart Schedule</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">Weekly views with strict batch and section-based filtering for a structured layout.</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-start">
+                <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-4 text-xl">⚡</div>
+                <h3 class="font-bold text-gray-900 mb-1">Live Tracking</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">Instantly see your current ongoing class, next upcoming class, and exact room numbers.</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-start">
+                <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-4 text-xl">⚠️</div>
+                <h3 class="font-bold text-gray-900 mb-1">Clash Detection</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">Automatically highlights overlapping classes to help you select the right sections and electives.</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-start">
+                <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-4 text-xl">🔄</div>
+                <h3 class="font-bold text-gray-900 mb-1">Zero-Touch Updates</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">Integrated with Google Sheets API. Timetable data auto-updates without requiring app updates.</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-start">
+                <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-4 text-xl">🔔</div>
+                <h3 class="font-bold text-gray-900 mb-1">Smart Alerts & Maps</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">Get timely notifications before classes start and utilize campus navigation to find your rooms.</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-start">
+                <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-4 text-xl">🚀</div>
+                <h3 class="font-bold text-gray-900 mb-1">Lightweight & Fast</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">Optimized for low RAM usage with minimal clutter, ensuring fast load times and quick decisions.</p>
+            </div>
+
+        </div>
+
+        <div class="text-center bg-white p-8 rounded-3xl shadow-sm border border-gray-100 w-full max-w-2xl">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Get Fastable for Android</h2>
+            <a href="https://github.com/AHSANooo/FASTable-apk/releases/download/v1.0.7/FASTable-v1.0.7.apk" 
+               class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-blue-600 border border-transparent rounded-xl shadow-lg hover:bg-blue-700 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600 w-full sm:w-auto">
+                <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                Download APK
+            </a>
+            <p class="mt-4 text-sm text-gray-400 font-medium">Safe & direct download from GitHub Releases</p>
+        </div>
+
     </div>
-  </section>
-
-  <section class="install">
-    <h2>How to Install</h2>
-    <ol>
-      <li>Tap "Download FASTable"</li>
-      <li>Open the downloaded APK</li>
-      <li>Allow "Install from this source"</li>
-      <li>Install and launch FASTable</li>
-    </ol>
-    <p class="note">
-      Android may show a security warning. This is normal for apps installed outside the Play Store.
-    </p>
-  </section>
-
-  <footer>
-    Made for FAST students ❤️
-  </footer>
 
 </body>
 </html>
