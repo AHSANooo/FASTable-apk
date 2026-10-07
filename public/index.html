@@ -15,7 +15,7 @@
   <meta name="author" content="Fastable Team" />
   <meta name="application-name" content="Fastable" />
   <meta name="theme-color" content="#0f172a" />
-  <meta name="color-scheme" content="light dark" />
+  <meta name="color-scheme" content="light" />
 
   <!-- Open Graph / Facebook Meta Tags -->
   <meta property="og:type" content="website" />
@@ -33,7 +33,7 @@
   <meta name="twitter:description" content="Fastable is the fastest timetable viewer for FAST-NUCES Islamabad students. Search CS, SE, AI, DS, and CYS class schedules, sections, and room allocations." />
   <meta name="twitter:image" content="https://fastable.site/fastable.png" />
 
-  <!-- Favicon using new Fastable Logo -->
+  <!-- Favicon using Fastable Logo -->
   <link rel="icon" type="image/png" href="fastable.png" />
   <link rel="apple-touch-icon" href="fastable.png" />
 
@@ -61,7 +61,6 @@
           "Department schedule filtering (CS, SE, AI, DS, CYS)",
           "Live search by course, teacher, or room number",
           "Custom timetable builder with clash detector",
-          "Free Room Finder across academic blocks",
           "Live Google Sheets synchronization"
         ],
         "aggregateRating": {
@@ -79,7 +78,7 @@
             "name": "How do I find my FAST NUCES section timetable?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Choose your computing department (CS, SE, AI, DS, or CYS), select your section code (for example, BCS-A or BSE-B), or search for your course title. The schedule immediately displays weekly class slots, lecture timings, instructor names, and room allocations."
+              "text": "Choose your computing department (CS, SE, AI, DS, or CYS), select your batch year and section code, then click Show Timetable. Fastable immediately displays your weekly class schedule, timings, and assigned room numbers."
             }
           },
           {
@@ -95,15 +94,15 @@
             "name": "How does the custom timetable and clash detector work?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Switch to the Custom Timetable tab, search for elective or repeat courses across sections, and add them to your personalized schedule. Fastable automatically checks time slots and alerts you if any classes overlap."
+              "text": "Switch to the Custom Course Selection tab, search for elective or cross-section courses, and add them to your personalized schedule. Fastable automatically detects overlapping time slots and flags conflicting classes."
             }
           },
           {
             "@type": "Question",
-            "name": "Can I check vacant rooms using the Free Room Finder?",
+            "name": "How do I download the FASTable Android APK?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes, select any day and time slot in the Free Room Finder tab to see an instant list of vacant classrooms and labs in Blocks C and D for quiet study or project discussions."
+              "text": "Click the Download APK button on Fastable to get the latest release (v1.0.7) directly from GitHub Releases for offline timetable access with reminder notifications."
             }
           }
         ]
@@ -131,7 +130,6 @@
       --accent-emerald-subtle: #ecfdf5;
       --accent-rose: #e11d48;
       --accent-rose-subtle: #ffe4e6;
-      --accent-indigo: #4f46e5;
 
       --text-main: #0f172a;
       --text-muted: #475569;
@@ -286,20 +284,20 @@
       gap: 0.45rem;
       font-family: inherit;
       font-size: 0.875rem;
-      font-weight: 600;
-      padding: 0.6rem 1.1rem;
+      font-weight: 700;
+      padding: 0.65rem 1.25rem;
       border-radius: var(--radius-md);
       border: 1px solid transparent;
       cursor: pointer;
       transition: var(--transition);
       text-decoration: none !important;
       white-space: nowrap;
-      min-height: 42px;
+      min-height: 44px;
     }
 
     .btn-primary {
       background: linear-gradient(135deg, var(--brand-orange) 0%, var(--brand-orange-hover) 100%);
-      color: #ffffff;
+      color: #ffffff !important;
       box-shadow: var(--shadow-orange);
     }
     .btn-primary:hover {
@@ -309,19 +307,19 @@
 
     .btn-secondary {
       background: #ffffff;
-      color: var(--brand-navy);
+      color: var(--brand-navy) !important;
       border-color: var(--border-medium);
     }
     .btn-secondary:hover {
       background: var(--bg-surface-alt);
       border-color: var(--brand-orange);
-      color: var(--brand-orange);
+      color: var(--brand-orange) !important;
     }
 
     .btn-sm {
-      padding: 0.35rem 0.75rem;
-      font-size: 0.8rem;
-      min-height: 34px;
+      padding: 0.4rem 0.85rem;
+      font-size: 0.825rem;
+      min-height: 38px;
     }
 
     .badge-apk {
@@ -337,7 +335,7 @@
        HERO & WORKSPACE AREA
        ------------------------------------------------------------- */
     .hero-section {
-      padding: 2rem 0 1.25rem 0;
+      padding: 2.25rem 0 1.5rem 0;
       text-align: center;
       background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
       border-bottom: 1px solid var(--border-subtle);
@@ -347,7 +345,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.45rem;
-      padding: 0.3rem 0.85rem;
+      padding: 0.35rem 0.9rem;
       background: var(--brand-orange-light);
       border: 1px solid var(--brand-orange-border);
       border-radius: var(--radius-full);
@@ -371,11 +369,11 @@
       color: var(--text-muted);
       max-width: 680px;
       margin: 0 auto 1.5rem;
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
     /* -------------------------------------------------------------
-       MODE TABS (Batch Timetable, Custom Timetable, Free Rooms)
+       EXACT TWO TABS (Batch Timetable & Custom Course Selection)
        ------------------------------------------------------------- */
     .app-card {
       background: var(--bg-surface);
@@ -389,21 +387,15 @@
 
     .main-tabs-bar {
       display: flex;
-      background: #f1f5f9;
-      border-bottom: 1px solid var(--border-subtle);
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-    .main-tabs-bar::-webkit-scrollbar {
-      display: none;
+      background: #f8fafc;
+      border-bottom: 2px solid var(--border-subtle);
     }
 
     .main-tab-btn {
       flex: 1;
-      min-width: 160px;
-      padding: 0.9rem 1.25rem;
-      font-size: 0.9rem;
-      font-weight: 700;
+      padding: 1.1rem 1.5rem;
+      font-size: 0.95rem;
+      font-weight: 800;
       color: var(--text-muted);
       background: transparent;
       border: none;
@@ -413,119 +405,114 @@
       justify-content: center;
       gap: 0.5rem;
       transition: var(--transition);
-      white-space: nowrap;
       border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
     }
 
     .main-tab-btn:hover {
       color: var(--brand-navy);
-      background: rgba(255, 255, 255, 0.5);
+      background: #f1f5f9;
     }
 
     .main-tab-btn.active {
       color: var(--brand-orange);
       background: #ffffff;
-      border-bottom-color: var(--brand-orange);
+      border-bottom: 3px solid var(--brand-orange);
     }
 
     /* -------------------------------------------------------------
-       FILTERS TOOLBAR (HIGH CONTRAST & MOBILE-FIRST)
+       HIGH-CONTRAST DROPDOWNS & CONTROLS
+       (NO BAD HOVER COLOR COMBINATIONS)
        ------------------------------------------------------------- */
     .app-toolbar {
-      padding: 1.25rem;
+      padding: 1.5rem;
       background: #ffffff;
       border-bottom: 1px solid var(--border-subtle);
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 1.25rem;
     }
 
     .filter-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 0.85rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      align-items: flex-end;
     }
 
     .form-group {
       display: flex;
       flex-direction: column;
-      gap: 0.35rem;
+      gap: 0.4rem;
     }
 
     .form-group label {
-      font-size: 0.775rem;
+      font-size: 0.8rem;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      color: var(--text-subtle);
+      color: var(--brand-navy);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
     }
 
-    /* STRICT HIGH CONTRAST DROPDOWN STYLING - NEVER WASHED OUT */
+    /* Clean, high-contrast, crystal clear dropdowns (No bad hover colors) */
     .form-select, .form-input {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
       font-family: inherit;
       font-size: 0.925rem;
       font-weight: 600;
-      padding: 0.65rem 0.85rem;
-      border: 1.5px solid var(--border-medium);
+      padding: 0.72rem 2.5rem 0.72rem 1rem;
+      border: 1.5px solid #cbd5e1;
       border-radius: var(--radius-md);
-      background-color: #ffffff !important;
-      color: #0f172a !important;
+      background-color: #ffffff;
+      color: #0f172a;
       outline: none;
-      transition: var(--transition);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
       width: 100%;
-      min-height: 44px;
+      min-height: 46px;
+      cursor: pointer;
+      color-scheme: light;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 16px;
     }
 
+    .form-input {
+      padding-right: 1rem;
+      background-image: none;
+      cursor: text;
+    }
+
+    /* Fixed hover: pristine white background with crisp dark text and orange accent */
     .form-select:hover, .form-input:hover {
       border-color: var(--brand-orange);
-      background-color: #ffffff !important;
-      color: #0f172a !important;
+      background-color: #ffffff;
+      color: #0f172a;
+      box-shadow: 0 0 0 1px var(--brand-orange), 0 2px 6px rgba(255, 98, 0, 0.12);
     }
 
     .form-select:focus, .form-input:focus {
       border-color: var(--brand-orange);
-      box-shadow: 0 0 0 3px rgba(255, 98, 0, 0.15);
-      background-color: #ffffff !important;
-      color: #0f172a !important;
+      background-color: #ffffff;
+      color: #0f172a;
+      box-shadow: 0 0 0 3px rgba(255, 98, 0, 0.25);
     }
 
-    /* Explicit Option Contrast */
+    /* Native options: high contrast dark slate on crisp white */
     .form-select option {
-      background-color: #ffffff !important;
-      color: #0f172a !important;
-      font-weight: 600;
-      padding: 8px;
-    }
-
-    .search-row {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-    }
-
-    .search-input-wrapper {
-      flex: 1;
-      min-width: 240px;
-      position: relative;
-    }
-
-    .search-input-wrapper svg {
-      position: absolute;
-      left: 12px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--text-subtle);
-      pointer-events: none;
-    }
-
-    .search-input-wrapper input {
-      padding-left: 2.4rem;
+      background-color: #ffffff;
+      color: #0f172a;
+      padding: 10px 12px;
+      font-weight: 500;
+      font-size: 0.925rem;
     }
 
     /* Sub-Toolbar (Day Filter & Views) */
     .app-subtoolbar {
-      padding: 0.75rem 1.25rem;
+      padding: 0.85rem 1.5rem;
       background: var(--bg-surface-alt);
       border-bottom: 1px solid var(--border-subtle);
       display: flex;
@@ -548,8 +535,8 @@
     }
 
     .pill-btn {
-      padding: 0.35rem 0.75rem;
-      font-size: 0.8rem;
+      padding: 0.4rem 0.85rem;
+      font-size: 0.825rem;
       font-weight: 700;
       border-radius: var(--radius-full);
       border: 1px solid var(--border-medium);
@@ -558,7 +545,7 @@
       cursor: pointer;
       transition: var(--transition);
       white-space: nowrap;
-      min-height: 32px;
+      min-height: 34px;
     }
     .pill-btn:hover {
       background: var(--brand-orange-light);
@@ -579,7 +566,7 @@
     }
 
     .toggle-btn {
-      padding: 0.35rem 0.65rem;
+      padding: 0.35rem 0.75rem;
       font-size: 0.8rem;
       font-weight: 700;
       border-radius: var(--radius-sm);
@@ -590,7 +577,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
-      min-height: 32px;
+      min-height: 34px;
     }
     .toggle-btn.active {
       background: var(--brand-navy);
@@ -598,64 +585,134 @@
       border-color: var(--brand-navy);
     }
 
-    /* Status Bar */
-    .app-status-bar {
-      padding: 0.65rem 1.25rem;
-      background: #f8fafc;
+    /* -------------------------------------------------------------
+       EMPTY STATE CARD (HIDDEN BY DEFAULT UNTIL SELECTED)
+       ------------------------------------------------------------- */
+    .empty-state-card {
+      padding: 4rem 1.5rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      background: #ffffff;
+    }
+
+    .empty-state-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: var(--radius-full);
+      background: var(--brand-orange-light);
+      color: var(--brand-orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.85rem;
+      border: 1px solid var(--brand-orange-border);
+      margin-bottom: 0.5rem;
+    }
+
+    .empty-state-card h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--brand-navy);
+    }
+
+    .empty-state-card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 480px;
+      line-height: 1.5;
+    }
+
+    /* -------------------------------------------------------------
+       CUSTOM COURSE SELECTION STYLES
+       ------------------------------------------------------------- */
+    .custom-selection-box {
+      padding: 1.5rem;
+      background: #ffffff;
       border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .selected-courses-panel {
+      background: var(--bg-surface-alt);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+    }
+
+    .selected-summary-line {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.85rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--brand-navy);
+    }
+
+    .selected-chips-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .selected-course-row {
+      background: #ffffff;
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-sm);
+      padding: 0.65rem 0.85rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 0.75rem;
-      font-size: 0.825rem;
-      color: var(--text-muted);
-      flex-wrap: wrap;
     }
 
-    .status-left {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      font-weight: 600;
+    .selected-course-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--brand-navy);
     }
 
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      background-color: var(--accent-emerald);
-      border-radius: 50%;
-      box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.2);
-      display: inline-block;
-    }
-
-    .sync-status-btn {
-      background: transparent;
-      border: none;
-      color: var(--brand-orange);
+    .btn-remove-course {
+      background: #fee2e2;
+      border: 1px solid #fecdd3;
+      color: #b91c1c;
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
       font-weight: 700;
       cursor: pointer;
-      font-size: 0.8rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
+      transition: var(--transition);
     }
-    .sync-status-btn:hover {
-      text-decoration: underline;
+    .btn-remove-course:hover {
+      background: #fca5a5;
+    }
+
+    .clash-alert-banner {
+      background: #fff1f2;
+      border: 1px solid #fecdd3;
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1.15rem;
+      color: #9f1239;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.9rem;
     }
 
     /* -------------------------------------------------------------
-       TIMETABLE DISPLAY (MOBILE-CARD & DESKTOP GRID)
+       TIMETABLE DISPLAY (CARDS & TABLE)
        ------------------------------------------------------------- */
     .timetable-wrapper {
-      padding: 1.25rem;
-    }
-
-    /* Mobile Cards View (Clean, Thumb-Friendly) */
-    .cards-view {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
+      padding: 1.5rem;
     }
 
     .day-card-group {
@@ -664,11 +721,12 @@
       border-radius: var(--radius-md);
       overflow: hidden;
       box-shadow: var(--shadow-xs);
+      margin-bottom: 1.25rem;
     }
 
     .day-card-header {
       background: #f8fafc;
-      padding: 0.75rem 1rem;
+      padding: 0.85rem 1.25rem;
       border-bottom: 1px solid var(--border-subtle);
       display: flex;
       align-items: center;
@@ -701,7 +759,6 @@
       flex-direction: column;
       gap: 0.4rem;
       transition: var(--transition);
-      position: relative;
     }
 
     .class-item-card:hover {
@@ -788,11 +845,6 @@
       border: 1px solid var(--brand-orange-border);
     }
 
-    .section-tag {
-      font-weight: 700;
-      color: var(--brand-navy);
-    }
-
     /* Desktop Table View */
     .grid-view-container {
       display: none;
@@ -803,7 +855,7 @@
 
     .desktop-table {
       width: 100%;
-      min-width: 900px;
+      min-width: 860px;
       border-collapse: collapse;
       text-align: left;
     }
@@ -816,17 +868,13 @@
       text-transform: uppercase;
       padding: 0.75rem 1rem;
       border: 1px solid var(--border-subtle);
-      position: sticky;
-      top: 0;
-      z-index: 10;
     }
 
     .desktop-table td {
       border: 1px solid var(--border-subtle);
-      padding: 0.65rem;
+      padding: 0.75rem 1rem;
       vertical-align: top;
       background: #ffffff;
-      min-height: 80px;
     }
 
     .table-day-cell {
@@ -839,82 +887,7 @@
     }
 
     /* -------------------------------------------------------------
-       CUSTOM COURSE SELECTION & CLASH DETECTOR STYLES
-       ------------------------------------------------------------- */
-    .custom-selection-box {
-      padding: 1.25rem;
-      background: #f8fafc;
-      border-bottom: 1px solid var(--border-subtle);
-    }
-
-    .selection-chips-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 0.75rem;
-    }
-
-    .course-chip {
-      background: #ffffff;
-      border: 1px solid var(--border-medium);
-      border-radius: var(--radius-full);
-      padding: 0.35rem 0.85rem;
-      font-size: 0.825rem;
-      font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      box-shadow: var(--shadow-xs);
-    }
-
-    .chip-remove-btn {
-      background: transparent;
-      border: none;
-      color: #94a3b8;
-      cursor: pointer;
-      font-weight: 800;
-      font-size: 1rem;
-      line-height: 1;
-      padding: 0 0.15rem;
-    }
-    .chip-remove-btn:hover {
-      color: var(--accent-rose);
-    }
-
-    .clash-alert-banner {
-      background: #fff1f2;
-      border: 1px solid #fecdd3;
-      border-radius: var(--radius-md);
-      padding: 0.85rem 1.15rem;
-      color: #9f1239;
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
-      font-size: 0.9rem;
-    }
-
-    /* Free Rooms Grid */
-    .free-rooms-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-      gap: 0.75rem;
-      padding: 1.25rem;
-    }
-
-    .free-room-pill {
-      background: var(--accent-emerald-subtle);
-      border: 1px solid #a7f3d0;
-      color: #065f46;
-      border-radius: var(--radius-md);
-      padding: 0.75rem 0.5rem;
-      text-align: center;
-      font-weight: 700;
-      font-size: 0.9rem;
-    }
-
-    /* -------------------------------------------------------------
-       CLEAN SEO & INFORMATION SECTIONS (UNCLUTTERED)
+       CLEAN SEO & INFO SECTIONS (UNCLUTTERED)
        ------------------------------------------------------------- */
     .info-section {
       padding: 3.5rem 0;
@@ -957,7 +930,6 @@
       line-height: 1.5;
     }
 
-    /* Clean 3-Card Grid */
     .clean-cards-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -1006,37 +978,7 @@
       line-height: 1.5;
     }
 
-    /* Program Tags Strip */
-    .programs-strip {
-      background: var(--bg-surface-alt);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 1.25rem 1.5rem;
-      margin-top: 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .programs-tags-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .program-tag {
-      background: #ffffff;
-      border: 1px solid var(--border-medium);
-      color: var(--brand-navy);
-      padding: 0.25rem 0.65rem;
-      border-radius: var(--radius-full);
-      font-size: 0.8rem;
-      font-weight: 700;
-    }
-
-    /* Clean Accordion FAQ (Collapsed by default to avoid clutter) */
+    /* FAQ Accordion */
     .faq-container {
       max-width: 800px;
       margin: 0 auto;
@@ -1184,7 +1126,6 @@
       font-size: 0.8rem;
     }
 
-    /* Mobile Media Queries */
     @media (max-width: 768px) {
       .footer-grid {
         grid-template-columns: 1fr;
@@ -1253,120 +1194,128 @@
       <div class="container">
         <div class="hero-eyebrow">
           <span>⚡</span>
-          <span>FAST-NUCES Islamabad (FSC) &bull; Spring-2026 Semester</span>
+          <span>FAST School of Computing (FSC) &bull; Spring-2026 Semester</span>
         </div>
         <h2 class="hero-title">FAST Islamabad Class Timetable</h2>
         <p class="hero-lead">
-          Search live class schedules, section timetables, custom course clash detection, and vacant rooms across Academic Blocks C and D.
+          Official timetable viewer for FAST-NUCES Islamabad. Select your class to view schedules, or build a custom timetable with clash detection.
         </p>
 
         <!-- Main App Container -->
         <div class="app-card" id="app" role="region" aria-label="FAST Islamabad Interactive Timetable Viewer">
           
-          <!-- Mode Tabs (Batch Timetable, Custom Timetable, Free Rooms) -->
+          <!-- EXACT TWO TABS (FROM TIMETABLE-PROJECT-MAIN) -->
           <div class="main-tabs-bar" role="tablist">
             <button class="main-tab-btn active" id="tabBatchBtn" role="tab" aria-selected="true">
-              <span>📚 Section Timetable</span>
+              <span>📚 Batch Timetable</span>
             </button>
             <button class="main-tab-btn" id="tabCustomBtn" role="tab" aria-selected="false">
-              <span>🧩 Custom Timetable & Clash Detector</span>
-            </button>
-            <button class="main-tab-btn" id="tabFreeRoomsBtn" role="tab" aria-selected="false">
-              <span>🏢 Free Room Finder</span>
+              <span>🔍 Custom Course Selection</span>
             </button>
           </div>
 
-          <!-- TAB 1 & 2 FILTERS TOOLBAR -->
-          <div class="app-toolbar" id="toolbarStandard">
+          <!-- TAB 1: BATCH TIMETABLE FILTERS -->
+          <div class="app-toolbar" id="toolbarBatch">
             <div class="filter-grid">
               
               <!-- Department Selector -->
               <div class="form-group">
-                <label for="deptSelect">1. Department</label>
+                <label for="deptSelect">🏢 Department</label>
                 <select id="deptSelect" class="form-select" aria-label="Department Selector">
-                  <option value="CS" selected>Computer Science (CS)</option>
+                  <option value="">-- Select Department --</option>
+                  <option value="CS">Computer Science (CS)</option>
                   <option value="SE">Software Engineering (SE)</option>
                   <option value="AI">Artificial Intelligence (AI)</option>
                   <option value="DS">Data Science (DS)</option>
-                  <option value="CY">Cyber Security (CYS)</option>
+                  <option value="CY">Cyber Security (CY)</option>
+                </select>
+              </div>
+
+              <!-- Batch Year Selector -->
+              <div class="form-group">
+                <label for="batchSelect">👥 Batch</label>
+                <select id="batchSelect" class="form-select" aria-label="Batch Selector">
+                  <option value="">-- Select Batch --</option>
+                  <option value="2025">2025 (Freshmen / 1st Year)</option>
+                  <option value="2024">2024 (Sophomore / 2nd Year)</option>
+                  <option value="2023">2023 (Junior / 3rd Year)</option>
+                  <option value="2022">2022 (Senior / 4th Year)</option>
                 </select>
               </div>
 
               <!-- Section Selector -->
-              <div class="form-group" id="sectionSelectGroup">
-                <label for="sectionSelect">2. Section</label>
+              <div class="form-group">
+                <label for="sectionSelect">🔠 Section</label>
                 <select id="sectionSelect" class="form-select" aria-label="Section Code Selector">
-                  <!-- Injected via JavaScript -->
+                  <option value="">-- Select Section --</option>
                 </select>
               </div>
 
-              <!-- Live Course Search -->
-              <div class="form-group" style="grid-column: span 1;">
-                <label for="scheduleSearch">Quick Search</label>
-                <div class="search-input-wrapper">
-                  <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                  <input type="text" id="scheduleSearch" class="form-input" placeholder="Search course (e.g. OOP, DLD), room (e.g. C-301)..." aria-label="Filter timetable entries" />
-                </div>
+              <!-- Show Timetable Button -->
+              <div class="form-group">
+                <button type="button" class="btn btn-primary" id="showBatchBtn" style="width: 100%;">
+                  <span>Show Timetable</span>
+                </button>
               </div>
 
             </div>
           </div>
 
           <!-- TAB 2: CUSTOM COURSE SELECTION CONTROLS (Hidden by default) -->
-          <div class="custom-selection-box" id="customControlsBox" style="display: none;">
-            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
-              <div>
-                <strong style="color: var(--brand-navy); font-size: 0.95rem;">Add Courses to Custom Timetable:</strong>
-                <span style="font-size: 0.8rem; color: var(--text-subtle); margin-left: 0.5rem;">Select any elective or cross-section course</span>
-              </div>
-              <button class="btn btn-secondary btn-sm" id="clearCustomBtn" type="button">Clear All</button>
-            </div>
-
-            <div style="display: flex; gap: 0.5rem; margin-top: 0.65rem; flex-wrap: wrap;">
-              <select id="courseCatalogSelect" class="form-select" style="flex: 1; min-width: 260px;" aria-label="Course Catalog Picker">
-                <!-- Dynamically filled with courses -->
-              </select>
-              <button class="btn btn-primary btn-sm" id="addCourseBtn" type="button">+ Add Course</button>
-            </div>
-
-            <!-- Selected Courses Chips -->
-            <div class="selection-chips-row" id="selectedChipsContainer">
-              <!-- Injected via JS -->
-            </div>
-          </div>
-
-          <!-- TAB 3: FREE ROOM FINDER CONTROLS (Hidden by default) -->
-          <div class="app-toolbar" id="toolbarFreeRooms" style="display: none;">
-            <div class="filter-grid">
+          <div class="custom-selection-box" id="toolbarCustom" style="display: none;">
+            <div class="filter-grid" style="align-items: flex-end;">
+              
               <div class="form-group">
-                <label for="freeDaySelect">Select Day</label>
-                <select id="freeDaySelect" class="form-select">
-                  <option value="Monday" selected>Monday</option>
-                  <option value="Tuesday">Tuesday</option>
-                  <option value="Wednesday">Wednesday</option>
-                  <option value="Thursday">Thursday</option>
-                  <option value="Friday">Friday</option>
+                <label for="customDeptFilter">🏢 Department</label>
+                <select id="customDeptFilter" class="form-select">
+                  <option value="">All Departments</option>
+                  <option value="CS">CS</option>
+                  <option value="SE">SE</option>
+                  <option value="AI">AI</option>
+                  <option value="DS">DS</option>
+                  <option value="CY">CY</option>
                 </select>
               </div>
 
               <div class="form-group">
-                <label for="freeSlotSelect">Select Time Slot</label>
-                <select id="freeSlotSelect" class="form-select">
-                  <option value="08:30-09:50" selected>08:30 - 09:50</option>
-                  <option value="10:00-11:20">10:00 - 11:20</option>
-                  <option value="11:30-12:50">11:30 - 12:50</option>
-                  <option value="01:00-02:20">01:00 - 02:20</option>
-                  <option value="02:30-03:50">02:30 - 03:50</option>
-                  <option value="03:55-05:15">03:55 - 05:15</option>
-                  <option value="05:20-06:40">05:20 - 06:40</option>
-                  <option value="06:45-08:05">06:45 - 08:05</option>
+                <label for="customBatchFilter">👥 Batch</label>
+                <select id="customBatchFilter" class="form-select">
+                  <option value="">All Batches</option>
+                  <option value="2025">2025</option>
+                  <option value="2024">2024</option>
+                  <option value="2023">2023</option>
+                  <option value="2022">2022</option>
                 </select>
+              </div>
+
+              <div class="form-group" style="grid-column: span 2;">
+                <label for="coursePickerSelect">🔍 Search & Select Courses</label>
+                <select id="coursePickerSelect" class="form-select">
+                  <option value="">-- Choose a course to add --</option>
+                </select>
+              </div>
+
+            </div>
+
+            <!-- Selected Courses Panel -->
+            <div class="selected-courses-panel" id="selectedCoursesPanel">
+              <div class="selected-summary-line">
+                <span>📝 Selected Courses (<span id="totalSelectedCount">0</span>)</span>
+                <div style="display: flex; gap: 0.5rem;">
+                  <button class="btn btn-secondary btn-sm" id="clearCustomBtn" type="button">🗑️ Clear</button>
+                  <button class="btn btn-primary btn-sm" id="showCustomBtn" type="button">📅 Show Custom Timetable</button>
+                </div>
+              </div>
+              <div class="selected-chips-list" id="selectedChipsList">
+                <div style="color: #94a3b8; font-size: 0.85rem; font-style: italic;">
+                  No courses selected yet. Search and pick courses above to add them to your schedule.
+                </div>
               </div>
             </div>
           </div>
 
-          <!-- DAY PILLS & VIEW TOGGLES -->
-          <div class="app-subtoolbar" id="subToolbarDays">
+          <!-- SUB-TOOLBAR: DAY PILLS & VIEW TOGGLES (Hidden until timetable is displayed) -->
+          <div class="app-subtoolbar" id="subToolbarDays" style="display: none;">
             <div class="day-pills" role="tablist" aria-label="Filter schedule by day of week">
               <button class="pill-btn active" data-day="all" role="tab" aria-selected="true">All Days</button>
               <button class="pill-btn" data-day="Monday" role="tab" aria-selected="false">Monday</button>
@@ -1386,27 +1335,19 @@
             </div>
           </div>
 
-          <!-- LIVE STATUS & CLOUD SYNC -->
-          <div class="app-status-bar">
-            <div class="status-left">
-              <span class="status-dot"></span>
-              <span id="activeInfoSummary">Spring 2026 Live Database</span>
-              <span>&bull;</span>
-              <span id="resultsCountBadge">0 Sessions</span>
-            </div>
-
-            <div>
-              <button class="sync-status-btn" id="liveSyncBtn" title="Fetch live updates from official Google Sheet">
-                <span id="syncIcon">🔄</span>
-                <span id="syncText">Sync Live Sheet</span>
-              </button>
-            </div>
-          </div>
-
-          <!-- TIMETABLE CONTENT -->
+          <!-- TIMETABLE DISPLAY AREA -->
           <div class="timetable-wrapper">
             
-            <!-- Clash Detector Alert Box -->
+            <!-- INITIAL EMPTY STATE PLACEHOLDER (SHOWN BY DEFAULT) -->
+            <div class="empty-state-card" id="emptyStatePlaceholder">
+              <div class="empty-state-icon">📋</div>
+              <h3 id="emptyStateTitle">Select Your Class Details</h3>
+              <p id="emptyStateDesc">
+                Please select your <strong>Department</strong>, <strong>Batch</strong>, and <strong>Section</strong> above, then click <strong>Show Timetable</strong> to view your schedule.
+              </p>
+            </div>
+
+            <!-- Clash Detector Alert Box (Custom Tab) -->
             <div id="clashAlertBox" class="clash-alert-banner" style="display: none;">
               <span>⚠️</span>
               <div>
@@ -1415,37 +1356,27 @@
               </div>
             </div>
 
-            <!-- Mobile & Responsive Card View (Default) -->
-            <div class="cards-view" id="cardsContainer">
-              <!-- Dynamically populated -->
+            <!-- Card View Container -->
+            <div class="cards-view" id="cardsContainer" style="display: none;">
+              <!-- Populated via JS -->
             </div>
 
-            <!-- Desktop Table View -->
+            <!-- Table View Container -->
             <div class="grid-view-container" id="tableContainer">
-              <table class="desktop-table" id="desktopTable">
+              <table class="desktop-table">
                 <thead>
                   <tr>
                     <th style="width: 110px;">Day</th>
                     <th>Time</th>
                     <th>Room</th>
                     <th>Type</th>
-                    <th>Course & Section</th>
+                    <th>Course</th>
                   </tr>
                 </thead>
                 <tbody id="tableBody">
-                  <!-- Dynamically populated -->
+                  <!-- Populated via JS -->
                 </tbody>
               </table>
-            </div>
-
-            <!-- Free Rooms Display Container -->
-            <div id="freeRoomsContainer" style="display: none;">
-              <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--brand-navy); margin-bottom: 0.75rem;">
-                Vacant Rooms & Labs in Block C & Block D:
-              </h4>
-              <div class="free-rooms-grid" id="freeRoomsGrid">
-                <!-- Injected via JS -->
-              </div>
             </div>
 
           </div>
@@ -1461,7 +1392,7 @@
           <span class="section-eyebrow">Islamabad Campus (H-11/4)</span>
           <h2 class="section-title">Academic Blocks & Facilities</h2>
           <p class="section-desc">
-            Room mapping and lab allocations for FAST School of Computing (FSC) students.
+            Room allocations and lab mapping for FAST School of Computing (FSC) students.
           </p>
         </header>
 
@@ -1469,7 +1400,7 @@
           <article class="clean-card">
             <div class="card-icon">🏢</div>
             <h3>Academic Block C</h3>
-            <p>Rooms C-301 through C-409. Host to computing theory lectures, core tutorials, and faculty office hours.</p>
+            <p>Rooms C-301 to C-409. Core lecture halls for computer science theory, tutorials, and faculty office hours.</p>
           </article>
 
           <article class="clean-card">
@@ -1484,17 +1415,6 @@
             <p>D-IT Labs 1-4, Margala Labs, Rawal Labs, GPU Lab, and Cyber Lab (D-514) for practical lab sessions.</p>
           </article>
         </div>
-
-        <div class="programs-strip">
-          <span style="font-weight: 800; color: var(--brand-navy); font-size: 0.9rem;">Supported Programs:</span>
-          <div class="programs-tags-list">
-            <span class="program-tag">BS Computer Science (CS)</span>
-            <span class="program-tag">BS Software Engineering (SE)</span>
-            <span class="program-tag">BS Artificial Intelligence (AI)</span>
-            <span class="program-tag">BS Data Science (DS)</span>
-            <span class="program-tag">BS Cyber Security (CYS)</span>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -1502,8 +1422,8 @@
     <section class="info-section" id="features">
       <div class="container">
         <header class="section-header">
-          <span class="section-eyebrow">Smart Utilities</span>
-          <h2 class="section-title">Built for Everyday Student Needs</h2>
+          <span class="section-eyebrow">Smart Student Tools</span>
+          <h2 class="section-title">Why FAST Students Rely on Fastable</h2>
           <p class="section-desc">
             Streamlined features designed to save you time and eliminate timetable confusion.
           </p>
@@ -1513,19 +1433,19 @@
           <article class="clean-card">
             <div class="card-icon">📅</div>
             <h3>Instant Section View</h3>
-            <p>Quickly access your full batch timetable with accurate lecture timings and assigned rooms.</p>
+            <p>Select your batch and section to view accurate class timings and assigned classrooms in seconds.</p>
           </article>
 
           <article class="clean-card">
             <div class="card-icon">⚠️</div>
-            <h3>Live Clash Detector</h3>
-            <p>Build your custom schedule by adding electives and repeat courses with real-time overlap warnings.</p>
+            <h3>Custom Clash Detector</h3>
+            <p>Search and select repeat or elective courses across batches with real-time overlap warnings.</p>
           </article>
 
           <article class="clean-card">
-            <div class="card-icon">🏢</div>
-            <h3>Free Room Finder</h3>
-            <p>Spot currently vacant classrooms and labs across Block C and D for group study or project work.</p>
+            <div class="card-icon">📱</div>
+            <h3>Android APK Companion</h3>
+            <p>Download the native Android app for offline cached schedules and timely lecture reminder alerts.</p>
           </article>
         </div>
       </div>
@@ -1535,10 +1455,10 @@
     <section class="info-section alt-bg" id="faq">
       <div class="container">
         <header class="section-header">
-          <span class="section-eyebrow">Help & Information</span>
+          <span class="section-eyebrow">Frequently Asked Questions</span>
           <h2 class="section-title">Frequently Asked Questions</h2>
           <p class="section-desc">
-            Common questions about FAST Islamabad schedules, clash checking, and offline access.
+            Helpful answers about FAST Islamabad timetable access and custom schedule creation.
           </p>
         </header>
 
@@ -1550,17 +1470,17 @@
               <span class="faq-icon" aria-hidden="true">&#9662;</span>
             </summary>
             <div class="faq-answer">
-              Select your department (CS, SE, AI, DS, or CY) and section (e.g., A, B, C) in the Section Timetable tab. The schedule immediately displays all class slots, timings, and room numbers.
+              In the <strong>Batch Timetable</strong> tab, select your Department (e.g. CS), your Batch (e.g. 2024), and your Section (e.g. A), then click <strong>Show Timetable</strong>. The schedule immediately renders your weekly lectures, lab slots, and room allocations.
             </div>
           </details>
 
           <details class="faq-item">
             <summary class="faq-summary">
-              <span>Which campus and degrees are supported?</span>
+              <span>Which campus and degree programs are supported?</span>
               <span class="faq-icon" aria-hidden="true">&#9662;</span>
             </summary>
             <div class="faq-answer">
-              Fastable is exclusively tailored for <strong>FAST-NUCES Islamabad Campus (H-11/4)</strong> and its computing degree programs: BS CS, BS SE, BS AI, BS DS, and BS CYS.
+              Fastable is built specifically for <strong>FAST-NUCES Islamabad Campus (H-11/4)</strong> and covers all computing faculties: BS Computer Science (CS), BS Software Engineering (SE), BS Artificial Intelligence (AI), BS Data Science (DS), and BS Cyber Security (CY).
             </div>
           </details>
 
@@ -1570,13 +1490,13 @@
               <span class="faq-icon" aria-hidden="true">&#9662;</span>
             </summary>
             <div class="faq-answer">
-              Switch to the "Custom Timetable & Clash Detector" tab. Select any courses from the catalog and add them. Fastable immediately detects any overlapping time slots and flags conflicting classes.
+              Switch to the <strong>Custom Course Selection</strong> tab, filter by department or batch, search for any courses you are taking, and click to add them. Once you click <strong>Show Custom Timetable</strong>, Fastable calculates whether any lecture or lab periods overlap and alerts you with a clash notification.
             </div>
           </details>
 
           <details class="faq-item">
             <summary class="faq-summary">
-              <span>Can I use Fastable offline on mobile?</span>
+              <span>Can I use Fastable offline on my phone?</span>
               <span class="faq-icon" aria-hidden="true">&#9662;</span>
             </summary>
             <div class="faq-answer">
@@ -1626,11 +1546,11 @@
         <div class="footer-col">
           <h4>Faculties</h4>
           <ul class="footer-links">
-            <li><a href="#app" onclick="selectDept('CS')">BS Computer Science</a></li>
-            <li><a href="#app" onclick="selectDept('SE')">BS Software Engineering</a></li>
-            <li><a href="#app" onclick="selectDept('AI')">BS Artificial Intelligence</a></li>
-            <li><a href="#app" onclick="selectDept('DS')">BS Data Science</a></li>
-            <li><a href="#app" onclick="selectDept('CY')">BS Cyber Security</a></li>
+            <li><a href="#app">BS Computer Science</a></li>
+            <li><a href="#app">BS Software Engineering</a></li>
+            <li><a href="#app">BS Artificial Intelligence</a></li>
+            <li><a href="#app">BS Data Science</a></li>
+            <li><a href="#app">BS Cyber Security</a></li>
           </ul>
         </div>
 
@@ -1652,48 +1572,51 @@
   </footer>
 
   <!-- -------------------------------------------------------------
-       FASTABLE APPLICATION SCRIPT (LIVE GOOGLE SHEETS ENGINE)
+       FASTABLE APPLICATION SCRIPT (2 TABS ONLY, STRICT CONTROLS)
        ------------------------------------------------------------- -->
   <script>
     (function() {
       'use strict';
 
-      const SHEET_ID = '1ZQJqdArlwCS965uw4sbJrB6j8rEPfZerMT7X8qkXSzY';
       const DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 
       // App State
-      let currentMode = 'batch'; // 'batch', 'custom', 'freeRooms'
-      let currentDept = 'CS';
-      let currentSection = 'A';
-      let selectedDay = 'all';
-      let searchQuery = '';
-      let isTableView = false;
+      let activeTab = 'batch'; // 'batch' or 'custom'
       let rawClassesData = [];
+      let selectedDay = 'all';
+      let isTableView = false;
       let customSelectedCourses = [];
+      let batchSubmitted = false;
+      let customSubmitted = false;
 
-      // DOM Elements
+      // DOM Elements - Tabs
       const tabBatchBtn = document.getElementById('tabBatchBtn');
       const tabCustomBtn = document.getElementById('tabCustomBtn');
-      const tabFreeRoomsBtn = document.getElementById('tabFreeRoomsBtn');
-      const toolbarStandard = document.getElementById('toolbarStandard');
-      const customControlsBox = document.getElementById('customControlsBox');
-      const toolbarFreeRooms = document.getElementById('toolbarFreeRooms');
-      const sectionSelectGroup = document.getElementById('sectionSelectGroup');
-      const subToolbarDays = document.getElementById('subToolbarDays');
+      const toolbarBatch = document.getElementById('toolbarBatch');
+      const toolbarCustom = document.getElementById('toolbarCustom');
 
+      // Batch Inputs
       const deptSelect = document.getElementById('deptSelect');
+      const batchSelect = document.getElementById('batchSelect');
       const sectionSelect = document.getElementById('sectionSelect');
-      const scheduleSearch = document.getElementById('scheduleSearch');
-      const courseCatalogSelect = document.getElementById('courseCatalogSelect');
-      const addCourseBtn = document.getElementById('addCourseBtn');
+      const showBatchBtn = document.getElementById('showBatchBtn');
+
+      // Custom Inputs
+      const customDeptFilter = document.getElementById('customDeptFilter');
+      const customBatchFilter = document.getElementById('customBatchFilter');
+      const coursePickerSelect = document.getElementById('coursePickerSelect');
+      const selectedChipsList = document.getElementById('selectedChipsList');
+      const totalSelectedCount = document.getElementById('totalSelectedCount');
       const clearCustomBtn = document.getElementById('clearCustomBtn');
-      const selectedChipsContainer = document.getElementById('selectedChipsContainer');
+      const showCustomBtn = document.getElementById('showCustomBtn');
 
-      const freeDaySelect = document.getElementById('freeDaySelect');
-      const freeSlotSelect = document.getElementById('freeSlotSelect');
-      const freeRoomsContainer = document.getElementById('freeRoomsContainer');
-      const freeRoomsGrid = document.getElementById('freeRoomsGrid');
-
+      // Display Area Elements
+      const subToolbarDays = document.getElementById('subToolbarDays');
+      const emptyStatePlaceholder = document.getElementById('emptyStatePlaceholder');
+      const emptyStateTitle = document.getElementById('emptyStateTitle');
+      const emptyStateDesc = document.getElementById('emptyStateDesc');
+      const clashAlertBox = document.getElementById('clashAlertBox');
+      const clashAlertDetails = document.getElementById('clashAlertDetails');
       const cardsContainer = document.getElementById('cardsContainer');
       const tableContainer = document.getElementById('tableContainer');
       const tableBody = document.getElementById('tableBody');
@@ -1701,15 +1624,7 @@
       const tableViewBtn = document.getElementById('tableViewBtn');
       const dayPills = document.querySelectorAll('.day-pills .pill-btn');
 
-      const activeInfoSummary = document.getElementById('activeInfoSummary');
-      const resultsCountBadge = document.getElementById('resultsCountBadge');
-      const liveSyncBtn = document.getElementById('liveSyncBtn');
-      const syncIcon = document.getElementById('syncIcon');
-      const syncText = document.getElementById('syncText');
-      const clashAlertBox = document.getElementById('clashAlertBox');
-      const clashAlertDetails = document.getElementById('clashAlertDetails');
-
-      // Department to Sections map for FAST Islamabad
+      // Sections mapping per department
       const deptSectionsMap = {
         'CS': ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K'],
         'SE': ['A', 'B', 'C', 'D', 'E', 'F', 'G'],
@@ -1718,141 +1633,148 @@
         'CY': ['A', 'B', 'C', 'D']
       };
 
-      // Load Custom Courses from LocalStorage
+      // Load Saved Custom Courses from LocalStorage
       try {
         const saved = localStorage.getItem('fastable_custom_courses');
         if (saved) customSelectedCourses = JSON.parse(saved);
       } catch (e) {}
 
-      // Populate Section Dropdown
-      function populateSections() {
-        const sections = deptSectionsMap[currentDept] || ['A', 'B', 'C', 'D'];
-        let html = '';
+      // Update Section Options based on selected department and batch
+      function updateSectionOptions() {
+        const d = deptSelect.value;
+        const b = batchSelect.value;
+        if (!d) {
+          sectionSelect.innerHTML = '<option value="">-- Select Section --</option>';
+          return;
+        }
+
+        // Dynamically extract letter sections from rawClassesData if available
+        let sections = [];
+        if (rawClassesData && rawClassesData.length > 0) {
+          const secSet = new Set();
+          rawClassesData.forEach(function(item) {
+            if (item.dept === d && (!b || item.batch === b) && item.section) {
+              const baseLetter = item.section.charAt(0);
+              if (baseLetter && /[A-Z]/.test(baseLetter)) {
+                secSet.add(baseLetter);
+              }
+            }
+          });
+          sections = Array.from(secSet).sort();
+        }
+
+        if (sections.length === 0) {
+          sections = deptSectionsMap[d] || ['A', 'B', 'C', 'D'];
+        }
+
+        let html = '<option value="">-- Select Section --</option>';
         sections.forEach(function(s) {
-          html += `<option value="${s}" ${s === currentSection ? 'selected' : ''}>Section ${s}</option>`;
+          html += `<option value="${s}">Section ${s}</option>`;
         });
         sectionSelect.innerHTML = html;
-        if (!sections.includes(currentSection)) {
-          currentSection = sections[0];
-        }
       }
 
-      // Populate Course Catalog Picker
-      function populateCourseCatalog() {
+      function hideBatchTimetable() {
+        batchSubmitted = false;
+        emptyStatePlaceholder.style.display = 'flex';
+        emptyStateTitle.textContent = 'Select Your Class Details';
+        emptyStateDesc.innerHTML = 'Please select your <strong>Department</strong>, <strong>Batch</strong>, and <strong>Section</strong> above, then click <strong>Show Timetable</strong> to view your schedule.';
+        subToolbarDays.style.display = 'none';
+        cardsContainer.style.display = 'none';
+        tableContainer.style.display = 'none';
+        clashAlertBox.style.display = 'none';
+      }
+
+      // Populate Course Picker for Tab 2
+      function updateCoursePicker() {
         if (!rawClassesData || rawClassesData.length === 0) return;
-        const uniqueCourses = {};
+
+        const filterDept = customDeptFilter.value;
+        const filterBatch = customBatchFilter.value;
+
+        // Collect matching unique courses
+        const courseMap = {};
         rawClassesData.forEach(function(item) {
-          if (item.course && item.course.length > 2) {
-            const key = item.course.trim();
-            uniqueCourses[key] = item.dept || 'CS';
+          const matchDept = (!filterDept || item.dept === filterDept);
+          const matchBatch = (!filterBatch || item.batch === filterBatch);
+
+          if (matchDept && matchBatch && item.course) {
+            const courseKey = item.course.trim();
+            const label = `${courseKey} (${item.dept}-${item.section || 'All'}, ${item.batch})`;
+            courseMap[label] = courseKey;
           }
         });
 
-        const sorted = Object.keys(uniqueCourses).sort();
+        const sortedLabels = Object.keys(courseMap).sort();
         let html = '<option value="">-- Choose a course to add --</option>';
-        sorted.forEach(function(c) {
-          const dept = uniqueCourses[c];
-          html += `<option value="${c}">${c} (${dept})</option>`;
+        sortedLabels.forEach(function(label) {
+          const cName = courseMap[label];
+          html += `<option value="${cName}">${label}</option>`;
         });
-        courseCatalogSelect.innerHTML = html;
+        coursePickerSelect.innerHTML = html;
       }
 
-      // Render Selected Chips for Custom Mode
-      function renderSelectedChips() {
+      // Render Selected Courses in Tab 2
+      function renderSelectedCustomCourses() {
+        totalSelectedCount.textContent = customSelectedCourses.length;
+
         if (customSelectedCourses.length === 0) {
-          selectedChipsContainer.innerHTML = '<span style="color: #94a3b8; font-size: 0.825rem; font-style: italic;">No custom courses added yet. Pick a course above.</span>';
+          selectedChipsList.innerHTML = `
+            <div style="color: #94a3b8; font-size: 0.85rem; font-style: italic;">
+              No courses selected yet. Search and pick courses above to add them to your schedule.
+            </div>
+          `;
           return;
         }
 
         let html = '';
-        customSelectedCourses.forEach(function(courseName, idx) {
+        customSelectedCourses.forEach(function(cName, idx) {
           html += `
-            <div class="course-chip">
-              <span>${courseName}</span>
-              <button class="chip-remove-btn" data-idx="${idx}" title="Remove course">&times;</button>
+            <div class="selected-course-row">
+              <span class="selected-course-title">📖 ${cName}</span>
+              <button class="btn-remove-course" data-idx="${idx}" type="button">❌ Remove</button>
             </div>
           `;
         });
-        selectedChipsContainer.innerHTML = html;
+        selectedChipsList.innerHTML = html;
 
-        // Attach remove events
-        selectedChipsContainer.querySelectorAll('.chip-remove-btn').forEach(function(btn) {
-          btn.addEventListener('click', function(e) {
+        // Attach Remove Handlers
+        selectedChipsList.querySelectorAll('.btn-remove-course').forEach(function(btn) {
+          btn.addEventListener('click', function() {
             const idx = parseInt(btn.getAttribute('data-idx'), 10);
             customSelectedCourses.splice(idx, 1);
-            try { localStorage.setItem('fastable_custom_courses', JSON.stringify(customSelectedCourses)); } catch (err) {}
-            renderSelectedChips();
-            renderApp();
+            try { localStorage.setItem('fastable_custom_courses', JSON.stringify(customSelectedCourses)); } catch (e) {}
+            renderSelectedCustomCourses();
+            if (customSubmitted) {
+              renderCustomTimetable();
+            }
           });
         });
       }
 
-      // Filter Data According to Mode
-      function getFilteredData() {
-        if (!rawClassesData || rawClassesData.length === 0) return [];
-
-        let results = [];
-
-        if (currentMode === 'batch') {
-          results = rawClassesData.filter(function(item) {
-            const matchDept = (item.dept === currentDept);
-            const matchSec = (item.section === currentSection || item.section === (currentSection + '1') || item.section === (currentSection + '2'));
-            return matchDept && matchSec;
-          });
-        } else if (currentMode === 'custom') {
-          results = rawClassesData.filter(function(item) {
-            return customSelectedCourses.includes(item.course);
-          });
-        }
-
-        // Apply Day Filter
-        if (selectedDay !== 'all') {
-          results = results.filter(function(item) {
-            return item.day.toLowerCase() === selectedDay.toLowerCase();
-          });
-        }
-
-        // Apply Search Query Filter
-        if (searchQuery.trim() !== '') {
-          const q = searchQuery.toLowerCase().trim();
-          results = results.filter(function(item) {
-            return (
-              (item.course && item.course.toLowerCase().includes(q)) ||
-              (item.room && item.room.toLowerCase().includes(q)) ||
-              (item.time && item.time.toLowerCase().includes(q)) ||
-              (item.raw && item.raw.toLowerCase().includes(q))
-            );
-          });
-        }
-
-        return results;
-      }
-
-      // Detect Clashes in Schedule
-      function checkClashes(items) {
-        const timeMap = {};
-        const clashes = [];
+      // Detect Time Clashes between courses
+      function detectClashes(items) {
+        const slotMap = {};
+        const clashGroups = [];
 
         items.forEach(function(item) {
           const key = item.day + '___' + item.time;
-          if (!timeMap[key]) {
-            timeMap[key] = [];
-          }
-          timeMap[key].push(item);
+          if (!slotMap[key]) slotMap[key] = [];
+          slotMap[key].push(item);
         });
 
-        Object.keys(timeMap).forEach(function(k) {
-          if (timeMap[k].length > 1) {
-            clashes.push(timeMap[k]);
+        Object.keys(slotMap).forEach(function(k) {
+          if (slotMap[k].length > 1) {
+            clashGroups.push(slotMap[k]);
           }
         });
 
-        return clashes;
+        return clashGroups;
       }
 
-      // Render Cards View
+      // Render Schedule Cards View
       function renderCards(items, clashes) {
-        const displayedDays = selectedDay === 'all' ? DAYS : [selectedDay];
+        const displayedDays = (selectedDay === 'all') ? DAYS : [selectedDay];
         let html = '';
 
         displayedDays.forEach(function(day) {
@@ -1870,13 +1792,12 @@
           `;
 
           if (dayItems.length === 0) {
-            html += `<div style="padding: 1rem; text-align: center; color: #94a3b8; font-size: 0.85rem; font-style: italic;">No classes scheduled for ${day}</div>`;
+            html += `<div style="padding: 1.25rem; text-align: center; color: #94a3b8; font-size: 0.85rem; font-style: italic;">No classes scheduled for ${day}</div>`;
           } else {
             dayItems.forEach(function(item) {
               const isLab = item.isLab;
-              // Check if part of a clash
-              const isClash = clashes.some(function(clashGroup) {
-                return clashGroup.some(function(c) {
+              const isClash = clashes.some(function(cg) {
+                return cg.some(function(c) {
                   return c.day === item.day && c.time === item.time && c.room === item.room && c.course === item.course;
                 });
               });
@@ -1890,13 +1811,13 @@
                   <div class="card-top-row">
                     <span class="time-badge">⏰ ${item.time}</span>
                     <span class="type-badge ${isClash ? 'badge-clash' : (isLab ? 'badge-lab' : 'badge-lec')}">
-                      ${isClash ? '⚠️ Clash' : (isLab ? 'Lab Session' : 'Lecture')}
+                      ${isClash ? '⚠️ Clash' : (isLab ? 'Lab' : 'Lecture')}
                     </span>
                   </div>
                   <div class="course-title">${item.course}</div>
                   <div class="card-meta-row">
                     <span><strong>Room:</strong> <span class="room-tag">${item.room}</span></span>
-                    <span class="section-tag">${item.dept ? item.dept : ''} ${item.section ? ('Section ' + item.section) : ''}</span>
+                    <span style="font-weight:700; color:var(--brand-navy);">${item.dept ? item.dept : ''} ${item.section ? ('Section ' + item.section) : ''} (${item.batch})</span>
                   </div>
                 </div>
               `;
@@ -1912,7 +1833,7 @@
         cardsContainer.innerHTML = html;
       }
 
-      // Render Desktop Table View
+      // Render Schedule Table View
       function renderTable(items) {
         let html = '';
         if (items.length === 0) {
@@ -1925,8 +1846,8 @@
                 <td class="table-day-cell">${item.day}</td>
                 <td style="font-weight: 700;">${item.time}</td>
                 <td><span class="room-tag">${item.room}</span></td>
-                <td><span class="type-badge ${isLab ? 'badge-lab' : 'badge-lec'}">${isLab ? 'Lab' : 'Class'}</span></td>
-                <td style="font-weight: 700; color: #0f172a;">${item.course} <small style="color:#64748b;">(${item.raw})</small></td>
+                <td><span class="type-badge ${isLab ? 'badge-lab' : 'badge-lec'}">${isLab ? 'Lab' : 'Lecture'}</span></td>
+                <td style="font-weight: 700; color: #0f172a;">${item.course}</td>
               </tr>
             `;
           });
@@ -1934,60 +1855,82 @@
         tableBody.innerHTML = html;
       }
 
-      // Render Free Rooms
-      function renderFreeRooms() {
-        const day = freeDaySelect.value;
-        const slot = freeSlotSelect.value;
+      // Render Batch Timetable (Tab 1)
+      function renderBatchTimetable() {
+        const d = deptSelect.value;
+        const b = batchSelect.value;
+        const s = sectionSelect.value;
 
-        // Find all rooms booked during this day and time slot
-        const bookedRooms = new Set();
-        rawClassesData.forEach(function(item) {
-          if (item.day.toLowerCase() === day.toLowerCase() && item.time === slot) {
-            bookedRooms.add(item.room);
-          }
-        });
-
-        // Known campus room list
-        const allRooms = [
-          'C-301', 'C-302', 'C-303', 'C-304', 'C-305', 'C-307', 'C-308', 'C-309', 'C-310', 'C-311',
-          'C-401', 'C-402', 'C-403', 'C-404', 'C-405', 'C-406', 'C-407', 'C-408', 'C-409',
-          'D-301', 'D-302', 'D-303', 'D-304', 'D-305', 'D-306', 'D-311', 'D-312', 'D-313', 'D-314',
-          'D-401', 'D-402', 'D-403', 'D-404', 'D-405', 'D-406', 'D-411', 'D-412', 'D-413', 'D-414',
-          'D-501', 'D-502', 'D-503', 'D-504', 'D-505', 'D-506',
-          'D-IT Lab 1', 'D-IT Lab 2', 'D-IT Lab 3', 'D-IT Lab 4', 'C-Margala 1', 'C-Rawal 1', 'Cyber (D-514)'
-        ];
-
-        const freeRooms = allRooms.filter(function(r) { return !bookedRooms.has(r); });
-
-        let html = '';
-        freeRooms.forEach(function(r) {
-          html += `<div class="free-room-pill">✓ ${r}</div>`;
-        });
-
-        freeRoomsGrid.innerHTML = html || '<div style="padding:1rem; color:#94a3b8;">No vacant rooms available during this peak period.</div>';
-      }
-
-      // Master Render Function
-      function renderApp() {
-        if (currentMode === 'freeRooms') {
+        // Check if all fields are selected
+        if (!d || !b || !s) {
+          emptyStatePlaceholder.style.display = 'flex';
+          emptyStateTitle.textContent = 'Select Your Class Details';
+          emptyStateDesc.innerHTML = 'Please select your <strong>Department</strong>, <strong>Batch</strong>, and <strong>Section</strong> above, then click <strong>Show Timetable</strong> to view your schedule.';
+          subToolbarDays.style.display = 'none';
           cardsContainer.style.display = 'none';
           tableContainer.style.display = 'none';
-          freeRoomsContainer.style.display = 'block';
-          subToolbarDays.style.display = 'none';
           clashAlertBox.style.display = 'none';
-          renderFreeRooms();
-          activeInfoSummary.textContent = `Vacant Rooms &bull; ${freeDaySelect.value} (${freeSlotSelect.value})`;
-          resultsCountBadge.textContent = 'Free Room Finder';
           return;
         }
 
-        freeRoomsContainer.style.display = 'none';
+        // Filter data strictly by dept, batch, and section
+        let filtered = rawClassesData.filter(function(item) {
+          const matchDept = (item.dept === d);
+          const matchBatch = (item.batch === b);
+          const matchSec = (item.section === s || item.section === (s + '1') || item.section === (s + '2'));
+          return matchDept && matchBatch && matchSec;
+        });
+
+        // Day filter
+        if (selectedDay !== 'all') {
+          filtered = filtered.filter(function(item) {
+            return item.day.toLowerCase() === selectedDay.toLowerCase();
+          });
+        }
+
+        emptyStatePlaceholder.style.display = 'none';
         subToolbarDays.style.display = 'flex';
+        clashAlertBox.style.display = 'none';
 
-        const filtered = getFilteredData();
-        const clashes = (currentMode === 'custom') ? checkClashes(filtered) : [];
+        if (isTableView && window.innerWidth > 768) {
+          cardsContainer.style.display = 'none';
+          tableContainer.style.display = 'block';
+          renderTable(filtered);
+        } else {
+          tableContainer.style.display = 'none';
+          cardsContainer.style.display = 'flex';
+          renderCards(filtered, []);
+        }
+      }
 
-        // Handle Clash Notification
+      // Render Custom Timetable (Tab 2)
+      function renderCustomTimetable() {
+        if (customSelectedCourses.length === 0) {
+          emptyStatePlaceholder.style.display = 'flex';
+          emptyStateTitle.textContent = 'No Courses Selected';
+          emptyStateDesc.innerHTML = 'Search and pick courses from the catalog above, then click <strong>Show Custom Timetable</strong> to view your personalized schedule with clash detection.';
+          subToolbarDays.style.display = 'none';
+          cardsContainer.style.display = 'none';
+          tableContainer.style.display = 'none';
+          clashAlertBox.style.display = 'none';
+          return;
+        }
+
+        // Filter data for all selected custom courses
+        let filtered = rawClassesData.filter(function(item) {
+          return customSelectedCourses.includes(item.course);
+        });
+
+        // Day filter
+        if (selectedDay !== 'all') {
+          filtered = filtered.filter(function(item) {
+            return item.day.toLowerCase() === selectedDay.toLowerCase();
+          });
+        }
+
+        const clashes = detectClashes(filtered);
+
+        // Clash Alert Banner
         if (clashes.length > 0) {
           clashAlertBox.style.display = 'flex';
           let details = '';
@@ -2000,13 +1943,8 @@
           clashAlertBox.style.display = 'none';
         }
 
-        // Summary Text
-        if (currentMode === 'batch') {
-          activeInfoSummary.textContent = `Department ${currentDept} &bull; Section ${currentSection}`;
-        } else {
-          activeInfoSummary.textContent = `Custom Timetable (${customSelectedCourses.length} Courses Added)`;
-        }
-        resultsCountBadge.textContent = `${filtered.length} Class Sessions`;
+        emptyStatePlaceholder.style.display = 'none';
+        subToolbarDays.style.display = 'flex';
 
         if (isTableView && window.innerWidth > 768) {
           cardsContainer.style.display = 'none';
@@ -2019,151 +1957,187 @@
         }
       }
 
-      // Fetch and Parse Live Google Sheets Data
-      async function fetchGoogleSheetsData() {
-        syncIcon.textContent = '⏳';
-        syncText.textContent = 'Syncing...';
-
+      // Fetch Data
+      async function loadData() {
         try {
-          // Attempt loading timetable_data.json first
-          const response = await fetch('timetable_data.json?t=' + Date.now());
-          if (response.ok) {
-            const compact = await response.json();
-            // compact format: [dayIdx, time, room, course, dept, section, isLab]
-            rawClassesData = compact.map(function(item) {
+          const res = await fetch('timetable_data.json?t=' + Date.now());
+          if (res.ok) {
+            const data = await res.json();
+            // Format: [dayIdx, time, room, course, dept, section, isLab, batch]
+            rawClassesData = data.map(function(item) {
               return {
                 day: DAYS[item[0]] || 'Monday',
                 time: item[1],
                 room: item[2],
                 course: item[3],
-                raw: item[3],
                 dept: item[4],
                 section: item[5],
-                isLab: item[6] === 1
+                isLab: (item[6] === 1),
+                batch: item[7] || '2024'
               };
             });
-            syncIcon.textContent = '✓';
-            syncText.textContent = 'Updated';
-            populateCourseCatalog();
-            renderApp();
-            setTimeout(function() { syncIcon.textContent = '🔄'; syncText.textContent = 'Sync Live Sheet'; }, 2000);
-            return;
+            updateSectionOptions();
+            updateCoursePicker();
           }
         } catch (e) {
-          console.warn('Local JSON load error, falling back to embedded data', e);
+          console.error('Error loading data:', e);
         }
-
-        syncIcon.textContent = '🔄';
-        syncText.textContent = 'Sync Live Sheet';
       }
 
-      // Event Listeners
+      // Event Listeners - Tabs Switcher
       tabBatchBtn.addEventListener('click', function() {
-        currentMode = 'batch';
+        activeTab = 'batch';
         tabBatchBtn.classList.add('active');
         tabCustomBtn.classList.remove('active');
-        tabFreeRoomsBtn.classList.remove('active');
-        toolbarStandard.style.display = 'flex';
-        sectionSelectGroup.style.display = 'flex';
-        customControlsBox.style.display = 'none';
-        toolbarFreeRooms.style.display = 'none';
-        renderApp();
+        toolbarBatch.style.display = 'flex';
+        toolbarCustom.style.display = 'none';
+
+        if (batchSubmitted) {
+          renderBatchTimetable();
+        } else {
+          hideBatchTimetable();
+        }
       });
 
       tabCustomBtn.addEventListener('click', function() {
-        currentMode = 'custom';
+        activeTab = 'custom';
         tabCustomBtn.classList.add('active');
         tabBatchBtn.classList.remove('active');
-        tabFreeRoomsBtn.classList.remove('active');
-        toolbarStandard.style.display = 'flex';
-        sectionSelectGroup.style.display = 'none';
-        customControlsBox.style.display = 'block';
-        toolbarFreeRooms.style.display = 'none';
-        renderSelectedChips();
-        renderApp();
-      });
+        toolbarBatch.style.display = 'none';
+        toolbarCustom.style.display = 'block';
+        renderSelectedCustomCourses();
 
-      tabFreeRoomsBtn.addEventListener('click', function() {
-        currentMode = 'freeRooms';
-        tabFreeRoomsBtn.classList.add('active');
-        tabBatchBtn.classList.remove('active');
-        tabCustomBtn.classList.remove('active');
-        toolbarStandard.style.display = 'none';
-        customControlsBox.style.display = 'none';
-        toolbarFreeRooms.style.display = 'flex';
-        renderApp();
-      });
-
-      deptSelect.addEventListener('change', function(e) {
-        currentDept = e.target.value;
-        populateSections();
-        renderApp();
-      });
-
-      sectionSelect.addEventListener('change', function(e) {
-        currentSection = e.target.value;
-        renderApp();
-      });
-
-      scheduleSearch.addEventListener('input', function(e) {
-        searchQuery = e.target.value;
-        renderApp();
-      });
-
-      addCourseBtn.addEventListener('click', function() {
-        const val = courseCatalogSelect.value;
-        if (val && !customSelectedCourses.includes(val)) {
-          customSelectedCourses.push(val);
-          try { localStorage.setItem('fastable_custom_courses', JSON.stringify(customSelectedCourses)); } catch (err) {}
-          renderSelectedChips();
-          renderApp();
+        if (customSubmitted && customSelectedCourses.length > 0) {
+          renderCustomTimetable();
+        } else {
+          emptyStatePlaceholder.style.display = 'flex';
+          emptyStateTitle.textContent = 'No Courses Selected';
+          emptyStateDesc.innerHTML = 'Search and pick courses from the catalog above, then click <strong>Show Custom Timetable</strong> to view your personalized schedule with clash detection.';
+          subToolbarDays.style.display = 'none';
+          cardsContainer.style.display = 'none';
+          tableContainer.style.display = 'none';
+          clashAlertBox.style.display = 'none';
         }
       });
 
-      clearCustomBtn.addEventListener('click', function() {
-        customSelectedCourses = [];
-        try { localStorage.removeItem('fastable_custom_courses'); } catch (err) {}
-        renderSelectedChips();
-        renderApp();
+      // Department change updates section options & hides timetable until show is clicked
+      deptSelect.addEventListener('change', function() {
+        updateSectionOptions();
+        hideBatchTimetable();
       });
 
-      freeDaySelect.addEventListener('change', renderFreeRooms);
-      freeSlotSelect.addEventListener('change', renderFreeRooms);
+      // Batch change updates section options & hides timetable until show is clicked
+      batchSelect.addEventListener('change', function() {
+        updateSectionOptions();
+        hideBatchTimetable();
+      });
 
+      // Section change hides timetable until show is clicked
+      sectionSelect.addEventListener('change', function() {
+        hideBatchTimetable();
+      });
+
+      // Show Batch Timetable Button
+      showBatchBtn.addEventListener('click', function() {
+        const d = deptSelect.value;
+        const b = batchSelect.value;
+        const s = sectionSelect.value;
+
+        if (!d || !b || !s) {
+          emptyStatePlaceholder.style.display = 'flex';
+          emptyStateTitle.textContent = '⚠️ All Fields Required';
+          emptyStateDesc.innerHTML = '<span style="color:#ef4444; font-weight:700;">Please select all fields:</span> <strong>Department</strong>, <strong>Batch</strong>, and <strong>Section</strong> must all be selected before viewing the timetable.';
+          subToolbarDays.style.display = 'none';
+          cardsContainer.style.display = 'none';
+          tableContainer.style.display = 'none';
+          clashAlertBox.style.display = 'none';
+          return;
+        }
+
+        batchSubmitted = true;
+        renderBatchTimetable();
+      });
+
+      // Tab 2 Filters change updates picker
+      customDeptFilter.addEventListener('change', updateCoursePicker);
+      customBatchFilter.addEventListener('change', updateCoursePicker);
+
+      // Course Picker Adds Course
+      coursePickerSelect.addEventListener('change', function() {
+        const val = coursePickerSelect.value;
+        if (val && !customSelectedCourses.includes(val)) {
+          customSelectedCourses.push(val);
+          try { localStorage.setItem('fastable_custom_courses', JSON.stringify(customSelectedCourses)); } catch (e) {}
+          renderSelectedCustomCourses();
+          coursePickerSelect.value = '';
+        }
+      });
+
+      // Clear Custom Courses
+      clearCustomBtn.addEventListener('click', function() {
+        customSelectedCourses = [];
+        try { localStorage.removeItem('fastable_custom_courses'); } catch (e) {}
+        customSubmitted = false;
+        renderSelectedCustomCourses();
+        emptyStatePlaceholder.style.display = 'flex';
+        emptyStateTitle.textContent = 'No Courses Selected';
+        emptyStateDesc.innerHTML = 'Search and pick courses from the catalog above, then click <strong>Show Custom Timetable</strong> to view your personalized schedule with clash detection.';
+        subToolbarDays.style.display = 'none';
+        cardsContainer.style.display = 'none';
+        tableContainer.style.display = 'none';
+        clashAlertBox.style.display = 'none';
+      });
+
+      // Show Custom Timetable Button
+      showCustomBtn.addEventListener('click', function() {
+        if (customSelectedCourses.length === 0) {
+          emptyStatePlaceholder.style.display = 'flex';
+          emptyStateTitle.textContent = '⚠️ Select At Least One Course';
+          emptyStateDesc.innerHTML = '<span style="color:#ef4444; font-weight:700;">No courses selected:</span> Please choose at least one course from the catalog dropdown above before displaying your custom timetable.';
+          subToolbarDays.style.display = 'none';
+          cardsContainer.style.display = 'none';
+          tableContainer.style.display = 'none';
+          clashAlertBox.style.display = 'none';
+          return;
+        }
+        customSubmitted = true;
+        renderCustomTimetable();
+      });
+
+      // Day Pills Click Handlers
       dayPills.forEach(function(pill) {
         pill.addEventListener('click', function() {
           dayPills.forEach(function(p) { p.classList.remove('active'); p.setAttribute('aria-selected', 'false'); });
           pill.classList.add('active');
           pill.setAttribute('aria-selected', 'true');
           selectedDay = pill.getAttribute('data-day');
-          renderApp();
+
+          if (activeTab === 'batch') {
+            renderBatchTimetable();
+          } else {
+            renderCustomTimetable();
+          }
         });
       });
 
+      // View Toggles
       cardViewBtn.addEventListener('click', function() {
         isTableView = false;
         cardViewBtn.classList.add('active');
         tableViewBtn.classList.remove('active');
-        renderApp();
+        if (activeTab === 'batch') renderBatchTimetable(); else renderCustomTimetable();
       });
 
       tableViewBtn.addEventListener('click', function() {
         isTableView = true;
         tableViewBtn.classList.add('active');
         cardViewBtn.classList.remove('active');
-        renderApp();
+        if (activeTab === 'batch') renderBatchTimetable(); else renderCustomTimetable();
       });
 
-      liveSyncBtn.addEventListener('click', fetchGoogleSheetsData);
-
-      window.selectDept = function(d) {
-        deptSelect.value = d;
-        deptSelect.dispatchEvent(new Event('change'));
-      };
-
       // Initial Setup
-      populateSections();
-      fetchGoogleSheetsData();
+      updateSectionOptions();
+      loadData();
 
     })();
   </script>
