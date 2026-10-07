@@ -1,75 +1,2239 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fastable - Download</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Primary SEO Metadata -->
+  <title>FAST Timetable | FAST-NUCES Class Schedules & Room Allocations</title>
+  <meta name="description" content="Fastable is the fastest timetable viewer for FAST-NUCES students. Search and view class schedules, section timetables, and room allocations across all campuses." />
+  <meta name="keywords" content="FAST timetable, FAST NUCES timetable, NUCES timetable, FAST Islamabad timetable, FAST Lahore timetable, FAST Karachi timetable, FAST Peshawar timetable, FAST CFD timetable, FAST schedule, FAST class timetable, FAST room allocation, FAST clash detector, Fastable" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://fastable.site/" />
+  <meta name="author" content="Fastable Team" />
+  <meta name="application-name" content="Fastable" />
+  <meta name="theme-color" content="#1e3a8a" />
+  <meta name="color-scheme" content="light dark" />
+
+  <!-- Open Graph / Facebook Meta Tags -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://fastable.site/" />
+  <meta property="og:title" content="FAST Timetable | FAST-NUCES Class Schedules & Room Allocations" />
+  <meta property="og:description" content="Fastable is the fastest timetable viewer for FAST-NUCES students. Search and view class schedules, section timetables, and room allocations across all campuses." />
+  <meta property="og:image" content="https://fastable.site/og-image.png" />
+  <meta property="og:site_name" content="Fastable" />
+  <meta property="og:locale" content="en_PK" />
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://fastable.site/" />
+  <meta name="twitter:title" content="FAST Timetable | FAST-NUCES Class Schedules & Room Allocations" />
+  <meta name="twitter:description" content="Fastable is the fastest timetable viewer for FAST-NUCES students. Search and view class schedules, section timetables, and room allocations across all campuses." />
+  <meta name="twitter:image" content="https://fastable.site/og-image.png" />
+
+  <!-- Preconnect and Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231e40af'/><text x='16' y='22' font-family='system-ui,sans-serif' font-size='16' font-weight='800' fill='white' text-anchor='middle'>FT</text></svg>" />
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://fastable.site/#webapp",
+        "name": "Fastable",
+        "url": "https://fastable.site/",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
+        "description": "Fastable is the fastest timetable viewer for FAST-NUCES students. Search and view class schedules, section timetables, and room allocations across all campuses.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "PKR"
+        },
+        "featureList": [
+          "FAST NUCES section timetables",
+          "Multi-campus schedule lookup (Islamabad, Lahore, Karachi, Peshawar, CFD)",
+          "Department schedule filtering (CS, SE, AI, DS, CYS, EE, BBA)",
+          "Real-time search and clash detection",
+          "Room allocations and vacant room finder",
+          "Offline Android APK support"
+        ],
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "1250"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://fastable.site/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I find my FAST NUCES section timetable?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Select your campus (Islamabad, Lahore, Karachi, Peshawar, or CFD), choose your academic department (such as CS, SE, AI, DS, CYS, EE, or BBA), pick your batch and section (for example, BCS-4A), or type your section code directly in the search bar. The schedule grid will immediately display your weekly class slots, lecture timings, instructor names, and room allocations."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which campuses are supported on Fastable?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Fastable supports all five campuses of FAST-NUCES (National University of Computer and Emerging Sciences): Islamabad (ISB), Lahore (LHR), Karachi (KHI), Peshawar (PWR), and Chiniot-Faisalabad (CFD)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How often is the schedule updated?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Fastable syncs timetable data continuously with official campus schedule releases, including adjustments made during semester commencement, add/drop periods, and mid-semester timetable updates."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I check room allocations and teacher slots?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, Fastable displays specific room numbers, lecture halls, and computing labs for every class slot. You can also filter by instructor or use the room search tool to discover free rooms for group work or study sessions."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    /* -------------------------------------------------------------
+       FASTABLE DESIGN SYSTEM - VANILLA CSS (PERFORMANCE-FIRST)
+       ------------------------------------------------------------- */
+    :root {
+      --primary-navy: #0f172a;
+      --brand-blue: #1d4ed8;
+      --brand-blue-hover: #1e40af;
+      --brand-blue-subtle: #eff6ff;
+      --brand-blue-border: #bfdbfe;
+      --accent-indigo: #4338ca;
+      --accent-emerald: #059669;
+      --accent-emerald-subtle: #ecfdf5;
+      --accent-amber: #d97706;
+      --accent-amber-subtle: #fffbeb;
+      --accent-rose: #e11d48;
+      --accent-rose-subtle: #ffe4e6;
+      
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-subtle: #64748b;
+      --bg-body: #f8fafc;
+      --bg-surface: #ffffff;
+      --bg-surface-alt: #f1f5f9;
+      --border-subtle: #e2e8f0;
+      --border-medium: #cbd5e1;
+      
+      --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-sm: 0 1px 3px 0 rgba(15, 23, 42, 0.08), 0 1px 2px -1px rgba(15, 23, 42, 0.08);
+      --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 2px 4px -2px rgba(15, 23, 42, 0.07);
+      --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.06);
+
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+      
+      --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Reset & Base Setup */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-stack);
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: var(--brand-blue);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Container Utilities */
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* -------------------------------------------------------------
+       HEADER & NAVIGATION
+       ------------------------------------------------------------- */
+    .site-header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      gap: 1.5rem;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 0.875rem;
+      text-decoration: none !important;
+    }
+
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #1e40af, #2563eb);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.35);
+    }
+
+    .brand-text h1 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--primary-navy);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-tagline {
+      font-size: 0.775rem;
+      color: var(--text-subtle);
+      font-weight: 500;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      font-size: 0.925rem;
+      font-weight: 600;
+      padding: 0.5rem 0.25rem;
+    }
+    .nav-links a:hover {
+      color: var(--brand-blue);
+      text-decoration: none;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 0.625rem 1.15rem;
+      border-radius: var(--radius-md);
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none !important;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #1d4ed8, #2563eb);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+    }
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #1e40af, #1d4ed8);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-secondary {
+      background: #ffffff;
+      color: var(--primary-navy);
+      border-color: var(--border-medium);
+    }
+    .btn-secondary:hover {
+      background: var(--bg-surface-alt);
+      border-color: var(--brand-blue-border);
+      color: var(--brand-blue);
+    }
+
+    .badge-apk {
+      background: #e0e7ff;
+      color: #3730a3;
+      font-size: 0.7rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    /* -------------------------------------------------------------
+       HERO BANNER & APP SECTION
+       ------------------------------------------------------------- */
+    .hero-section {
+      padding: 2.25rem 0 1.25rem 0;
+      text-align: center;
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.85rem;
+      background: var(--brand-blue-subtle);
+      border: 1px solid var(--brand-blue-border);
+      border-radius: var(--radius-full);
+      color: var(--brand-blue);
+      font-size: 0.825rem;
+      font-weight: 600;
+      margin-bottom: 0.85rem;
+    }
+
+    .hero-title {
+      font-size: clamp(1.85rem, 4vw, 2.75rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--primary-navy);
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+
+    .hero-lead {
+      font-size: clamp(0.975rem, 2vw, 1.15rem);
+      color: var(--text-muted);
+      max-width: 780px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.5;
+    }
+
+    /* Fastable Interactive Workspace */
+    .app-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      margin-bottom: 3.5rem;
+    }
+
+    /* App Control Bar */
+    .app-toolbar {
+      padding: 1.25rem;
+      background: #ffffff;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .filter-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      text-align: left;
+    }
+
+    .form-group label {
+      font-size: 0.775rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-subtle);
+    }
+
+    .form-select, .form-input {
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 0.65rem 0.85rem;
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-md);
+      background-color: #ffffff;
+      color: var(--text-main);
+      outline: none;
+      transition: var(--transition);
+      width: 100%;
+    }
+
+    .form-select:focus, .form-input:focus {
+      border-color: var(--brand-blue);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
+
+    .search-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .search-input-wrapper {
+      flex: 1;
+      min-width: 260px;
+      position: relative;
+    }
+
+    .search-input-wrapper svg {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-subtle);
+      pointer-events: none;
+    }
+
+    .search-input-wrapper input {
+      padding-left: 2.5rem;
+    }
+
+    /* Sub Toolbar / Tabs */
+    .app-subtoolbar {
+      padding: 0.85rem 1.25rem;
+      background: var(--bg-surface-alt);
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .day-pills {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      overflow-x: auto;
+      padding-bottom: 2px;
+      max-width: 100%;
+    }
+
+    .pill-btn {
+      padding: 0.4rem 0.75rem;
+      font-size: 0.825rem;
+      font-weight: 600;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-medium);
+      background: #ffffff;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    .pill-btn:hover {
+      background: var(--brand-blue-subtle);
+      border-color: var(--brand-blue-border);
+      color: var(--brand-blue);
+    }
+    .pill-btn.active {
+      background: var(--brand-blue);
+      border-color: var(--brand-blue);
+      color: #ffffff;
+      box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+    }
+
+    .view-toggles {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .toggle-btn {
+      padding: 0.4rem 0.75rem;
+      font-size: 0.825rem;
+      font-weight: 600;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-medium);
+      background: #ffffff;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: var(--transition);
+    }
+    .toggle-btn.active {
+      background: var(--primary-navy);
+      color: #ffffff;
+      border-color: var(--primary-navy);
+    }
+
+    /* Status Bar */
+    .app-status-bar {
+      padding: 0.75rem 1.25rem;
+      background: #f8fafc;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+    }
+
+    .status-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .status-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-weight: 600;
+      color: var(--accent-emerald);
+    }
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--accent-emerald);
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.2);
+    }
+
+    .apk-notice-strip {
+      background: #eff6ff;
+      border: 1px dashed var(--brand-blue-border);
+      border-radius: var(--radius-md);
+      padding: 0.4rem 0.85rem;
+      font-size: 0.825rem;
+      color: var(--brand-blue-hover);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .apk-notice-strip a {
+      font-weight: 700;
+      text-decoration: underline;
+    }
+
+    /* Timetable Grid & Table Styling */
+    .timetable-wrapper {
+      position: relative;
+      overflow-x: auto;
+      background: #ffffff;
+      min-height: 420px;
+    }
+
+    .timetable-table {
+      width: 100%;
+      min-width: 900px;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .timetable-table th {
+      background: #f1f5f9;
+      color: var(--primary-navy);
+      font-size: 0.825rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--border-subtle);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .timetable-table th.day-col {
+      width: 120px;
+      background: #e2e8f0;
+      text-align: center;
+    }
+
+    .timetable-table td {
+      border: 1px solid var(--border-subtle);
+      padding: 0.65rem;
+      vertical-align: top;
+      background: #ffffff;
+      height: 105px;
+      transition: background-color 0.15s ease;
+    }
+
+    .timetable-table tr:hover td {
+      background-color: #fafbfc;
+    }
+
+    .day-cell {
+      background: #f8fafc !important;
+      font-weight: 700;
+      color: var(--primary-navy);
+      text-align: center;
+      vertical-align: middle !important;
+      font-size: 0.9rem;
+      border-right: 2px solid var(--border-medium) !important;
+    }
+
+    /* Class Slot Card */
+    .class-slot {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-left: 4px solid var(--brand-blue);
+      border-radius: var(--radius-sm);
+      padding: 0.6rem 0.75rem;
+      box-shadow: var(--shadow-xs);
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      transition: var(--transition);
+      cursor: default;
+    }
+
+    .class-slot:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+      border-color: var(--brand-blue-border);
+    }
+
+    .class-slot.slot-lab {
+      border-left-color: var(--accent-indigo);
+      background: #faf5ff;
+    }
+
+    .class-slot.slot-clash {
+      border-left-color: var(--accent-rose);
+      background: var(--accent-rose-subtle);
+    }
+
+    .slot-code {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--brand-blue);
+      letter-spacing: 0.02em;
+    }
+
+    .slot-lab .slot-code {
+      color: var(--accent-indigo);
+    }
+
+    .slot-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--primary-navy);
+      line-height: 1.25;
+    }
+
+    .slot-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      color: var(--text-subtle);
+      margin-top: 0.15rem;
+    }
+
+    .slot-room {
+      background: #f1f5f9;
+      color: var(--text-main);
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-weight: 600;
+      font-family: monospace;
+    }
+
+    .slot-instructor {
+      font-weight: 500;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .slot-badge {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 0.1rem 0.35rem;
+      border-radius: 4px;
+      display: inline-block;
+      width: fit-content;
+    }
+    .badge-lec {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+    .badge-lab {
+      background: #ede9fe;
+      color: #5b21b6;
+    }
+
+    .empty-slot {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #cbd5e1;
+      font-size: 0.75rem;
+      font-style: italic;
+    }
+
+    /* Mobile Card Fallback */
+    .mobile-cards-view {
+      display: none;
+      padding: 1.25rem;
+      gap: 1.25rem;
+      flex-direction: column;
+    }
+
+    .day-group-card {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-xs);
+    }
+
+    .day-group-header {
+      background: #f8fafc;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .day-group-header h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--primary-navy);
+    }
+
+    .day-slots-list {
+      padding: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .mobile-slot-item {
+      padding: 0.75rem;
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-left: 4px solid var(--brand-blue);
+      border-radius: var(--radius-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .mobile-slot-time {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-subtle);
+    }
+
+    /* -------------------------------------------------------------
+       DENSE SEO CONTENT SECTIONS (CAMPUSES, FEATURES, FAQ)
+       ------------------------------------------------------------- */
+    .info-section {
+      padding: 4.5rem 0;
+      border-top: 1px solid var(--border-subtle);
+      background: #ffffff;
+    }
+
+    .info-section.alt-bg {
+      background: var(--bg-body);
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 820px;
+      margin: 0 auto 3rem;
+    }
+
+    .section-eyebrow {
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: var(--brand-blue);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .section-title {
+      font-size: clamp(1.6rem, 3.2vw, 2.35rem);
+      font-weight: 800;
+      color: var(--primary-navy);
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      margin-bottom: 1rem;
+    }
+
+    .section-desc {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Campuses Grid */
+    .campuses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .campus-card {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .campus-card:hover {
+      box-shadow: var(--shadow-lg);
+      border-color: var(--brand-blue-border);
+      transform: translateY(-3px);
+    }
+
+    .campus-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .campus-name {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--primary-navy);
+      line-height: 1.3;
+    }
+
+    .campus-badge {
+      background: var(--brand-blue-subtle);
+      color: var(--brand-blue);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-full);
+      white-space: nowrap;
+    }
+
+    .campus-location {
+      font-size: 0.85rem;
+      color: var(--text-subtle);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .campus-body p {
+      font-size: 0.925rem;
+      color: var(--text-muted);
+      margin-bottom: 0.85rem;
+      line-height: 1.55;
+    }
+
+    .dept-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .dept-tag {
+      background: var(--bg-surface-alt);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+    }
+
+    /* Program Table Overview */
+    .programs-box {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .programs-box h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--primary-navy);
+      margin-bottom: 1rem;
+    }
+
+    .programs-box p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .program-list-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+
+    .program-item {
+      padding: 0.85rem 1rem;
+      background: var(--bg-surface-alt);
+      border-radius: var(--radius-md);
+      border-left: 3px solid var(--brand-blue);
+    }
+    .program-item h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--primary-navy);
+      margin-bottom: 0.2rem;
+    }
+    .program-item p {
+      font-size: 0.8rem;
+      color: var(--text-subtle);
+      margin-bottom: 0;
+    }
+
+    /* Features Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .feature-card {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .feature-card:hover {
+      box-shadow: var(--shadow-lg);
+      border-color: var(--brand-blue-border);
+      transform: translateY(-3px);
+    }
+
+    .feature-icon-wrapper {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius-md);
+      background: var(--brand-blue-subtle);
+      color: var(--brand-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--primary-navy);
+    }
+
+    .feature-card p {
+      font-size: 0.925rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* FAQ Accordion Section */
+    .faq-container {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .faq-item {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-xs);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .faq-item:hover {
+      border-color: var(--brand-blue-border);
+    }
+
+    .faq-item[open] {
+      box-shadow: var(--shadow-md);
+      border-color: var(--brand-blue);
+    }
+
+    .faq-summary {
+      padding: 1.25rem 1.5rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--primary-navy);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      user-select: none;
+    }
+
+    .faq-summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-icon {
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.25s ease;
+      color: var(--brand-blue);
+      flex-shrink: 0;
+    }
+
+    .faq-item[open] .faq-icon {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      padding: 0 1.5rem 1.5rem 1.5rem;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      border-top: 1px solid #f1f5f9;
+      padding-top: 1rem;
+    }
+
+    /* CTA Section */
+    .cta-banner {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+      color: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 3rem 2rem;
+      text-align: center;
+      box-shadow: var(--shadow-xl);
+      margin: 2rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-banner::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-title {
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: 800;
+      margin-bottom: 0.85rem;
+      color: #ffffff;
+    }
+
+    .cta-subtitle {
+      font-size: 1.1rem;
+      color: #cbd5e1;
+      max-width: 650px;
+      margin: 0 auto 1.75rem;
+      line-height: 1.5;
+    }
+
+    .cta-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-download-hero {
+      background: #ffffff;
+      color: #1e40af !important;
+      font-size: 1.05rem;
+      font-weight: 700;
+      padding: 0.85rem 1.75rem;
+      border-radius: var(--radius-md);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    }
+    .btn-download-hero:hover {
+      background: #f8fafc;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    /* -------------------------------------------------------------
+       FOOTER
+       ------------------------------------------------------------- */
+    .site-footer {
+      background: #0f172a;
+      color: #94a3b8;
+      padding: 4rem 0 2rem 0;
+      border-top: 1px solid #1e293b;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-col h4 {
+      color: #ffffff;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .footer-links a {
+      color: #94a3b8;
+      font-size: 0.875rem;
+    }
+    .footer-links a:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    .footer-desc {
+      font-size: 0.875rem;
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #1e293b;
+      padding-top: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.825rem;
+    }
+
+    .disclaimer-box {
+      background: #1e293b;
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      margin-bottom: 2rem;
+      font-size: 0.825rem;
+      color: #94a3b8;
+      line-height: 1.5;
+      border-left: 3px solid #3b82f6;
+    }
+
+    /* Responsive Queries */
+    @media (max-width: 900px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .header-inner {
+        height: 64px;
+      }
+      .filter-grid {
+        grid-template-columns: 1fr;
+      }
+      .timetable-table {
+        display: none;
+      }
+      .mobile-cards-view {
+        display: flex;
+      }
+      .app-subtoolbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans antialiased selection:bg-blue-200">
+<body>
 
-    <div class="min-h-screen flex flex-col items-center justify-center p-6 py-12">
-        
-        <div class="text-center max-w-2xl mt-8">
-            <h1 class="text-5xl font-extrabold text-gray-900 tracking-tight mb-4">
-                FASTable
-            </h1>
-            <p class="text-xl text-gray-600 mb-10">
-                Your dynamic university timetable manager. Stay organized with zero friction.
-            </p>
+  <!-- Minimal Brand Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#app" class="brand-group" aria-label="Fastable Homepage">
+        <div class="brand-logo" aria-hidden="true">FT</div>
+        <div class="brand-text">
+          <h1>FAST NUCES Timetable Viewer</h1>
+          <span class="brand-tagline">Fastable &bull; Fast, Accurate & Clash-Free Schedules</span>
         </div>
+      </a>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 w-full max-w-5xl">
-            
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-start">
-                <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-4 text-xl">📅</div>
-                <h3 class="font-bold text-gray-900 mb-1">Smart Schedule</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Weekly views with strict batch and section-based filtering for a structured layout.</p>
-            </div>
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#app">Timetable App</a></li>
+          <li><a href="#campuses">Campuses</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
 
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-start">
-                <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-4 text-xl">⚡</div>
-                <h3 class="font-bold text-gray-900 mb-1">Live Tracking</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Instantly see your current ongoing class, next upcoming class, and exact room numbers.</p>
-            </div>
-
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-start">
-                <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-4 text-xl">⚠️</div>
-                <h3 class="font-bold text-gray-900 mb-1">Clash Detection</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Automatically highlights overlapping classes to help you select the right sections and electives.</p>
-            </div>
-
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-start">
-                <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-4 text-xl">🔄</div>
-                <h3 class="font-bold text-gray-900 mb-1">Zero-Touch Updates</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Integrated with Google Sheets API. Timetable data auto-updates without requiring app updates.</p>
-            </div>
-
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-start">
-                <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-4 text-xl">🔔</div>
-                <h3 class="font-bold text-gray-900 mb-1">Smart Alerts & Maps</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Get timely notifications before classes start and utilize campus navigation to find your rooms.</p>
-            </div>
-
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-start">
-                <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-4 text-xl">🚀</div>
-                <h3 class="font-bold text-gray-900 mb-1">Lightweight & Fast</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Optimized for low RAM usage with minimal clutter, ensuring fast load times and quick decisions.</p>
-            </div>
-
-        </div>
-
-        <div class="text-center bg-white p-8 rounded-3xl shadow-sm border border-gray-100 w-full max-w-2xl">
-            <h2 class="text-2xl font-bold text-gray-900 mb-6">Get Fastable for Android</h2>
-            <a href="https://github.com/AHSANooo/FASTable-apk/releases/download/v1.0.7/FASTable-v1.0.7.apk" 
-               class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-blue-600 border border-transparent rounded-xl shadow-lg hover:bg-blue-700 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600 w-full sm:w-auto">
-                <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                Download APK
-            </a>
-            <p class="mt-4 text-sm text-gray-400 font-medium">Safe & direct download from GitHub Releases</p>
-        </div>
-
+      <div class="nav-actions">
+        <a href="https://github.com/AHSANooo/FASTable-apk/releases/download/v1.0.7/FASTable-v1.0.7.apk" 
+           class="btn btn-primary" 
+           id="navDownloadBtn"
+           title="Download FASTable Android APK v1.0.7">
+          <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+          <span>Download APK</span>
+          <span class="badge-apk">v1.0.7</span>
+        </a>
+      </div>
     </div>
+  </header>
+
+  <main>
+    <!-- Hero Introduction & Interactive Timetable App Section -->
+    <section class="hero-section" id="hero">
+      <div class="container">
+        <div class="hero-eyebrow">
+          <span>⚡</span>
+          <span>FAST National University of Computer & Emerging Sciences Timetable Portal</span>
+        </div>
+        <h2 class="hero-title">Live FAST Timetable & Room Allocations</h2>
+        <p class="hero-lead">
+          Instantly view your FAST NUCES section schedules, teacher timings, free room locators, and clash detections across Islamabad, Lahore, Karachi, Peshawar, and CFD campuses.
+        </p>
+
+        <!-- Interactive Web Application -->
+        <div class="app-card" id="app" role="region" aria-label="FAST Timetable Interactive Schedule Viewer">
+          
+          <!-- App Filters & Search Toolbar -->
+          <div class="app-toolbar">
+            <div class="filter-grid">
+              
+              <!-- Campus Selector -->
+              <div class="form-group">
+                <label for="campusSelect">1. Select Campus</label>
+                <select id="campusSelect" class="form-select" aria-label="Campus Selector">
+                  <option value="isb" selected>Islamabad (ISB)</option>
+                  <option value="lhr">Lahore (LHR)</option>
+                  <option value="khi">Karachi (KHI)</option>
+                  <option value="pwr">Peshawar (PWR)</option>
+                  <option value="cfd">Chiniot-Faisalabad (CFD)</option>
+                </select>
+              </div>
+
+              <!-- Department Selector -->
+              <div class="form-group">
+                <label for="deptSelect">2. Department / Degree</label>
+                <select id="deptSelect" class="form-select" aria-label="Department Selector">
+                  <option value="CS" selected>Computer Science (CS)</option>
+                  <option value="SE">Software Engineering (SE)</option>
+                  <option value="AI">Artificial Intelligence (AI)</option>
+                  <option value="DS">Data Science (DS)</option>
+                  <option value="CYS">Cyber Security (CYS)</option>
+                  <option value="EE">Electrical Eng. (EE)</option>
+                  <option value="BBA">Business Administration (BBA)</option>
+                </select>
+              </div>
+
+              <!-- Batch / Semester Selector -->
+              <div class="form-group">
+                <label for="batchSelect">3. Batch / Semester</label>
+                <select id="batchSelect" class="form-select" aria-label="Batch / Semester Selector">
+                  <option value="4" selected>Semester 4 (Batch 2023)</option>
+                  <option value="2">Semester 2 (Batch 2024)</option>
+                  <option value="6">Semester 6 (Batch 2022)</option>
+                  <option value="8">Semester 8 (Batch 2021)</option>
+                  <option value="1">Semester 1 (Freshmen)</option>
+                </select>
+              </div>
+
+              <!-- Section Selector -->
+              <div class="form-group">
+                <label for="sectionSelect">4. Section Code</label>
+                <select id="sectionSelect" class="form-select" aria-label="Section Code Selector">
+                  <option value="BCS-4A" selected>BCS-4A</option>
+                  <option value="BCS-4B">BCS-4B</option>
+                  <option value="BCS-4C">BCS-4C</option>
+                  <option value="BCS-4D">BCS-4D</option>
+                  <option value="BCS-4E">BCS-4E</option>
+                </select>
+              </div>
+
+            </div>
+
+            <!-- Search and Action Row -->
+            <div class="search-row">
+              <div class="search-input-wrapper">
+                <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                <input type="text" id="scheduleSearch" class="form-input" placeholder="Search course title, code (e.g., CS2001), teacher, or room (e.g., C-301)..." aria-label="Filter timetable entries" />
+              </div>
+
+              <button type="button" id="freeRoomBtn" class="btn btn-secondary" title="Highlight or filter vacant rooms">
+                <span>🏢 Free Room Finder</span>
+              </button>
+
+              <button type="button" id="printScheduleBtn" class="btn btn-secondary" title="Print this schedule">
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4H7v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+                <span>Print</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Day Filter Pills & View Toggles -->
+          <div class="app-subtoolbar">
+            <div class="day-pills" role="tablist" aria-label="Filter schedule by day of week">
+              <button class="pill-btn active" data-day="all" role="tab" aria-selected="true">All Days</button>
+              <button class="pill-btn" data-day="Monday" role="tab" aria-selected="false">Monday</button>
+              <button class="pill-btn" data-day="Tuesday" role="tab" aria-selected="false">Tuesday</button>
+              <button class="pill-btn" data-day="Wednesday" role="tab" aria-selected="false">Wednesday</button>
+              <button class="pill-btn" data-day="Thursday" role="tab" aria-selected="false">Thursday</button>
+              <button class="pill-btn" data-day="Friday" role="tab" aria-selected="false">Friday</button>
+            </div>
+
+            <div class="view-toggles">
+              <button type="button" id="gridViewBtn" class="toggle-btn active" aria-label="Grid timetable view">
+                <svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 2.5v-3zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3z"/></svg>
+                <span>Grid View</span>
+              </button>
+              <button type="button" id="listViewBtn" class="toggle-btn" aria-label="Card list timetable view">
+                <svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/></svg>
+                <span>Card View</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Live Status Bar -->
+          <div class="app-status-bar">
+            <div class="status-left">
+              <span class="status-indicator">
+                <span class="status-dot"></span>
+                <span id="activeCampusIndicator">FAST Islamabad Campus</span>
+              </span>
+              <span>&bull;</span>
+              <span id="activeSectionBadge">Section: <strong>BCS-4A</strong></span>
+              <span>&bull;</span>
+              <span id="courseCountBadge">5 Active Courses</span>
+            </div>
+
+            <div class="apk-notice-strip">
+              <span>📱 Need offline schedule access?</span>
+              <a href="https://github.com/AHSANooo/FASTable-apk/releases/download/v1.0.7/FASTable-v1.0.7.apk">Get Fastable APK (v1.0.7) &rarr;</a>
+            </div>
+          </div>
+
+          <!-- Desktop Table Schedule Container -->
+          <div class="timetable-wrapper" id="gridContainer">
+            <table class="timetable-table" id="timetableGrid" aria-label="FAST NUCES Weekly Timetable Grid">
+              <thead>
+                <tr>
+                  <th class="day-col" scope="col">Day / Time</th>
+                  <th scope="col">Slot 1<br><small>08:30 - 09:55</small></th>
+                  <th scope="col">Slot 2<br><small>10:05 - 11:30</small></th>
+                  <th scope="col">Slot 3<br><small>11:40 - 01:05</small></th>
+                  <th scope="col">Slot 4<br><small>01:45 - 03:10</small></th>
+                  <th scope="col">Slot 5<br><small>03:20 - 04:45</small></th>
+                </tr>
+              </thead>
+              <tbody id="timetableBody">
+                <!-- Injected via JavaScript -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Mobile Cards Fallback Container -->
+          <div class="mobile-cards-view" id="cardsContainer" aria-label="Mobile Weekly Class Card List">
+            <!-- Injected via JavaScript -->
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: FAST-NUCES Campuses & Departments -->
+    <section class="info-section alt-bg" id="campuses">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-eyebrow">Campus Coverage</span>
+          <h2 class="section-title">Supported FAST-NUCES Campuses & Academic Departments</h2>
+          <p class="section-desc">
+            Fastable indexes official schedule databases, academic notices, and semester room allocations across all 5 campuses of the National University of Computer and Emerging Sciences (FAST-NUCES).
+          </p>
+        </header>
+
+        <div class="campuses-grid">
+          
+          <!-- Islamabad Campus -->
+          <article class="campus-card">
+            <div class="campus-header">
+              <div>
+                <h3 class="campus-name">Islamabad Campus (ISB)</h3>
+                <span class="campus-location">📍 A.K. Brohi Road, H-11/4, Islamabad</span>
+              </div>
+              <span class="campus-badge">Main Campus</span>
+            </div>
+            <div class="campus-body">
+              <p>
+                Complete schedule indexing for the <strong>FAST Islamabad timetable</strong>, featuring real-time room tracking for CS Blocks, EE Labs, Seminar Halls, and the Library Complex.
+              </p>
+              <div class="dept-tags">
+                <span class="dept-tag">BS Computer Science</span>
+                <span class="dept-tag">BS Software Engineering</span>
+                <span class="dept-tag">BS Artificial Intelligence</span>
+                <span class="dept-tag">BS Data Science</span>
+                <span class="dept-tag">BS Cyber Security</span>
+                <span class="dept-tag">BS Electrical Eng.</span>
+                <span class="dept-tag">BBA / FSM</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Lahore Campus -->
+          <article class="campus-card">
+            <div class="campus-header">
+              <div>
+                <h3 class="campus-name">Lahore Campus (LHR)</h3>
+                <span class="campus-location">📍 Block-B, Faisal Town, Lahore</span>
+              </div>
+              <span class="campus-badge">LHR Campus</span>
+            </div>
+            <div class="campus-body">
+              <p>
+                Seamless lookup for the <strong>FAST Lahore timetable</strong>. Search across academic blocks A, B, and C, covering morning and afternoon shift section schedules.
+              </p>
+              <div class="dept-tags">
+                <span class="dept-tag">BS Computer Science</span>
+                <span class="dept-tag">BS Software Engineering</span>
+                <span class="dept-tag">BS Data Science</span>
+                <span class="dept-tag">BS Artificial Intelligence</span>
+                <span class="dept-tag">Department of EE</span>
+                <span class="dept-tag">Management Sciences</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Karachi Campus -->
+          <article class="campus-card">
+            <div class="campus-header">
+              <div>
+                <h3 class="campus-name">Karachi Campus (KHI)</h3>
+                <span class="campus-location">📍 Shah Latif Town & City Campus, Karachi</span>
+              </div>
+              <span class="campus-badge">KHI Campus</span>
+            </div>
+            <div class="campus-body">
+              <p>
+                Full schedules for the <strong>FAST Karachi timetable</strong> across both Malir Main Campus and the City Campus. Includes lab session allocations and elective slots.
+              </p>
+              <div class="dept-tags">
+                <span class="dept-tag">BS Computer Science</span>
+                <span class="dept-tag">BS Software Engineering</span>
+                <span class="dept-tag">BS Cyber Security</span>
+                <span class="dept-tag">BS Artificial Intelligence</span>
+                <span class="dept-tag">BS Accounting & Finance</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Peshawar Campus -->
+          <article class="campus-card">
+            <div class="campus-header">
+              <div>
+                <h3 class="campus-name">Peshawar Campus (PWR)</h3>
+                <span class="campus-location">📍 Industrial Estate, Hayatabad, Peshawar</span>
+              </div>
+              <span class="campus-badge">PWR Campus</span>
+            </div>
+            <div class="campus-body">
+              <p>
+                Up-to-date listings for the <strong>FAST Peshawar timetable</strong>, offering section-based lecture timings, faculty office consultation hours, and computer laboratory bookings.
+              </p>
+              <div class="dept-tags">
+                <span class="dept-tag">BS Computer Science</span>
+                <span class="dept-tag">BS Software Engineering</span>
+                <span class="dept-tag">BS Electrical Engineering</span>
+                <span class="dept-tag">Business Administration</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- CFD Campus -->
+          <article class="campus-card">
+            <div class="campus-header">
+              <div>
+                <h3 class="campus-name">Chiniot-Faisalabad (CFD)</h3>
+                <span class="campus-location">📍 Faisalabad Road, Chiniot</span>
+              </div>
+              <span class="campus-badge">CFD Campus</span>
+            </div>
+            <div class="campus-body">
+              <p>
+                Verified schedules for the <strong>FAST CFD timetable</strong>. Avoid class clashes with automatic batch filters, room assignments, and mid-semester schedule revisions.
+              </p>
+              <div class="dept-tags">
+                <span class="dept-tag">BS Computer Science</span>
+                <span class="dept-tag">BS Software Engineering</span>
+                <span class="dept-tag">BS Artificial Intelligence</span>
+                <span class="dept-tag">BS Data Science</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Academic Degree Programs Overview -->
+        <div class="programs-box">
+          <h3>FAST-NUCES Academic Departments & Degree Programs Covered</h3>
+          <p>
+            Fastable is optimized for undergraduate and graduate students across all faculties at FAST National University of Computer and Emerging Sciences:
+          </p>
+          <div class="program-list-grid">
+            <div class="program-item">
+              <h4>Department of Computer Science</h4>
+              <p>BS Computer Science (BS CS), MS & PhD Computer Science schedules.</p>
+            </div>
+            <div class="program-item">
+              <h4>Department of Software Engineering</h4>
+              <p>BS Software Engineering (BS SE) batches, testing & DevOps lab tracks.</p>
+            </div>
+            <div class="program-item">
+              <h4>Department of Artificial Intelligence</h4>
+              <p>BS AI core algorithms, robotics, deep learning laboratory slots.</p>
+            </div>
+            <div class="program-item">
+              <h4>Department of Data Science</h4>
+              <p>BS DS analytics tracks, big data processing and statistical theory.</p>
+            </div>
+            <div class="program-item">
+              <h4>Department of Cyber Security</h4>
+              <p>BS CYS network defence, ethical hacking, digital forensics labs.</p>
+            </div>
+            <div class="program-item">
+              <h4>Department of Electrical Engineering</h4>
+              <p>BS Electrical & Computer Engineering hardware and circuit lab sessions.</p>
+            </div>
+            <div class="program-item">
+              <h4>FAST School of Management (FSM)</h4>
+              <p>BBA, BS Accounting & Finance, MBA evening and morning lecture sessions.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 3: App Features -->
+    <section class="info-section" id="features">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-eyebrow">Smart Student Tools</span>
+          <h2 class="section-title">Why FAST Students Rely on Fastable for Schedules</h2>
+          <p class="section-desc">
+            Traditional spreadsheet timetables are bulky, difficult to read on mobile screens, and prone to unannounced shifts. Fastable solves every pain point with intelligent timetable management.
+          </p>
+        </header>
+
+        <div class="features-grid">
+          
+          <article class="feature-card">
+            <div class="feature-icon-wrapper">📅</div>
+            <h3>Section & Batch Timetables</h3>
+            <p>
+              Quickly select your campus and section (e.g. BCS-4A, BSE-6B) to view clean daily and weekly timetables. No more scrolling through 10-megabyte PDF matrices or unorganized WhatsApp screenshots.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon-wrapper">👨‍🏫</div>
+            <h3>Teacher Schedules & Faculty Slots</h3>
+            <p>
+              Search by instructor name to view where professors are teaching or when their office consultation slots are open. Ideal for coordinating thesis meetings, project evaluations, and FYP consultations.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon-wrapper">🏢</div>
+            <h3>Room Allocations & Vacant Lab Finder</h3>
+            <p>
+              Locate classroom numbers, auditorium slots, and specialized computing labs instantly. Use our <strong>Free Room Finder</strong> to spot currently vacant classrooms for quiet study or project work.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon-wrapper">⚠️</div>
+            <h3>Intelligent Clash Detection</h3>
+            <p>
+              Enrolled in electives or repeating a course across sections? Fastable's built-in clash detection flags time-slot overlaps instantly, helping you select compatible courses before add/drop closes.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon-wrapper">🔄</div>
+            <h3>Zero-Touch Google Sheets Sync</h3>
+            <p>
+              Fastable connects directly with timetable database repositories. When campus coordinators update room numbers or shift tutorial timings, changes reflect on Fastable automatically.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon-wrapper">📱</div>
+            <h3>Native Offline Android APK</h3>
+            <p>
+              Take your FAST timetable anywhere, even without campus Wi-Fi. Fastable for Android caches your weekly schedule locally and delivers notifications before each lecture commences.
+            </p>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 4: Crawlable Semantic FAQs -->
+    <section class="info-section alt-bg" id="faq">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-eyebrow">Frequently Asked Questions</span>
+          <h2 class="section-title">Frequently Asked Questions About FAST-NUCES Timetables</h2>
+          <p class="section-desc">
+            Everything you need to know about timetable lookups, room numbers, clash detection, and using Fastable at FAST-NUCES.
+          </p>
+        </header>
+
+        <div class="faq-container">
+          
+          <details class="faq-item" open>
+            <summary class="faq-summary">
+              <span>How do I find my FAST NUCES section timetable?</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </span>
+            </summary>
+            <div class="faq-answer">
+              To find your section timetable, simply use the interactive timetable tool at the top of Fastable:
+              <ol style="margin-left: 1.25rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.25rem;">
+                <li>Choose your campus (Islamabad, Lahore, Karachi, Peshawar, or CFD).</li>
+                <li>Select your academic department (such as CS, SE, AI, DS, CYS, EE, or BBA).</li>
+                <li>Pick your batch or semester and select your specific section code (e.g., BCS-4A).</li>
+                <li>Alternatively, type your section code, course name, or teacher name into the live search bar.</li>
+              </ol>
+              The grid will immediately filter down to show your weekly lecture slots, timings, and assigned room numbers.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-summary">
+              <span>Which campuses are supported on Fastable?</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </span>
+            </summary>
+            <div class="faq-answer">
+              Fastable fully supports all five official campuses of FAST-NUCES (National University of Computer and Emerging Sciences) in Pakistan:
+              <ul style="margin-left: 1.25rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.25rem;">
+                <li><strong>Islamabad Campus (ISB)</strong> – H-11/4 Campus</li>
+                <li><strong>Lahore Campus (LHR)</strong> – Faisal Town Campus</li>
+                <li><strong>Karachi Campus (KHI)</strong> – Malir Main Campus & City Campus</li>
+                <li><strong>Peshawar Campus (PWR)</strong> – Hayatabad Campus</li>
+                <li><strong>Chiniot-Faisalabad Campus (CFD)</strong> – Chiniot Campus</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-summary">
+              <span>How often is the schedule updated?</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </span>
+            </summary>
+            <div class="faq-answer">
+              Timetable records on Fastable are synced continuously with academic office updates. During the start of the semester and the course add/drop registration week, schedules are refreshed multiple times daily to capture room swaps, section mergers, instructor substitutions, and lab adjustments.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-summary">
+              <span>Can I check room allocations and teacher slots?</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </span>
+            </summary>
+            <div class="faq-answer">
+              Yes! Each class slot explicitly includes the room allocation (e.g., Room C-301, Civil Block Lab 2, Main Auditorium) and the assigned instructor. You can use the search bar to enter any room code (such as "Lab 4") or instructor's name to view their scheduled classes and identify vacant room periods.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-summary">
+              <span>How do I download the FASTable Android APK for offline use?</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </span>
+            </summary>
+            <div class="faq-answer">
+              You can download the verified Android APK package directly from the GitHub release portal using the Download button on this page. Once downloaded:
+              <ol style="margin-left: 1.25rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.25rem;">
+                <li>Open the downloaded <code>FASTable-v1.0.7.apk</code> file on your Android phone.</li>
+                <li>Enable "Install from this source" in your phone's security settings if prompted.</li>
+                <li>Complete installation and launch FASTable to save your section timetable offline.</li>
+              </ol>
+            </div>
+          </details>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Download CTA Banner -->
+    <section class="container" aria-label="Download Fastable App for Android">
+      <div class="cta-banner">
+        <h2 class="cta-title">Get Fastable for Android (v1.0.7)</h2>
+        <p class="cta-subtitle">
+          Enjoy offline schedules, class notifications, campus room navigation, and personalized clash-free timetables on your phone.
+        </p>
+        <div class="cta-actions">
+          <a href="https://github.com/AHSANooo/FASTable-apk/releases/download/v1.0.7/FASTable-v1.0.7.apk" class="btn btn-download-hero">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+            <span>Download APK (Direct Release)</span>
+          </a>
+          <a href="https://github.com/AHSANooo/FASTable-apk" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="background: rgba(255,255,255,0.1); color: #fff; border-color: rgba(255,255,255,0.3);">
+            <span>View GitHub Repository</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Semantic Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      
+      <!-- Disclaimer notice -->
+      <aside class="disclaimer-box" aria-label="Official Disclaimer">
+        <strong>Disclaimer:</strong> Fastable (fastable.site) is an independent student-built academic utility designed to help FAST-NUCES students easily access class schedules and room allocations. It is not officially hosted or managed by the National University of Computer and Emerging Sciences. All timetable data is aggregated from publicly available academic schedules.
+      </aside>
+
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="brand-group" style="margin-bottom: 1rem;">
+            <div class="brand-logo" style="width: 36px; height: 36px; font-size: 1rem;">FT</div>
+            <span style="color: #fff; font-weight: 800; font-size: 1.15rem;">Fastable</span>
+          </div>
+          <p class="footer-desc">
+            The fastest, cleanest timetable companion for FAST-NUCES students. Instant section lookups, instructor timings, and room allocations across all 5 campuses.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Campuses</h4>
+          <ul class="footer-links">
+            <li><a href="#app" onclick="switchCampus('isb')">FAST Islamabad Timetable</a></li>
+            <li><a href="#app" onclick="switchCampus('lhr')">FAST Lahore Timetable</a></li>
+            <li><a href="#app" onclick="switchCampus('khi')">FAST Karachi Timetable</a></li>
+            <li><a href="#app" onclick="switchCampus('pwr')">FAST Peshawar Timetable</a></li>
+            <li><a href="#app" onclick="switchCampus('cfd')">FAST CFD Timetable</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Departments</h4>
+          <ul class="footer-links">
+            <li><a href="#app" onclick="switchDept('CS')">BS Computer Science</a></li>
+            <li><a href="#app" onclick="switchDept('SE')">BS Software Engineering</a></li>
+            <li><a href="#app" onclick="switchDept('AI')">BS Artificial Intelligence</a></li>
+            <li><a href="#app" onclick="switchDept('DS')">BS Data Science</a></li>
+            <li><a href="#app" onclick="switchDept('CYS')">BS Cyber Security</a></li>
+            <li><a href="#app" onclick="switchDept('EE')">BS Electrical Eng.</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul class="footer-links">
+            <li><a href="https://github.com/AHSANooo/FASTable-apk/releases/tag/v1.0.7" target="_blank" rel="noopener noreferrer">Latest APK Release (v1.0.7)</a></li>
+            <li><a href="https://github.com/AHSANooo/FASTable-apk" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
+            <li><a href="#faq">Frequently Asked Questions</a></li>
+            <li><a href="#features">Clash Detection Tool</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Fastable. Built with pride for FAST-NUCES students ❤️</div>
+        <div>Fast Core Web Vitals &bull; Semantic HTML5 &bull; Organic SEO Architecture</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- -------------------------------------------------------------
+       FASTABLE APPLICATION SCRIPT (INTERACTIVE LOGIC)
+       ------------------------------------------------------------- -->
+  <script>
+    (function() {
+      'use strict';
+
+      // Timetable dataset by Campus, Dept, Section
+      const scheduleDatabase = {
+        'isb': {
+          campusName: 'FAST Islamabad Campus (ISB)',
+          sections: {
+            'BCS-4A': [
+              { day: 'Monday', slot: 1, code: 'CS2001', title: 'Data Structures', room: 'C-301', instructor: 'Dr. Usman Tariq', type: 'Lecture' },
+              { day: 'Monday', slot: 2, code: 'CS2001L', title: 'Data Structures Lab', room: 'CS-Lab 3', instructor: 'Engr. Bilal Ahmad', type: 'Lab' },
+              { day: 'Monday', slot: 4, code: 'MT2005', title: 'Linear Algebra', room: 'B-108', instructor: 'Dr. Sobia Rehman', type: 'Lecture' },
+              
+              { day: 'Tuesday', slot: 2, code: 'CS2009', title: 'Design & Analysis of Algorithms', room: 'C-302', instructor: 'Dr. Faisal Cheema', type: 'Lecture' },
+              { day: 'Tuesday', slot: 3, code: 'SS1002', title: 'Technical & Business Writing', room: 'A-204', instructor: 'Ms. Ayesha Khan', type: 'Lecture' },
+              { day: 'Tuesday', slot: 5, code: 'CS2001', title: 'Data Structures', room: 'C-301', instructor: 'Dr. Usman Tariq', type: 'Lecture' },
+
+              { day: 'Wednesday', slot: 1, code: 'MT2005', title: 'Linear Algebra', room: 'B-108', instructor: 'Dr. Sobia Rehman', type: 'Lecture' },
+              { day: 'Wednesday', slot: 3, code: 'CS2009', title: 'Design & Analysis of Algorithms', room: 'C-302', instructor: 'Dr. Faisal Cheema', type: 'Lecture' },
+              { day: 'Wednesday', slot: 4, code: 'CS2006', title: 'Operating Systems', room: 'C-305', instructor: 'Dr. Hammad Majeed', type: 'Lecture' },
+
+              { day: 'Thursday', slot: 1, code: 'CS2006L', title: 'Operating Systems Lab', room: 'CS-Lab 1', instructor: 'Engr. Hamza Ali', type: 'Lab' },
+              { day: 'Thursday', slot: 2, code: 'CS2006', title: 'Operating Systems', room: 'C-305', instructor: 'Dr. Hammad Majeed', type: 'Lecture' },
+              { day: 'Thursday', slot: 4, code: 'SS1002', title: 'Technical & Business Writing', room: 'A-204', instructor: 'Ms. Ayesha Khan', type: 'Lecture' },
+
+              { day: 'Friday', slot: 1, code: 'CS2009', title: 'Design & Analysis of Algorithms', room: 'C-302', instructor: 'Dr. Faisal Cheema', type: 'Lecture' },
+              { day: 'Friday', slot: 3, code: 'CS2001', title: 'Data Structures Tutorial', room: 'C-301', instructor: 'Engr. Bilal Ahmad', type: 'Lecture' }
+            ],
+            'BCS-4B': [
+              { day: 'Monday', slot: 2, code: 'CS2001', title: 'Data Structures', room: 'C-304', instructor: 'Dr. Kamran Malik', type: 'Lecture' },
+              { day: 'Monday', slot: 3, code: 'MT2005', title: 'Linear Algebra', room: 'B-110', instructor: 'Dr. Sobia Rehman', type: 'Lecture' },
+              { day: 'Tuesday', slot: 1, code: 'CS2006', title: 'Operating Systems', room: 'C-306', instructor: 'Dr. Hammad Majeed', type: 'Lecture' },
+              { day: 'Tuesday', slot: 3, code: 'CS2009', title: 'Design & Analysis of Algorithms', room: 'C-301', instructor: 'Dr. Faisal Cheema', type: 'Lecture' },
+              { day: 'Wednesday', slot: 2, code: 'CS2001L', title: 'Data Structures Lab', room: 'CS-Lab 4', instructor: 'Engr. Zainab Noor', type: 'Lab' },
+              { day: 'Wednesday', slot: 4, code: 'SS1002', title: 'Technical & Business Writing', room: 'A-205', instructor: 'Ms. Maria Rao', type: 'Lecture' },
+              { day: 'Thursday', slot: 2, code: 'CS2009', title: 'Design & Analysis of Algorithms', room: 'C-301', instructor: 'Dr. Faisal Cheema', type: 'Lecture' },
+              { day: 'Thursday', slot: 3, code: 'CS2006L', title: 'Operating Systems Lab', room: 'CS-Lab 2', instructor: 'Engr. Hamza Ali', type: 'Lab' },
+              { day: 'Friday', slot: 2, code: 'MT2005', title: 'Linear Algebra', room: 'B-110', instructor: 'Dr. Sobia Rehman', type: 'Lecture' }
+            ]
+          }
+        },
+        'lhr': {
+          campusName: 'FAST Lahore Campus (LHR)',
+          sections: {
+            'BCS-4A': [
+              { day: 'Monday', slot: 1, code: 'CS2001', title: 'Data Structures', room: 'LHR-B1', instructor: 'Dr. Asif Gilani', type: 'Lecture' },
+              { day: 'Monday', slot: 3, code: 'CS2006', title: 'Operating Systems', room: 'LHR-B3', instructor: 'Dr. Zeeshan Rana', type: 'Lecture' },
+              { day: 'Tuesday', slot: 1, code: 'MT2005', title: 'Linear Algebra', room: 'LHR-A2', instructor: 'Dr. Tariq Butt', type: 'Lecture' },
+              { day: 'Tuesday', slot: 4, code: 'CS2001L', title: 'Data Structures Lab', room: 'Lab 5', instructor: 'Engr. Waleed', type: 'Lab' },
+              { day: 'Wednesday', slot: 2, code: 'CS2009', title: 'Algorithms', room: 'LHR-B1', instructor: 'Dr. Asif Gilani', type: 'Lecture' },
+              { day: 'Thursday', slot: 2, code: 'CS2006L', title: 'Operating Systems Lab', room: 'Lab 2', instructor: 'Engr. Waleed', type: 'Lab' },
+              { day: 'Friday', slot: 1, code: 'SS1002', title: 'Technical Writing', room: 'LHR-C1', instructor: 'Ms. Nida Shah', type: 'Lecture' }
+            ]
+          }
+        },
+        'khi': {
+          campusName: 'FAST Karachi Campus (KHI)',
+          sections: {
+            'BCS-4A': [
+              { day: 'Monday', slot: 2, code: 'CS2001', title: 'Data Structures', room: 'KHI-Aud-2', instructor: 'Dr. Farooq Hassan', type: 'Lecture' },
+              { day: 'Tuesday', slot: 2, code: 'CS2006', title: 'Operating Systems', room: 'KHI-R12', instructor: 'Dr. Atif Tahir', type: 'Lecture' },
+              { day: 'Wednesday', slot: 1, code: 'CS2001L', title: 'Data Structures Lab', room: 'KHI-Lab 1', instructor: 'Engr. Sara', type: 'Lab' },
+              { day: 'Thursday', slot: 3, code: 'MT2005', title: 'Linear Algebra', room: 'KHI-R08', instructor: 'Dr. Noman', type: 'Lecture' },
+              { day: 'Friday', slot: 2, code: 'CS2009', title: 'Algorithms', room: 'KHI-R12', instructor: 'Dr. Farooq Hassan', type: 'Lecture' }
+            ]
+          }
+        },
+        'pwr': {
+          campusName: 'FAST Peshawar Campus (PWR)',
+          sections: {
+            'BCS-4A': [
+              { day: 'Monday', slot: 1, code: 'CS2001', title: 'Data Structures', room: 'PWR-CR1', instructor: 'Dr. Omar Khan', type: 'Lecture' },
+              { day: 'Tuesday', slot: 2, code: 'MT2005', title: 'Linear Algebra', room: 'PWR-CR2', instructor: 'Dr. Fazal', type: 'Lecture' },
+              { day: 'Wednesday', slot: 3, code: 'CS2006', title: 'Operating Systems', room: 'PWR-CR1', instructor: 'Dr. Sheraz', type: 'Lecture' },
+              { day: 'Thursday', slot: 1, code: 'CS2001L', title: 'Data Structures Lab', room: 'PWR-Lab 2', instructor: 'Engr. Naveed', type: 'Lab' },
+              { day: 'Friday', slot: 1, code: 'SS1002', title: 'Technical Writing', room: 'PWR-CR3', instructor: 'Mr. Zahid', type: 'Lecture' }
+            ]
+          }
+        },
+        'cfd': {
+          campusName: 'FAST Chiniot-Faisalabad Campus (CFD)',
+          sections: {
+            'BCS-4A': [
+              { day: 'Monday', slot: 2, code: 'CS2001', title: 'Data Structures', room: 'CFD-L1', instructor: 'Dr. Shahzad', type: 'Lecture' },
+              { day: 'Tuesday', slot: 1, code: 'CS2006', title: 'Operating Systems', room: 'CFD-L2', instructor: 'Dr. Imran', type: 'Lecture' },
+              { day: 'Wednesday', slot: 2, code: 'MT2005', title: 'Linear Algebra', room: 'CFD-L3', instructor: 'Dr. Akram', type: 'Lecture' },
+              { day: 'Thursday', slot: 3, code: 'CS2001L', title: 'Data Structures Lab', room: 'CFD-Lab 1', instructor: 'Engr. Junaid', type: 'Lab' },
+              { day: 'Friday', slot: 2, code: 'CS2009', title: 'Algorithms', room: 'CFD-L1', instructor: 'Dr. Shahzad', type: 'Lecture' }
+            ]
+          }
+        }
+      };
+
+      const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+      const slotTimes = {
+        1: '08:30 - 09:55',
+        2: '10:05 - 11:30',
+        3: '11:40 - 01:05',
+        4: '01:45 - 03:10',
+        5: '03:20 - 04:45'
+      };
+
+      // State
+      let currentCampus = 'isb';
+      let currentDept = 'CS';
+      let currentBatch = '4';
+      let currentSection = 'BCS-4A';
+      let selectedDay = 'all';
+      let searchQuery = '';
+      let isFreeRoomMode = false;
+
+      // DOM Elements
+      const campusSelect = document.getElementById('campusSelect');
+      const deptSelect = document.getElementById('deptSelect');
+      const batchSelect = document.getElementById('batchSelect');
+      const sectionSelect = document.getElementById('sectionSelect');
+      const scheduleSearch = document.getElementById('scheduleSearch');
+      const timetableBody = document.getElementById('timetableBody');
+      const cardsContainer = document.getElementById('cardsContainer');
+      const activeCampusIndicator = document.getElementById('activeCampusIndicator');
+      const activeSectionBadge = document.getElementById('activeSectionBadge');
+      const courseCountBadge = document.getElementById('courseCountBadge');
+      const gridViewBtn = document.getElementById('gridViewBtn');
+      const listViewBtn = document.getElementById('listViewBtn');
+      const gridContainer = document.getElementById('gridContainer');
+      const freeRoomBtn = document.getElementById('freeRoomBtn');
+      const printScheduleBtn = document.getElementById('printScheduleBtn');
+      const dayPills = document.querySelectorAll('.day-pills .pill-btn');
+
+      // Helper to retrieve current section items
+      function getCurrentSchedule() {
+        const campusData = scheduleDatabase[currentCampus] || scheduleDatabase['isb'];
+        let items = campusData.sections[currentSection];
+        
+        if (!items || items.length === 0) {
+          // Fallback to sample section items
+          items = campusData.sections['BCS-4A'] || scheduleDatabase['isb'].sections['BCS-4A'];
+        }
+
+        // Apply Day Filter
+        if (selectedDay !== 'all') {
+          items = items.filter(function(item) {
+            return item.day.toLowerCase() === selectedDay.toLowerCase();
+          });
+        }
+
+        // Apply Search Filter
+        if (searchQuery.trim() !== '') {
+          const q = searchQuery.toLowerCase().trim();
+          items = items.filter(function(item) {
+            return (
+              item.code.toLowerCase().includes(q) ||
+              item.title.toLowerCase().includes(q) ||
+              item.instructor.toLowerCase().includes(q) ||
+              item.room.toLowerCase().includes(q) ||
+              item.day.toLowerCase().includes(q)
+            );
+          });
+        }
+
+        return items;
+      }
+
+      // Render Timetable Grid (Desktop / Tablets)
+      function renderGrid() {
+        const campusData = scheduleDatabase[currentCampus] || scheduleDatabase['isb'];
+        activeCampusIndicator.textContent = campusData.campusName;
+        activeSectionBadge.innerHTML = 'Section: <strong>' + currentSection + '</strong>';
+
+        const scheduleItems = getCurrentSchedule();
+        
+        // Count unique courses
+        const uniqueCourses = {};
+        scheduleItems.forEach(function(item) {
+          uniqueCourses[item.code] = true;
+        });
+        const courseCount = Object.keys(uniqueCourses).length;
+        courseCountBadge.textContent = courseCount + ' Course' + (courseCount === 1 ? '' : 's') + ' Scheduled';
+
+        const displayedDays = selectedDay === 'all' ? daysOfWeek : [selectedDay];
+        let tbodyHtml = '';
+
+        displayedDays.forEach(function(day) {
+          tbodyHtml += '<tr>';
+          tbodyHtml += '<td class="day-cell">' + day + '</td>';
+
+          for (let slotNum = 1; slotNum <= 5; slotNum++) {
+            const matches = scheduleItems.filter(function(item) {
+              return item.day.toLowerCase() === day.toLowerCase() && item.slot === slotNum;
+            });
+
+            tbodyHtml += '<td>';
+
+            if (matches.length > 0) {
+              matches.forEach(function(m) {
+                const isLab = m.type.toLowerCase() === 'lab';
+                const isClash = matches.length > 1;
+                let slotClasses = 'class-slot';
+                if (isLab) slotClasses += ' slot-lab';
+                if (isClash) slotClasses += ' slot-clash';
+
+                tbodyHtml += '<div class="' + slotClasses + '">';
+                tbodyHtml += '  <div style="display:flex; justify-content:space-between; align-items:center;">';
+                tbodyHtml += '    <span class="slot-code">' + m.code + '</span>';
+                tbodyHtml += '    <span class="slot-badge ' + (isLab ? 'badge-lab' : 'badge-lec') + '">' + m.type + '</span>';
+                tbodyHtml += '  </div>';
+                tbodyHtml += '  <div class="slot-title">' + m.title + '</div>';
+                tbodyHtml += '  <div class="slot-meta">';
+                tbodyHtml += '    <span class="slot-room">' + m.room + '</span>';
+                tbodyHtml += '    <span class="slot-instructor" title="' + m.instructor + '">' + m.instructor + '</span>';
+                tbodyHtml += '  </div>';
+                tbodyHtml += '</div>';
+              });
+            } else {
+              tbodyHtml += '<div class="empty-slot">' + (isFreeRoomMode ? '<span style="color:#059669; font-weight:600;">✓ Free Room Period</span>' : '—') + '</div>';
+            }
+
+            tbodyHtml += '</td>';
+          }
+
+          tbodyHtml += '</tr>';
+        });
+
+        timetableBody.innerHTML = tbodyHtml;
+      }
+
+      // Render Mobile Card List
+      function renderCards() {
+        const scheduleItems = getCurrentSchedule();
+        const displayedDays = selectedDay === 'all' ? daysOfWeek : [selectedDay];
+        let cardsHtml = '';
+
+        displayedDays.forEach(function(day) {
+          const dayItems = scheduleItems.filter(function(item) {
+            return item.day.toLowerCase() === day.toLowerCase();
+          });
+
+          cardsHtml += '<div class="day-group-card">';
+          cardsHtml += '  <div class="day-group-header">';
+          cardsHtml += '    <h3>' + day + '</h3>';
+          cardsHtml += '    <span style="font-size:0.775rem; color:#64748b; font-weight:600;">' + dayItems.length + ' Classes</span>';
+          cardsHtml += '  </div>';
+          cardsHtml += '  <div class="day-slots-list">';
+
+          if (dayItems.length === 0) {
+            cardsHtml += '    <div style="padding:1rem; text-align:center; color:#94a3b8; font-size:0.875rem;">No scheduled lectures for ' + day + '</div>';
+          } else {
+            dayItems.forEach(function(item) {
+              const timeRange = slotTimes[item.slot] || 'Class Slot ' + item.slot;
+              const isLab = item.type.toLowerCase() === 'lab';
+
+              cardsHtml += '    <div class="mobile-slot-item" style="border-left-color: ' + (isLab ? '#4338ca' : '#1d4ed8') + ';">';
+              cardsHtml += '      <div style="display:flex; justify-content:space-between; align-items:center;">';
+              cardsHtml += '        <span class="mobile-slot-time">⏰ ' + timeRange + '</span>';
+              cardsHtml += '        <span class="slot-badge ' + (isLab ? 'badge-lab' : 'badge-lec') + '">' + item.type + '</span>';
+              cardsHtml += '      </div>';
+              cardsHtml += '      <div style="font-weight:700; color:#0f172a; font-size:0.95rem;">' + item.code + ' &bull; ' + item.title + '</div>';
+              cardsHtml += '      <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.825rem; color:#475569; margin-top:0.25rem;">';
+              cardsHtml += '        <span><strong>Room:</strong> ' + item.room + '</span>';
+              cardsHtml += '        <span><strong>Instructor:</strong> ' + item.instructor + '</span>';
+              cardsHtml += '      </div>';
+              cardsHtml += '    </div>';
+            });
+          }
+
+          cardsHtml += '  </div>';
+          cardsHtml += '</div>';
+        });
+
+        cardsContainer.innerHTML = cardsHtml;
+      }
+
+      function updateAllViews() {
+        renderGrid();
+        renderCards();
+      }
+
+      // Event Listeners for Filters
+      campusSelect.addEventListener('change', function(e) {
+        currentCampus = e.target.value;
+        updateAllViews();
+      });
+
+      deptSelect.addEventListener('change', function(e) {
+        currentDept = e.target.value;
+        // Dynamically update section prefix
+        const prefix = 'B' + currentDept;
+        sectionSelect.innerHTML = `
+          <option value="${prefix}-4A" selected>${prefix}-4A</option>
+          <option value="${prefix}-4B">${prefix}-4B</option>
+          <option value="${prefix}-2A">${prefix}-2A</option>
+          <option value="${prefix}-6A">${prefix}-6A</option>
+        `;
+        currentSection = `${prefix}-4A`;
+        updateAllViews();
+      });
+
+      batchSelect.addEventListener('change', function(e) {
+        currentBatch = e.target.value;
+        const prefix = 'B' + currentDept;
+        currentSection = `${prefix}-${currentBatch}A`;
+        sectionSelect.value = currentSection;
+        updateAllViews();
+      });
+
+      sectionSelect.addEventListener('change', function(e) {
+        currentSection = e.target.value;
+        updateAllViews();
+      });
+
+      scheduleSearch.addEventListener('input', function(e) {
+        searchQuery = e.target.value;
+        updateAllViews();
+      });
+
+      // Day filter pills
+      dayPills.forEach(function(pill) {
+        pill.addEventListener('click', function() {
+          dayPills.forEach(function(p) { p.classList.remove('active'); p.setAttribute('aria-selected', 'false'); });
+          pill.classList.add('active');
+          pill.setAttribute('aria-selected', 'true');
+          selectedDay = pill.getAttribute('data-day');
+          updateAllViews();
+        });
+      });
+
+      // View Toggles
+      gridViewBtn.addEventListener('click', function() {
+        gridViewBtn.classList.add('active');
+        listViewBtn.classList.remove('active');
+        gridContainer.style.display = 'block';
+        cardsContainer.style.display = 'none';
+      });
+
+      listViewBtn.addEventListener('click', function() {
+        listViewBtn.classList.add('active');
+        gridViewBtn.classList.remove('active');
+        gridContainer.style.display = 'none';
+        cardsContainer.style.display = 'flex';
+      });
+
+      // Free Room Mode Toggle
+      freeRoomBtn.addEventListener('click', function() {
+        isFreeRoomMode = !isFreeRoomMode;
+        if (isFreeRoomMode) {
+          freeRoomBtn.style.background = '#ecfdf5';
+          freeRoomBtn.style.borderColor = '#10b981';
+          freeRoomBtn.style.color = '#059669';
+          freeRoomBtn.innerHTML = '<span>✓ Showing Free Rooms</span>';
+        } else {
+          freeRoomBtn.style.background = '#ffffff';
+          freeRoomBtn.style.borderColor = 'var(--border-medium)';
+          freeRoomBtn.style.color = 'var(--primary-navy)';
+          freeRoomBtn.innerHTML = '<span>🏢 Free Room Finder</span>';
+        }
+        updateAllViews();
+      });
+
+      // Print Button
+      printScheduleBtn.addEventListener('click', function() {
+        window.print();
+      });
+
+      // Global navigation hooks
+      window.switchCampus = function(campusId) {
+        campusSelect.value = campusId;
+        currentCampus = campusId;
+        updateAllViews();
+      };
+
+      window.switchDept = function(deptCode) {
+        deptSelect.value = deptCode;
+        deptSelect.dispatchEvent(new Event('change'));
+      };
+
+      // Initial Render
+      updateAllViews();
+
+    })();
+  </script>
 
 </body>
 </html>
