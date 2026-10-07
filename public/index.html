@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
   
   <!-- Primary SEO Metadata -->
   <title>FAST Islamabad Timetable | FAST-NUCES Class Schedules & Room Allocations</title>
@@ -60,9 +60,9 @@
           "FAST NUCES Islamabad section timetables (H-11/4 Campus)",
           "Department schedule filtering (CS, SE, AI, DS, CYS)",
           "Live search by course, teacher, or room number",
+          "Custom timetable builder with clash detector",
           "Free Room Finder across academic blocks",
-          "Intelligent clash detection for electives",
-          "Offline Android APK support"
+          "Live Google Sheets synchronization"
         ],
         "aggregateRating": {
           "@type": "AggregateRating",
@@ -79,7 +79,7 @@
             "name": "How do I find my FAST NUCES section timetable?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Choose your computing department (CS, SE, AI, DS, or CYS), select your semester batch and section code (for example, BCS-4A or BSE-4A), or type your course code or instructor name into the search bar. The schedule grid will instantly display your weekly class slots, lecture timings, instructor names, and room allocations."
+              "text": "Choose your computing department (CS, SE, AI, DS, or CYS), select your section code (for example, BCS-A or BSE-B), or search for your course title. The schedule immediately displays weekly class slots, lecture timings, instructor names, and room allocations."
             }
           },
           {
@@ -87,23 +87,23 @@
             "name": "Which campus is supported on Fastable?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Fastable is dedicated specifically to the FAST-NUCES Islamabad Campus (H-11/4), covering all classrooms, auditoriums, and computing laboratories across Academic Blocks A, B, and C."
+              "text": "Fastable is dedicated specifically to the FAST-NUCES Islamabad Campus (H-11/4), covering all classrooms, lecture halls, and computing laboratories across Academic Blocks C and D."
             }
           },
           {
             "@type": "Question",
-            "name": "Which degree programs are supported on Fastable?",
+            "name": "How does the custom timetable and clash detector work?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Fastable supports all computing degree programs offered at FAST Islamabad: BS Computer Science (CS), BS Software Engineering (SE), BS Artificial Intelligence (AI), BS Data Science (DS), and BS Cyber Security (CYS)."
+              "text": "Switch to the Custom Timetable tab, search for elective or repeat courses across sections, and add them to your personalized schedule. Fastable automatically checks time slots and alerts you if any classes overlap."
             }
           },
           {
             "@type": "Question",
-            "name": "Can I check room allocations and teacher slots?",
+            "name": "Can I check vacant rooms using the Free Room Finder?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes, Fastable displays exact classroom codes (e.g., C-301, B-108, CS-Lab 2) and faculty names for every class slot. You can also use the Free Room Finder to discover currently vacant classrooms and labs."
+              "text": "Yes, select any day and time slot in the Free Room Finder tab to see an instant list of vacant classrooms and labs in Blocks C and D for quiet study or project discussions."
             }
           }
         ]
@@ -114,16 +114,14 @@
 
   <style>
     /* -------------------------------------------------------------
-       FASTABLE DESIGN SYSTEM - ORANGE & DARK SLATE BRAND THEME
-       Inspired by fastable.png (Speed Chevron Motif)
+       FASTABLE DESIGN SYSTEM - ORANGE & MIDNIGHT SLATE
        ------------------------------------------------------------- */
     :root {
-      /* Brand Core: Fastable Energetic Orange & Midnight Slate */
       --brand-orange: #ff6200;
       --brand-orange-hover: #ea580c;
       --brand-orange-light: #fff7ed;
       --brand-orange-subtle: rgba(255, 98, 0, 0.08);
-      --brand-orange-border: #ffedd5;
+      --brand-orange-border: #fed7aa;
       
       --brand-navy: #0f172a;
       --brand-navy-light: #1e293b;
@@ -134,7 +132,6 @@
       --accent-rose: #e11d48;
       --accent-rose-subtle: #ffe4e6;
       --accent-indigo: #4f46e5;
-      --accent-indigo-subtle: #eef2ff;
 
       --text-main: #0f172a;
       --text-muted: #475569;
@@ -145,14 +142,14 @@
       --border-subtle: #e2e8f0;
       --border-medium: #cbd5e1;
       
-      --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-      --shadow-sm: 0 2px 4px 0 rgba(15, 23, 42, 0.06);
-      --shadow-md: 0 4px 10px -2px rgba(15, 23, 42, 0.08), 0 2px 6px -2px rgba(15, 23, 42, 0.04);
-      --shadow-lg: 0 12px 24px -4px rgba(15, 23, 42, 0.09), 0 4px 8px -4px rgba(15, 23, 42, 0.04);
-      --shadow-orange: 0 8px 20px -4px rgba(255, 98, 0, 0.35);
+      --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+      --shadow-sm: 0 1px 3px 0 rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 12px 24px -4px rgba(15, 23, 42, 0.08);
+      --shadow-orange: 0 6px 18px -3px rgba(255, 98, 0, 0.35);
 
-      --radius-sm: 6px;
-      --radius-md: 10px;
+      --radius-sm: 8px;
+      --radius-md: 12px;
       --radius-lg: 16px;
       --radius-full: 9999px;
       
@@ -191,7 +188,7 @@
 
     .container {
       width: 100%;
-      max-width: 1240px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 0 1.25rem;
     }
@@ -200,7 +197,7 @@
        HEADER & NAVIGATION
        ------------------------------------------------------------- */
     .site-header {
-      background: rgba(255, 255, 255, 0.96);
+      background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border-subtle);
@@ -213,26 +210,26 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 72px;
-      gap: 1.5rem;
+      height: 70px;
+      gap: 1.25rem;
     }
 
     .brand-group {
       display: flex;
       align-items: center;
-      gap: 0.85rem;
+      gap: 0.75rem;
       text-decoration: none !important;
     }
 
     .brand-logo-img {
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
       object-fit: contain;
       filter: drop-shadow(0 2px 4px rgba(255, 98, 0, 0.25));
     }
 
     .brand-text h1 {
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       font-weight: 800;
       color: var(--brand-navy);
       line-height: 1.2;
@@ -240,12 +237,12 @@
     }
 
     .brand-tagline {
-      font-size: 0.775rem;
+      font-size: 0.75rem;
       color: var(--text-subtle);
       font-weight: 600;
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.35rem;
     }
 
     .campus-chip {
@@ -253,7 +250,7 @@
       color: var(--brand-orange-hover);
       padding: 0.1rem 0.45rem;
       border-radius: var(--radius-full);
-      font-size: 0.7rem;
+      font-size: 0.675rem;
       font-weight: 700;
       border: 1px solid var(--brand-orange-border);
     }
@@ -267,7 +264,7 @@
 
     .nav-links a {
       color: var(--text-muted);
-      font-size: 0.925rem;
+      font-size: 0.9rem;
       font-weight: 600;
       padding: 0.5rem 0.25rem;
     }
@@ -279,24 +276,25 @@
     .nav-actions {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.65rem;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
+      gap: 0.45rem;
       font-family: inherit;
-      font-size: 0.9rem;
+      font-size: 0.875rem;
       font-weight: 600;
-      padding: 0.625rem 1.15rem;
+      padding: 0.6rem 1.1rem;
       border-radius: var(--radius-md);
       border: 1px solid transparent;
       cursor: pointer;
       transition: var(--transition);
       text-decoration: none !important;
       white-space: nowrap;
+      min-height: 42px;
     }
 
     .btn-primary {
@@ -305,9 +303,8 @@
       box-shadow: var(--shadow-orange);
     }
     .btn-primary:hover {
-      background: linear-gradient(135deg, #ff771a 0%, #d94e02 100%);
+      background: linear-gradient(135deg, #ff7315 0%, #d94e02 100%);
       transform: translateY(-1px);
-      box-shadow: 0 10px 24px -4px rgba(255, 98, 0, 0.45);
     }
 
     .btn-secondary {
@@ -321,20 +318,26 @@
       color: var(--brand-orange);
     }
 
+    .btn-sm {
+      padding: 0.35rem 0.75rem;
+      font-size: 0.8rem;
+      min-height: 34px;
+    }
+
     .badge-apk {
       background: rgba(255, 255, 255, 0.25);
       color: #ffffff;
       font-size: 0.7rem;
-      padding: 0.15rem 0.5rem;
+      padding: 0.1rem 0.4rem;
       border-radius: var(--radius-full);
       font-weight: 700;
     }
 
     /* -------------------------------------------------------------
-       HERO & APPLICATION WORKSPACE
+       HERO & WORKSPACE AREA
        ------------------------------------------------------------- */
     .hero-section {
-      padding: 2.5rem 0 1.5rem 0;
+      padding: 2rem 0 1.25rem 0;
       text-align: center;
       background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
       border-bottom: 1px solid var(--border-subtle);
@@ -343,45 +346,91 @@
     .hero-eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.35rem 0.9rem;
+      gap: 0.45rem;
+      padding: 0.3rem 0.85rem;
       background: var(--brand-orange-light);
       border: 1px solid var(--brand-orange-border);
       border-radius: var(--radius-full);
       color: var(--brand-orange-hover);
-      font-size: 0.825rem;
+      font-size: 0.8rem;
       font-weight: 700;
-      margin-bottom: 0.85rem;
+      margin-bottom: 0.75rem;
     }
 
     .hero-title {
-      font-size: clamp(1.85rem, 4vw, 2.75rem);
+      font-size: clamp(1.75rem, 3.5vw, 2.4rem);
       font-weight: 800;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.025em;
       color: var(--brand-navy);
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.5rem;
       line-height: 1.2;
     }
 
     .hero-lead {
-      font-size: clamp(0.975rem, 2vw, 1.15rem);
+      font-size: 1rem;
       color: var(--text-muted);
-      max-width: 760px;
-      margin: 0 auto 1.75rem;
-      line-height: 1.55;
+      max-width: 680px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.5;
     }
 
-    /* App Container */
+    /* -------------------------------------------------------------
+       MODE TABS (Batch Timetable, Custom Timetable, Free Rooms)
+       ------------------------------------------------------------- */
     .app-card {
       background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-lg);
+      box-shadow: var(--shadow-md);
       overflow: hidden;
-      margin-bottom: 3.5rem;
+      margin-bottom: 3rem;
+      text-align: left;
     }
 
-    /* App Control Bar */
+    .main-tabs-bar {
+      display: flex;
+      background: #f1f5f9;
+      border-bottom: 1px solid var(--border-subtle);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .main-tabs-bar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .main-tab-btn {
+      flex: 1;
+      min-width: 160px;
+      padding: 0.9rem 1.25rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: var(--transition);
+      white-space: nowrap;
+      border-bottom: 3px solid transparent;
+    }
+
+    .main-tab-btn:hover {
+      color: var(--brand-navy);
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    .main-tab-btn.active {
+      color: var(--brand-orange);
+      background: #ffffff;
+      border-bottom-color: var(--brand-orange);
+    }
+
+    /* -------------------------------------------------------------
+       FILTERS TOOLBAR (HIGH CONTRAST & MOBILE-FIRST)
+       ------------------------------------------------------------- */
     .app-toolbar {
       padding: 1.25rem;
       background: #ffffff;
@@ -393,7 +442,7 @@
 
     .filter-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 0.85rem;
     }
 
@@ -401,7 +450,6 @@
       display: flex;
       flex-direction: column;
       gap: 0.35rem;
-      text-align: left;
     }
 
     .form-group label {
@@ -412,36 +460,41 @@
       color: var(--text-subtle);
     }
 
+    /* STRICT HIGH CONTRAST DROPDOWN STYLING - NEVER WASHED OUT */
     .form-select, .form-input {
       font-family: inherit;
-      font-size: 0.9rem;
+      font-size: 0.925rem;
       font-weight: 600;
       padding: 0.65rem 0.85rem;
-      border: 1px solid var(--border-medium);
+      border: 1.5px solid var(--border-medium);
       border-radius: var(--radius-md);
-      background-color: #ffffff;
-      color: var(--text-main);
+      background-color: #ffffff !important;
+      color: #0f172a !important;
       outline: none;
       transition: var(--transition);
       width: 100%;
+      min-height: 44px;
+    }
+
+    .form-select:hover, .form-input:hover {
+      border-color: var(--brand-orange);
+      background-color: #ffffff !important;
+      color: #0f172a !important;
     }
 
     .form-select:focus, .form-input:focus {
       border-color: var(--brand-orange);
       box-shadow: 0 0 0 3px rgba(255, 98, 0, 0.15);
+      background-color: #ffffff !important;
+      color: #0f172a !important;
     }
 
-    .campus-badge-box {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.65rem 0.85rem;
-      background: var(--brand-navy);
-      color: #ffffff;
-      border-radius: var(--radius-md);
-      font-weight: 700;
-      font-size: 0.875rem;
-      height: 42px;
+    /* Explicit Option Contrast */
+    .form-select option {
+      background-color: #ffffff !important;
+      color: #0f172a !important;
+      font-weight: 600;
+      padding: 8px;
     }
 
     .search-row {
@@ -453,7 +506,7 @@
 
     .search-input-wrapper {
       flex: 1;
-      min-width: 260px;
+      min-width: 240px;
       position: relative;
     }
 
@@ -467,18 +520,18 @@
     }
 
     .search-input-wrapper input {
-      padding-left: 2.5rem;
+      padding-left: 2.4rem;
     }
 
-    /* Sub Toolbar / Tabs */
+    /* Sub-Toolbar (Day Filter & Views) */
     .app-subtoolbar {
-      padding: 0.85rem 1.25rem;
+      padding: 0.75rem 1.25rem;
       background: var(--bg-surface-alt);
       border-bottom: 1px solid var(--border-subtle);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1rem;
+      gap: 0.75rem;
       flex-wrap: wrap;
     }
 
@@ -488,12 +541,16 @@
       gap: 0.35rem;
       overflow-x: auto;
       padding-bottom: 2px;
+      scrollbar-width: none;
+    }
+    .day-pills::-webkit-scrollbar {
+      display: none;
     }
 
     .pill-btn {
-      padding: 0.4rem 0.8rem;
-      font-size: 0.825rem;
-      font-weight: 600;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 700;
       border-radius: var(--radius-full);
       border: 1px solid var(--border-medium);
       background: #ffffff;
@@ -501,6 +558,7 @@
       cursor: pointer;
       transition: var(--transition);
       white-space: nowrap;
+      min-height: 32px;
     }
     .pill-btn:hover {
       background: var(--brand-orange-light);
@@ -511,28 +569,28 @@
       background: var(--brand-orange);
       border-color: var(--brand-orange);
       color: #ffffff;
-      box-shadow: 0 2px 8px rgba(255, 98, 0, 0.3);
+      box-shadow: 0 2px 6px rgba(255, 98, 0, 0.25);
     }
 
     .view-toggles {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.4rem;
     }
 
     .toggle-btn {
-      padding: 0.4rem 0.75rem;
-      font-size: 0.825rem;
-      font-weight: 600;
-      border-radius: var(--radius-md);
+      padding: 0.35rem 0.65rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border-radius: var(--radius-sm);
       border: 1px solid var(--border-medium);
       background: #ffffff;
       color: var(--text-muted);
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      transition: var(--transition);
+      gap: 0.35rem;
+      min-height: 32px;
     }
     .toggle-btn.active {
       background: var(--brand-navy);
@@ -542,14 +600,14 @@
 
     /* Status Bar */
     .app-status-bar {
-      padding: 0.75rem 1.25rem;
+      padding: 0.65rem 1.25rem;
       background: #f8fafc;
       border-bottom: 1px solid var(--border-subtle);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1rem;
-      font-size: 0.85rem;
+      gap: 0.75rem;
+      font-size: 0.825rem;
       color: var(--text-muted);
       flex-wrap: wrap;
     }
@@ -557,184 +615,137 @@
     .status-left {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.5rem;
       flex-wrap: wrap;
+      font-weight: 600;
     }
 
-    .status-indicator {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-weight: 700;
-      color: var(--accent-emerald);
-    }
     .status-dot {
       width: 8px;
       height: 8px;
       background-color: var(--accent-emerald);
       border-radius: 50%;
       box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.2);
+      display: inline-block;
     }
 
-    .apk-notice-strip {
-      background: var(--brand-orange-light);
-      border: 1px dashed var(--brand-orange);
-      border-radius: var(--radius-md);
-      padding: 0.4rem 0.85rem;
-      font-size: 0.825rem;
-      color: var(--brand-orange-hover);
+    .sync-status-btn {
+      background: transparent;
+      border: none;
+      color: var(--brand-orange);
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 0.8rem;
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.3rem;
     }
-    .apk-notice-strip a {
-      font-weight: 700;
-      color: var(--brand-orange-hover);
+    .sync-status-btn:hover {
       text-decoration: underline;
     }
 
-    /* Timetable Grid & Table Styling */
+    /* -------------------------------------------------------------
+       TIMETABLE DISPLAY (MOBILE-CARD & DESKTOP GRID)
+       ------------------------------------------------------------- */
     .timetable-wrapper {
-      position: relative;
-      overflow-x: auto;
+      padding: 1.25rem;
+    }
+
+    /* Mobile Cards View (Clean, Thumb-Friendly) */
+    .cards-view {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .day-card-group {
       background: #ffffff;
-      min-height: 420px;
-    }
-
-    .timetable-table {
-      width: 100%;
-      min-width: 900px;
-      border-collapse: collapse;
-      text-align: left;
-    }
-
-    .timetable-table th {
-      background: #f1f5f9;
-      color: var(--brand-navy);
-      font-size: 0.825rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      padding: 0.85rem 1rem;
       border: 1px solid var(--border-subtle);
-      position: sticky;
-      top: 0;
-      z-index: 10;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-xs);
     }
 
-    .timetable-table th.day-col {
-      width: 120px;
-      background: #e2e8f0;
-      text-align: center;
+    .day-card-header {
+      background: #f8fafc;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
-    .timetable-table td {
-      border: 1px solid var(--border-subtle);
-      padding: 0.65rem;
-      vertical-align: top;
-      background: #ffffff;
-      height: 105px;
-      transition: background-color 0.15s ease;
-    }
-
-    .timetable-table tr:hover td {
-      background-color: #fafbfc;
-    }
-
-    .day-cell {
-      background: #f8fafc !important;
-      font-weight: 700;
+    .day-card-header h3 {
+      font-size: 0.95rem;
+      font-weight: 800;
       color: var(--brand-navy);
-      text-align: center;
-      vertical-align: middle !important;
-      font-size: 0.9rem;
-      border-right: 2px solid var(--border-medium) !important;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
     }
 
-    /* Class Slot Card */
-    .class-slot {
+    .class-slots-list {
+      padding: 0.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .class-item-card {
       background: #ffffff;
       border: 1px solid var(--border-subtle);
       border-left: 4px solid var(--brand-orange);
       border-radius: var(--radius-sm);
-      padding: 0.6rem 0.75rem;
-      box-shadow: var(--shadow-xs);
+      padding: 0.85rem 1rem;
       display: flex;
       flex-direction: column;
-      gap: 0.35rem;
+      gap: 0.4rem;
       transition: var(--transition);
-      cursor: default;
+      position: relative;
     }
 
-    .class-slot:hover {
-      box-shadow: var(--shadow-md);
-      transform: translateY(-2px);
+    .class-item-card:hover {
+      box-shadow: var(--shadow-sm);
       border-color: var(--brand-orange-border);
+      border-left-color: var(--brand-orange);
     }
 
-    .class-slot.slot-lab {
+    .class-item-card.is-lab {
       border-left-color: var(--brand-navy);
-      background: #f8fafc;
+      background: #fafbfc;
     }
 
-    .class-slot.slot-clash {
+    .class-item-card.is-clash {
       border-left-color: var(--accent-rose);
       background: var(--accent-rose-subtle);
     }
 
-    .slot-code {
-      font-size: 0.75rem;
-      font-weight: 800;
-      color: var(--brand-orange-hover);
-      letter-spacing: 0.02em;
-    }
-
-    .slot-lab .slot-code {
-      color: var(--brand-navy);
-    }
-
-    .slot-title {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--brand-navy);
-      line-height: 1.25;
-    }
-
-    .slot-meta {
+    .card-top-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 0.5rem;
-      font-size: 0.75rem;
-      color: var(--text-subtle);
-      margin-top: 0.15rem;
+      flex-wrap: wrap;
     }
 
-    .slot-room {
-      background: #f1f5f9;
-      color: var(--text-main);
-      padding: 0.15rem 0.4rem;
-      border-radius: 4px;
-      font-weight: 700;
-      font-family: monospace;
-      border: 1px solid var(--border-subtle);
+    .time-badge {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--brand-navy);
+      background: var(--bg-surface-alt);
+      padding: 0.15rem 0.5rem;
+      border-radius: var(--radius-sm);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
     }
 
-    .slot-instructor {
-      font-weight: 500;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    .slot-badge {
-      font-size: 0.65rem;
-      font-weight: 700;
+    .type-badge {
+      font-size: 0.675rem;
+      font-weight: 800;
       text-transform: uppercase;
-      padding: 0.1rem 0.35rem;
+      padding: 0.15rem 0.45rem;
       border-radius: 4px;
-      display: inline-block;
-      width: fit-content;
     }
     .badge-lec {
       background: var(--brand-orange-light);
@@ -744,77 +755,169 @@
       background: #e2e8f0;
       color: var(--brand-navy);
     }
+    .badge-clash {
+      background: #fee2e2;
+      color: #991b1b;
+    }
 
-    .empty-slot {
-      height: 100%;
+    .course-title {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--brand-navy);
+      line-height: 1.3;
+    }
+
+    .card-meta-row {
       display: flex;
       align-items: center;
-      justify-content: center;
-      color: #cbd5e1;
-      font-size: 0.75rem;
-      font-style: italic;
-    }
-
-    /* Mobile Cards View */
-    .mobile-cards-view {
-      display: none;
-      padding: 1.25rem;
-      gap: 1.25rem;
-      flex-direction: column;
-    }
-
-    .day-group-card {
-      background: #ffffff;
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      box-shadow: var(--shadow-xs);
-    }
-
-    .day-group-header {
-      background: #f8fafc;
-      padding: 0.75rem 1rem;
-      border-bottom: 1px solid var(--border-subtle);
-      display: flex;
       justify-content: space-between;
-      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.825rem;
+      color: var(--text-muted);
+      margin-top: 0.15rem;
+      flex-wrap: wrap;
     }
 
-    .day-group-header h3 {
-      font-size: 0.95rem;
+    .room-tag {
+      background: var(--brand-orange-light);
+      color: var(--brand-orange-hover);
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      font-weight: 700;
+      font-family: monospace;
+      border: 1px solid var(--brand-orange-border);
+    }
+
+    .section-tag {
       font-weight: 700;
       color: var(--brand-navy);
     }
 
-    .day-slots-list {
-      padding: 0.75rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.65rem;
-    }
-
-    .mobile-slot-item {
-      padding: 0.75rem;
-      background: #ffffff;
+    /* Desktop Table View */
+    .grid-view-container {
+      display: none;
+      overflow-x: auto;
       border: 1px solid var(--border-subtle);
-      border-left: 4px solid var(--brand-orange);
-      border-radius: var(--radius-sm);
-      display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
+      border-radius: var(--radius-md);
     }
 
-    .mobile-slot-time {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--text-subtle);
+    .desktop-table {
+      width: 100%;
+      min-width: 900px;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .desktop-table th {
+      background: #f1f5f9;
+      color: var(--brand-navy);
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border-subtle);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .desktop-table td {
+      border: 1px solid var(--border-subtle);
+      padding: 0.65rem;
+      vertical-align: top;
+      background: #ffffff;
+      min-height: 80px;
+    }
+
+    .table-day-cell {
+      background: #f8fafc !important;
+      font-weight: 800;
+      color: var(--brand-navy);
+      text-align: center;
+      vertical-align: middle !important;
+      width: 110px;
     }
 
     /* -------------------------------------------------------------
-       DENSE SEO CONTENT SECTIONS (CAMPUS GUIDE, FEATURES, FAQ)
+       CUSTOM COURSE SELECTION & CLASH DETECTOR STYLES
+       ------------------------------------------------------------- */
+    .custom-selection-box {
+      padding: 1.25rem;
+      background: #f8fafc;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .selection-chips-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+
+    .course-chip {
+      background: #ffffff;
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-full);
+      padding: 0.35rem 0.85rem;
+      font-size: 0.825rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      box-shadow: var(--shadow-xs);
+    }
+
+    .chip-remove-btn {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      cursor: pointer;
+      font-weight: 800;
+      font-size: 1rem;
+      line-height: 1;
+      padding: 0 0.15rem;
+    }
+    .chip-remove-btn:hover {
+      color: var(--accent-rose);
+    }
+
+    .clash-alert-banner {
+      background: #fff1f2;
+      border: 1px solid #fecdd3;
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1.15rem;
+      color: #9f1239;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+    }
+
+    /* Free Rooms Grid */
+    .free-rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 0.75rem;
+      padding: 1.25rem;
+    }
+
+    .free-room-pill {
+      background: var(--accent-emerald-subtle);
+      border: 1px solid #a7f3d0;
+      color: #065f46;
+      border-radius: var(--radius-md);
+      padding: 0.75rem 0.5rem;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    /* -------------------------------------------------------------
+       CLEAN SEO & INFORMATION SECTIONS (UNCLUTTERED)
        ------------------------------------------------------------- */
     .info-section {
-      padding: 4.5rem 0;
+      padding: 3.5rem 0;
       border-top: 1px solid var(--border-subtle);
       background: #ffffff;
     }
@@ -825,193 +928,129 @@
 
     .section-header {
       text-align: center;
-      max-width: 820px;
-      margin: 0 auto 3rem;
+      max-width: 720px;
+      margin: 0 auto 2.25rem;
     }
 
     .section-eyebrow {
       text-transform: uppercase;
-      font-size: 0.8rem;
+      font-size: 0.775rem;
       font-weight: 800;
       letter-spacing: 0.08em;
       color: var(--brand-orange);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.35rem;
       display: block;
     }
 
     .section-title {
-      font-size: clamp(1.6rem, 3.2vw, 2.35rem);
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
       font-weight: 800;
       color: var(--brand-navy);
       letter-spacing: -0.02em;
       line-height: 1.25;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
     }
 
     .section-desc {
-      font-size: 1.05rem;
+      font-size: 0.95rem;
       color: var(--text-muted);
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
-    /* Campus Facilities Grid */
-    .facilities-grid {
+    /* Clean 3-Card Grid */
+    .clean-cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
-      margin-bottom: 3rem;
     }
 
-    .facility-card {
+    .clean-card {
       background: #ffffff;
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
       padding: 1.75rem;
       box-shadow: var(--shadow-sm);
-      transition: var(--transition);
       display: flex;
       flex-direction: column;
-      gap: 0.85rem;
-    }
-
-    .facility-card:hover {
-      box-shadow: var(--shadow-lg);
-      border-color: var(--brand-orange-border);
-      transform: translateY(-3px);
-    }
-
-    .facility-badge {
-      background: var(--brand-orange-light);
-      color: var(--brand-orange-hover);
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 0.2rem 0.6rem;
-      border-radius: var(--radius-full);
-      width: fit-content;
-      border: 1px solid var(--brand-orange-border);
-    }
-
-    .facility-title {
-      font-size: 1.2rem;
-      font-weight: 800;
-      color: var(--brand-navy);
-    }
-
-    .facility-desc {
-      font-size: 0.925rem;
-      color: var(--text-muted);
-      line-height: 1.55;
-    }
-
-    /* Departments Box */
-    .dept-box {
-      background: #ffffff;
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      padding: 2rem;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .dept-box h3 {
-      font-size: 1.25rem;
-      font-weight: 800;
-      color: var(--brand-navy);
-      margin-bottom: 1rem;
-    }
-
-    .dept-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
-      margin-top: 1.25rem;
-    }
-
-    .dept-card {
-      padding: 1rem;
-      background: var(--bg-surface-alt);
-      border-radius: var(--radius-md);
-      border-left: 3px solid var(--brand-orange);
-    }
-
-    .dept-card h4 {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--brand-navy);
-      margin-bottom: 0.25rem;
-    }
-
-    .dept-card p {
-      font-size: 0.8rem;
-      color: var(--text-subtle);
-      line-height: 1.45;
-    }
-
-    /* Features Grid */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.75rem;
-    }
-
-    .feature-card {
-      background: #ffffff;
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      padding: 2rem;
-      box-shadow: var(--shadow-sm);
+      gap: 0.75rem;
       transition: var(--transition);
-      display: flex;
-      flex-direction: column;
-      gap: 0.85rem;
     }
 
-    .feature-card:hover {
-      box-shadow: var(--shadow-lg);
+    .clean-card:hover {
+      box-shadow: var(--shadow-md);
       border-color: var(--brand-orange-border);
-      transform: translateY(-3px);
+      transform: translateY(-2px);
     }
 
-    .feature-icon-wrapper {
-      width: 52px;
-      height: 52px;
+    .card-icon {
+      width: 48px;
+      height: 48px;
       border-radius: var(--radius-md);
       background: var(--brand-orange-light);
       color: var(--brand-orange-hover);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.5rem;
-      border: 1px solid var(--brand-orange-border);
+      font-size: 1.4rem;
     }
 
-    .feature-card h3 {
-      font-size: 1.2rem;
+    .clean-card h3 {
+      font-size: 1.15rem;
       font-weight: 800;
       color: var(--brand-navy);
     }
 
-    .feature-card p {
-      font-size: 0.925rem;
+    .clean-card p {
+      font-size: 0.9rem;
       color: var(--text-muted);
-      line-height: 1.55;
+      line-height: 1.5;
     }
 
-    /* FAQ Accordion Section */
+    /* Program Tags Strip */
+    .programs-strip {
+      background: var(--bg-surface-alt);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+      margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .programs-tags-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .program-tag {
+      background: #ffffff;
+      border: 1px solid var(--border-medium);
+      color: var(--brand-navy);
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-full);
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    /* Clean Accordion FAQ (Collapsed by default to avoid clutter) */
     .faq-container {
-      max-width: 860px;
+      max-width: 800px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 0.85rem;
     }
 
     .faq-item {
       background: #ffffff;
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-md);
-      box-shadow: var(--shadow-xs);
       overflow: hidden;
-      transition: var(--transition);
+      box-shadow: var(--shadow-xs);
     }
 
     .faq-item:hover {
@@ -1019,13 +1058,12 @@
     }
 
     .faq-item[open] {
-      box-shadow: var(--shadow-md);
       border-color: var(--brand-orange);
     }
 
     .faq-summary {
-      padding: 1.25rem 1.5rem;
-      font-size: 1.05rem;
+      padding: 1.1rem 1.25rem;
+      font-size: 0.975rem;
       font-weight: 700;
       color: var(--brand-navy);
       cursor: pointer;
@@ -1036,194 +1074,138 @@
       gap: 1rem;
       user-select: none;
     }
-
     .faq-summary::-webkit-details-marker {
       display: none;
     }
 
     .faq-icon {
-      width: 24px;
-      height: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.25s ease;
       color: var(--brand-orange);
-      flex-shrink: 0;
+      font-size: 1.1rem;
+      transition: transform 0.2s ease;
     }
-
     .faq-item[open] .faq-icon {
       transform: rotate(180deg);
     }
 
     .faq-answer {
-      padding: 0 1.5rem 1.5rem 1.5rem;
-      font-size: 0.95rem;
+      padding: 0 1.25rem 1.25rem 1.25rem;
+      font-size: 0.9rem;
       color: var(--text-muted);
-      line-height: 1.65;
+      line-height: 1.6;
       border-top: 1px solid #f1f5f9;
-      padding-top: 1rem;
+      padding-top: 0.85rem;
     }
 
-    /* CTA Section */
+    /* CTA Banner */
     .cta-banner {
       background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
       color: #ffffff;
       border-radius: var(--radius-lg);
-      padding: 3rem 2rem;
+      padding: 2.5rem 1.75rem;
       text-align: center;
-      box-shadow: var(--shadow-xl);
+      box-shadow: var(--shadow-lg);
       margin: 2rem 0;
-      position: relative;
-      overflow: hidden;
       border: 1px solid #334155;
     }
 
-    .cta-banner::before {
-      content: "";
-      position: absolute;
-      top: -50%;
-      right: -20%;
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(255, 98, 0, 0.25) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
     .cta-title {
-      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
       font-weight: 800;
-      margin-bottom: 0.85rem;
+      margin-bottom: 0.5rem;
       color: #ffffff;
     }
 
     .cta-subtitle {
-      font-size: 1.1rem;
+      font-size: 0.95rem;
       color: #cbd5e1;
-      max-width: 650px;
-      margin: 0 auto 1.75rem;
+      max-width: 600px;
+      margin: 0 auto 1.5rem;
       line-height: 1.5;
-    }
-
-    .cta-actions {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .btn-download-hero {
-      background: linear-gradient(135deg, var(--brand-orange) 0%, var(--brand-orange-hover) 100%);
-      color: #ffffff !important;
-      font-size: 1.05rem;
-      font-weight: 700;
-      padding: 0.85rem 1.75rem;
-      border-radius: var(--radius-md);
-      box-shadow: 0 4px 14px rgba(255, 98, 0, 0.4);
-    }
-    .btn-download-hero:hover {
-      background: linear-gradient(135deg, #ff771a 0%, #d94e02 100%);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(255, 98, 0, 0.55);
     }
 
     /* Footer */
     .site-footer {
       background: #0f172a;
       color: #94a3b8;
-      padding: 4rem 0 2rem 0;
+      padding: 3.5rem 0 2rem 0;
       border-top: 1px solid #1e293b;
     }
 
     .footer-grid {
       display: grid;
       grid-template-columns: 2fr 1fr 1fr;
-      gap: 2.5rem;
-      margin-bottom: 3rem;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
     }
 
     .footer-col h4 {
       color: #ffffff;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1rem;
     }
 
     .footer-links {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 0.65rem;
+      gap: 0.5rem;
     }
-
     .footer-links a {
       color: #94a3b8;
-      font-size: 0.875rem;
+      font-size: 0.85rem;
     }
     .footer-links a:hover {
       color: var(--brand-orange);
       text-decoration: underline;
     }
 
-    .footer-desc {
-      font-size: 0.875rem;
-      line-height: 1.6;
-      margin-bottom: 1.25rem;
-    }
-
-    .footer-bottom {
-      border-top: 1px solid #1e293b;
-      padding-top: 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-      font-size: 0.825rem;
-    }
-
     .disclaimer-box {
       background: #1e293b;
       border-radius: var(--radius-md);
-      padding: 1rem 1.25rem;
+      padding: 0.85rem 1.15rem;
       margin-bottom: 2rem;
-      font-size: 0.825rem;
+      font-size: 0.8rem;
       color: #94a3b8;
       line-height: 1.5;
       border-left: 3px solid var(--brand-orange);
     }
 
-    @media (max-width: 900px) {
+    .footer-bottom {
+      border-top: 1px solid #1e293b;
+      padding-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.8rem;
+    }
+
+    /* Mobile Media Queries */
+    @media (max-width: 768px) {
       .footer-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
       }
       .nav-links {
         display: none;
       }
-    }
-
-    @media (max-width: 640px) {
-      .footer-grid {
-        grid-template-columns: 1fr;
+      .grid-view-container {
+        display: none !important;
       }
-      .header-inner {
-        height: 64px;
+      .cards-view {
+        display: flex !important;
+      }
+      .view-toggles {
+        display: none;
       }
       .filter-grid {
         grid-template-columns: 1fr;
       }
-      .timetable-table {
-        display: none;
-      }
-      .mobile-cards-view {
-        display: flex;
-      }
-      .app-subtoolbar {
-        flex-direction: column;
-        align-items: flex-start;
+      .clean-cards-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -1245,7 +1227,7 @@
 
       <nav aria-label="Main Navigation">
         <ul class="nav-links">
-          <li><a href="#app">Timetable App</a></li>
+          <li><a href="#app">Timetable Tool</a></li>
           <li><a href="#campus">Campus Guide</a></li>
           <li><a href="#features">Features</a></li>
           <li><a href="#faq">FAQ</a></li>
@@ -1266,92 +1248,125 @@
   </header>
 
   <main>
-    <!-- Hero & Interactive Schedule Viewer -->
+    <!-- Hero & Interactive Workspace -->
     <section class="hero-section" id="hero">
       <div class="container">
         <div class="hero-eyebrow">
           <span>⚡</span>
-          <span>FAST-NUCES Islamabad Campus (H-11/4) &bull; Computing Faculties</span>
+          <span>FAST-NUCES Islamabad (FSC) &bull; Spring-2026 Semester</span>
         </div>
-        <h2 class="hero-title">Live FAST Islamabad Class Timetable</h2>
+        <h2 class="hero-title">FAST Islamabad Class Timetable</h2>
         <p class="hero-lead">
-          Instant class schedules, section timetables, faculty slots, and classroom allocations for BS Computer Science, Software Engineering, AI, Data Science, and Cyber Security.
+          Search live class schedules, section timetables, custom course clash detection, and vacant rooms across Academic Blocks C and D.
         </p>
 
-        <!-- Interactive Web Application -->
+        <!-- Main App Container -->
         <div class="app-card" id="app" role="region" aria-label="FAST Islamabad Interactive Timetable Viewer">
           
-          <!-- App Filters & Search Toolbar -->
-          <div class="app-toolbar">
+          <!-- Mode Tabs (Batch Timetable, Custom Timetable, Free Rooms) -->
+          <div class="main-tabs-bar" role="tablist">
+            <button class="main-tab-btn active" id="tabBatchBtn" role="tab" aria-selected="true">
+              <span>📚 Section Timetable</span>
+            </button>
+            <button class="main-tab-btn" id="tabCustomBtn" role="tab" aria-selected="false">
+              <span>🧩 Custom Timetable & Clash Detector</span>
+            </button>
+            <button class="main-tab-btn" id="tabFreeRoomsBtn" role="tab" aria-selected="false">
+              <span>🏢 Free Room Finder</span>
+            </button>
+          </div>
+
+          <!-- TAB 1 & 2 FILTERS TOOLBAR -->
+          <div class="app-toolbar" id="toolbarStandard">
             <div class="filter-grid">
               
-              <!-- Fixed Campus Indicator -->
+              <!-- Department Selector -->
               <div class="form-group">
-                <label>Campus</label>
-                <div class="campus-badge-box">
-                  <span>📍</span>
-                  <span>Islamabad Campus (H-11/4)</span>
-                </div>
-              </div>
-
-              <!-- Department Selector (Only Computing Degrees) -->
-              <div class="form-group">
-                <label for="deptSelect">1. Department / Degree</label>
+                <label for="deptSelect">1. Department</label>
                 <select id="deptSelect" class="form-select" aria-label="Department Selector">
-                  <option value="CS" selected>Computer Science (BS CS)</option>
-                  <option value="SE">Software Engineering (BS SE)</option>
-                  <option value="AI">Artificial Intelligence (BS AI)</option>
-                  <option value="DS">Data Science (BS DS)</option>
-                  <option value="CY">Cyber Security (BS CYS)</option>
-                </select>
-              </div>
-
-              <!-- Batch / Semester Selector -->
-              <div class="form-group">
-                <label for="batchSelect">2. Semester / Batch</label>
-                <select id="batchSelect" class="form-select" aria-label="Semester Selector">
-                  <option value="4" selected>Semester 4 (Batch 2023)</option>
-                  <option value="2">Semester 2 (Batch 2024)</option>
-                  <option value="6">Semester 6 (Batch 2022)</option>
-                  <option value="8">Semester 8 (Batch 2021)</option>
-                  <option value="1">Semester 1 (Freshmen)</option>
+                  <option value="CS" selected>Computer Science (CS)</option>
+                  <option value="SE">Software Engineering (SE)</option>
+                  <option value="AI">Artificial Intelligence (AI)</option>
+                  <option value="DS">Data Science (DS)</option>
+                  <option value="CY">Cyber Security (CYS)</option>
                 </select>
               </div>
 
               <!-- Section Selector -->
-              <div class="form-group">
-                <label for="sectionSelect">3. Section Code</label>
+              <div class="form-group" id="sectionSelectGroup">
+                <label for="sectionSelect">2. Section</label>
                 <select id="sectionSelect" class="form-select" aria-label="Section Code Selector">
-                  <option value="BCS-4A" selected>BCS-4A</option>
-                  <option value="BCS-4B">BCS-4B</option>
-                  <option value="BCS-4C">BCS-4C</option>
-                  <option value="BCS-4D">BCS-4D</option>
-                  <option value="BCS-4E">BCS-4E</option>
+                  <!-- Injected via JavaScript -->
                 </select>
               </div>
 
-            </div>
-
-            <!-- Search and Action Row -->
-            <div class="search-row">
-              <div class="search-input-wrapper">
-                <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                <input type="text" id="scheduleSearch" class="form-input" placeholder="Search course code (e.g. CS2001), teacher, or room (e.g. C-301)..." aria-label="Filter timetable entries" />
+              <!-- Live Course Search -->
+              <div class="form-group" style="grid-column: span 1;">
+                <label for="scheduleSearch">Quick Search</label>
+                <div class="search-input-wrapper">
+                  <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                  <input type="text" id="scheduleSearch" class="form-input" placeholder="Search course (e.g. OOP, DLD), room (e.g. C-301)..." aria-label="Filter timetable entries" />
+                </div>
               </div>
 
-              <button type="button" id="freeRoomBtn" class="btn btn-secondary" title="Highlight vacant rooms">
-                <span>🏢 Free Room Finder</span>
-              </button>
-
-              <button type="button" id="printScheduleBtn" class="btn btn-secondary" title="Print this schedule">
-                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4H7v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
-                <span>Print</span>
-              </button>
             </div>
           </div>
 
-          <!-- Day Filter Pills & View Toggles -->
-          <div class="app-subtoolbar">
+          <!-- TAB 2: CUSTOM COURSE SELECTION CONTROLS (Hidden by default) -->
+          <div class="custom-selection-box" id="customControlsBox" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+              <div>
+                <strong style="color: var(--brand-navy); font-size: 0.95rem;">Add Courses to Custom Timetable:</strong>
+                <span style="font-size: 0.8rem; color: var(--text-subtle); margin-left: 0.5rem;">Select any elective or cross-section course</span>
+              </div>
+              <button class="btn btn-secondary btn-sm" id="clearCustomBtn" type="button">Clear All</button>
+            </div>
+
+            <div style="display: flex; gap: 0.5rem; margin-top: 0.65rem; flex-wrap: wrap;">
+              <select id="courseCatalogSelect" class="form-select" style="flex: 1; min-width: 260px;" aria-label="Course Catalog Picker">
+                <!-- Dynamically filled with courses -->
+              </select>
+              <button class="btn btn-primary btn-sm" id="addCourseBtn" type="button">+ Add Course</button>
+            </div>
+
+            <!-- Selected Courses Chips -->
+            <div class="selection-chips-row" id="selectedChipsContainer">
+              <!-- Injected via JS -->
+            </div>
+          </div>
+
+          <!-- TAB 3: FREE ROOM FINDER CONTROLS (Hidden by default) -->
+          <div class="app-toolbar" id="toolbarFreeRooms" style="display: none;">
+            <div class="filter-grid">
+              <div class="form-group">
+                <label for="freeDaySelect">Select Day</label>
+                <select id="freeDaySelect" class="form-select">
+                  <option value="Monday" selected>Monday</option>
+                  <option value="Tuesday">Tuesday</option>
+                  <option value="Wednesday">Wednesday</option>
+                  <option value="Thursday">Thursday</option>
+                  <option value="Friday">Friday</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="freeSlotSelect">Select Time Slot</label>
+                <select id="freeSlotSelect" class="form-select">
+                  <option value="08:30-09:50" selected>08:30 - 09:50</option>
+                  <option value="10:00-11:20">10:00 - 11:20</option>
+                  <option value="11:30-12:50">11:30 - 12:50</option>
+                  <option value="01:00-02:20">01:00 - 02:20</option>
+                  <option value="02:30-03:50">02:30 - 03:50</option>
+                  <option value="03:55-05:15">03:55 - 05:15</option>
+                  <option value="05:20-06:40">05:20 - 06:40</option>
+                  <option value="06:45-08:05">06:45 - 08:05</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- DAY PILLS & VIEW TOGGLES -->
+          <div class="app-subtoolbar" id="subToolbarDays">
             <div class="day-pills" role="tablist" aria-label="Filter schedule by day of week">
               <button class="pill-btn active" data-day="all" role="tab" aria-selected="true">All Days</button>
               <button class="pill-btn" data-day="Monday" role="tab" aria-selected="false">Monday</button>
@@ -1362,308 +1377,228 @@
             </div>
 
             <div class="view-toggles">
-              <button type="button" id="gridViewBtn" class="toggle-btn active" aria-label="Grid timetable view">
-                <svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 2.5v-3zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3z"/></svg>
-                <span>Grid View</span>
-              </button>
-              <button type="button" id="listViewBtn" class="toggle-btn" aria-label="Card list timetable view">
-                <svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/></svg>
+              <button type="button" id="cardViewBtn" class="toggle-btn active" aria-label="Card view">
                 <span>Card View</span>
               </button>
+              <button type="button" id="tableViewBtn" class="toggle-btn" aria-label="Table view">
+                <span>Table Grid</span>
+              </button>
             </div>
           </div>
 
-          <!-- Live Status Bar -->
+          <!-- LIVE STATUS & CLOUD SYNC -->
           <div class="app-status-bar">
             <div class="status-left">
-              <span class="status-indicator">
-                <span class="status-dot"></span>
-                <span>FAST Islamabad Campus</span>
-              </span>
+              <span class="status-dot"></span>
+              <span id="activeInfoSummary">Spring 2026 Live Database</span>
               <span>&bull;</span>
-              <span id="activeSectionBadge">Section: <strong>BCS-4A</strong></span>
-              <span>&bull;</span>
-              <span id="courseCountBadge">5 Active Courses</span>
+              <span id="resultsCountBadge">0 Sessions</span>
             </div>
 
-            <div class="apk-notice-strip">
-              <span>📱 Android App with offline schedules:</span>
-              <a href="https://github.com/AHSANooo/FASTable-apk/releases/download/v1.0.7/FASTable-v1.0.7.apk">Download APK (v1.0.7) &rarr;</a>
+            <div>
+              <button class="sync-status-btn" id="liveSyncBtn" title="Fetch live updates from official Google Sheet">
+                <span id="syncIcon">🔄</span>
+                <span id="syncText">Sync Live Sheet</span>
+              </button>
             </div>
           </div>
 
-          <!-- Desktop Table Schedule Container -->
-          <div class="timetable-wrapper" id="gridContainer">
-            <table class="timetable-table" id="timetableGrid" aria-label="FAST Islamabad Weekly Timetable Grid">
-              <thead>
-                <tr>
-                  <th class="day-col" scope="col">Day / Time</th>
-                  <th scope="col">Slot 1<br><small>08:30 - 09:55</small></th>
-                  <th scope="col">Slot 2<br><small>10:05 - 11:30</small></th>
-                  <th scope="col">Slot 3<br><small>11:40 - 01:05</small></th>
-                  <th scope="col">Slot 4<br><small>01:45 - 03:10</small></th>
-                  <th scope="col">Slot 5<br><small>03:20 - 04:45</small></th>
-                </tr>
-              </thead>
-              <tbody id="timetableBody">
-                <!-- Injected via JavaScript -->
-              </tbody>
-            </table>
-          </div>
+          <!-- TIMETABLE CONTENT -->
+          <div class="timetable-wrapper">
+            
+            <!-- Clash Detector Alert Box -->
+            <div id="clashAlertBox" class="clash-alert-banner" style="display: none;">
+              <span>⚠️</span>
+              <div>
+                <strong>Clash Detected!</strong>
+                <div id="clashAlertDetails" style="margin-top: 0.2rem;"></div>
+              </div>
+            </div>
 
-          <!-- Mobile Cards Fallback Container -->
-          <div class="mobile-cards-view" id="cardsContainer" aria-label="Mobile Weekly Class Card List">
-            <!-- Injected via JavaScript -->
+            <!-- Mobile & Responsive Card View (Default) -->
+            <div class="cards-view" id="cardsContainer">
+              <!-- Dynamically populated -->
+            </div>
+
+            <!-- Desktop Table View -->
+            <div class="grid-view-container" id="tableContainer">
+              <table class="desktop-table" id="desktopTable">
+                <thead>
+                  <tr>
+                    <th style="width: 110px;">Day</th>
+                    <th>Time</th>
+                    <th>Room</th>
+                    <th>Type</th>
+                    <th>Course & Section</th>
+                  </tr>
+                </thead>
+                <tbody id="tableBody">
+                  <!-- Dynamically populated -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Free Rooms Display Container -->
+            <div id="freeRoomsContainer" style="display: none;">
+              <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--brand-navy); margin-bottom: 0.75rem;">
+                Vacant Rooms & Labs in Block C & Block D:
+              </h4>
+              <div class="free-rooms-grid" id="freeRoomsGrid">
+                <!-- Injected via JS -->
+              </div>
+            </div>
+
           </div>
 
         </div>
       </div>
     </section>
 
-    <!-- SECTION 2: FAST Islamabad Campus Guide & Facilities -->
+    <!-- SECTION 2: CLEAN CAMPUS GUIDE & FACILITIES -->
     <section class="info-section alt-bg" id="campus">
       <div class="container">
         <header class="section-header">
-          <span class="section-eyebrow">H-11/4 Islamabad Campus</span>
-          <h2 class="section-title">FAST Islamabad Campus Guide & Room Allocation Matrix</h2>
+          <span class="section-eyebrow">Islamabad Campus (H-11/4)</span>
+          <h2 class="section-title">Academic Blocks & Facilities</h2>
           <p class="section-desc">
-            Fastable provides comprehensive schedule tracking for students at FAST-NUCES Islamabad (A.K. Brohi Road, H-11/4), mapping lecture halls, software engineering labs, and computing facilities.
+            Room mapping and lab allocations for FAST School of Computing (FSC) students.
           </p>
         </header>
 
-        <div class="facilities-grid">
-          
-          <article class="facility-card">
-            <span class="facility-badge">Academic Block C</span>
-            <h3 class="facility-title">Computer Science Lecture Halls</h3>
-            <p class="facility-desc">
-              Home to core computing theory lectures (Rooms C-301 through C-306). Fully integrated into Fastable's real-time schedule lookup for BCS, BSE, BAI, BDS, and BCY batches.
-            </p>
+        <div class="clean-cards-grid">
+          <article class="clean-card">
+            <div class="card-icon">🏢</div>
+            <h3>Academic Block C</h3>
+            <p>Rooms C-301 through C-409. Host to computing theory lectures, core tutorials, and faculty office hours.</p>
           </article>
 
-          <article class="facility-card">
-            <span class="facility-badge">Computing Labs</span>
-            <h3 class="facility-title">Specialized Computing Laboratories</h3>
-            <p class="facility-desc">
-              Equipped with high-performance workstations for Data Structures, OS, and Deep Learning practicals (CS-Lab 1 to CS-Lab 5, Software Engineering Labs, and AI Research Labs).
-            </p>
+          <article class="clean-card">
+            <div class="card-icon">🏛️</div>
+            <h3>Academic Block D</h3>
+            <p>Rooms D-301 to D-506. Multipurpose lecture halls for Data Science, Cyber Security, and AI batches.</p>
           </article>
 
-          <article class="facility-card">
-            <span class="facility-badge">Academic Block B & A</span>
-            <h3 class="facility-title">Mathematics & General Classrooms</h3>
-            <p class="facility-desc">
-              Dedicated rooms for Linear Algebra, Calculus, and Technical Writing lectures (Rooms B-105, B-108, B-110, A-201, and A-204) with clear clash detection indicators.
-            </p>
+          <article class="clean-card">
+            <div class="card-icon">💻</div>
+            <h3>Specialized Computing Labs</h3>
+            <p>D-IT Labs 1-4, Margala Labs, Rawal Labs, GPU Lab, and Cyber Lab (D-514) for practical lab sessions.</p>
           </article>
-
         </div>
 
-        <!-- Computing Degree Programs Overview -->
-        <div class="dept-box">
-          <h3>Supported FAST Islamabad Degree Programs</h3>
-          <p>
-            Fastable exclusively focuses on the computing faculties at FAST Islamabad, delivering 100% accurate batch schedules for:
-          </p>
-          <div class="dept-grid">
-            <div class="dept-card">
-              <h4>BS Computer Science (CS)</h4>
-              <p>Algorithms, Operating Systems, Database Systems, Computer Networks.</p>
-            </div>
-            <div class="dept-card">
-              <h4>BS Software Engineering (SE)</h4>
-              <p>Software Design & Architecture, Requirement Engineering, DevOps.</p>
-            </div>
-            <div class="dept-card">
-              <h4>BS Artificial Intelligence (AI)</h4>
-              <p>Machine Learning, Neural Networks, Computer Vision, NLP practicals.</p>
-            </div>
-            <div class="dept-card">
-              <h4>BS Data Science (DS)</h4>
-              <p>Big Data Analytics, Statistical Inference, Data Mining & Visualization.</p>
-            </div>
-            <div class="dept-card">
-              <h4>BS Cyber Security (CYS)</h4>
-              <p>Network Security, Cryptography, Digital Forensics, Ethical Hacking.</p>
-            </div>
+        <div class="programs-strip">
+          <span style="font-weight: 800; color: var(--brand-navy); font-size: 0.9rem;">Supported Programs:</span>
+          <div class="programs-tags-list">
+            <span class="program-tag">BS Computer Science (CS)</span>
+            <span class="program-tag">BS Software Engineering (SE)</span>
+            <span class="program-tag">BS Artificial Intelligence (AI)</span>
+            <span class="program-tag">BS Data Science (DS)</span>
+            <span class="program-tag">BS Cyber Security (CYS)</span>
           </div>
         </div>
-
       </div>
     </section>
 
-    <!-- SECTION 3: App Features -->
+    <!-- SECTION 3: KEY SMART FEATURES -->
     <section class="info-section" id="features">
       <div class="container">
         <header class="section-header">
-          <span class="section-eyebrow">Smart Student Tools</span>
-          <h2 class="section-title">Built Specially for FAST Islamabad Computing Students</h2>
+          <span class="section-eyebrow">Smart Utilities</span>
+          <h2 class="section-title">Built for Everyday Student Needs</h2>
           <p class="section-desc">
-            No more hunting through chaotic WhatsApp PDF files or blurry screenshots. Fastable gives you instant, structured access to your schedule.
+            Streamlined features designed to save you time and eliminate timetable confusion.
           </p>
         </header>
 
-        <div class="features-grid">
-          
-          <article class="feature-card">
-            <div class="feature-icon-wrapper">📅</div>
-            <h3>Section & Batch Timetables</h3>
-            <p>
-              Instantly view your section schedule (e.g., BCS-4A, BSE-4B) with clear time slots and assigned instructors. Optimized for both desktop and mobile viewports.
-            </p>
+        <div class="clean-cards-grid">
+          <article class="clean-card">
+            <div class="card-icon">📅</div>
+            <h3>Instant Section View</h3>
+            <p>Quickly access your full batch timetable with accurate lecture timings and assigned rooms.</p>
           </article>
 
-          <article class="feature-card">
-            <div class="feature-icon-wrapper">🏢</div>
+          <article class="clean-card">
+            <div class="card-icon">⚠️</div>
+            <h3>Live Clash Detector</h3>
+            <p>Build your custom schedule by adding electives and repeat courses with real-time overlap warnings.</p>
+          </article>
+
+          <article class="clean-card">
+            <div class="card-icon">🏢</div>
             <h3>Free Room Finder</h3>
-            <p>
-              Need a vacant classroom in Block C or Block B for group study, FYP discussion, or quiet prep? The <strong>Free Room Finder</strong> highlights empty lecture halls instantly.
-            </p>
+            <p>Spot currently vacant classrooms and labs across Block C and D for group study or project work.</p>
           </article>
-
-          <article class="feature-card">
-            <div class="feature-icon-wrapper">⚠️</div>
-            <h3>Course Clash Detector</h3>
-            <p>
-              Enrolled in repeat courses or electives across sections? Fastable flags overlapping lecture and lab slots so you can finalize your registration stress-free.
-            </p>
-          </article>
-
-          <article class="feature-card">
-            <div class="feature-icon-wrapper">👨‍🏫</div>
-            <h3>Faculty Schedule Lookup</h3>
-            <p>
-              Search by instructor name to view class timings and discover open slots for consultation hours and project evaluations.
-            </p>
-          </article>
-
-          <article class="feature-card">
-            <div class="feature-icon-wrapper">🔄</div>
-            <h3>Zero-Touch Updates</h3>
-            <p>
-              Synchronized with FAST Islamabad academic notices. Room swaps, teacher substitutions, and section adjustments reflect automatically without app reinstallation.
-            </p>
-          </article>
-
-          <article class="feature-card">
-            <div class="feature-icon-wrapper">📱</div>
-            <h3>Native Offline Android APK</h3>
-            <p>
-              Download the FASTable APK for Android to access your schedule offline, set class reminder alerts, and view campus room maps right on your phone.
-            </p>
-          </article>
-
         </div>
-
       </div>
     </section>
 
-    <!-- SECTION 4: Crawlable FAQs -->
+    <!-- SECTION 4: FREQUENTLY ASKED QUESTIONS -->
     <section class="info-section alt-bg" id="faq">
       <div class="container">
         <header class="section-header">
-          <span class="section-eyebrow">Frequently Asked Questions</span>
-          <h2 class="section-title">Frequently Asked Questions &bull; FAST Islamabad Schedules</h2>
+          <span class="section-eyebrow">Help & Information</span>
+          <h2 class="section-title">Frequently Asked Questions</h2>
           <p class="section-desc">
-            Find quick answers about timetable access, room numbers, clash detection, and mobile APK usage.
+            Common questions about FAST Islamabad schedules, clash checking, and offline access.
           </p>
         </header>
 
         <div class="faq-container">
           
-          <details class="faq-item" open>
+          <details class="faq-item">
             <summary class="faq-summary">
               <span>How do I find my FAST NUCES section timetable?</span>
-              <span class="faq-icon" aria-hidden="true">
-                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-              </span>
+              <span class="faq-icon" aria-hidden="true">&#9662;</span>
             </summary>
             <div class="faq-answer">
-              To find your section timetable:
-              <ol style="margin-left: 1.25rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.25rem;">
-                <li>Select your degree program (CS, SE, AI, DS, or CYS).</li>
-                <li>Choose your semester / batch (e.g. Semester 4).</li>
-                <li>Pick your section code (e.g. BCS-4A).</li>
-                <li>Or type your course code (e.g. CS2001) or teacher name directly into the search bar.</li>
-              </ol>
-              The grid will immediately filter to display your weekly classes, timings, and classroom numbers.
+              Select your department (CS, SE, AI, DS, or CY) and section (e.g., A, B, C) in the Section Timetable tab. The schedule immediately displays all class slots, timings, and room numbers.
             </div>
           </details>
 
           <details class="faq-item">
             <summary class="faq-summary">
-              <span>Which campus is supported on Fastable?</span>
-              <span class="faq-icon" aria-hidden="true">
-                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-              </span>
+              <span>Which campus and degrees are supported?</span>
+              <span class="faq-icon" aria-hidden="true">&#9662;</span>
             </summary>
             <div class="faq-answer">
-              Fastable is built specifically for the <strong>FAST-NUCES Islamabad Campus (H-11/4)</strong>. It maps classroom allocations across Academic Blocks A, B, and C as well as the computing labs.
+              Fastable is exclusively tailored for <strong>FAST-NUCES Islamabad Campus (H-11/4)</strong> and its computing degree programs: BS CS, BS SE, BS AI, BS DS, and BS CYS.
             </div>
           </details>
 
           <details class="faq-item">
             <summary class="faq-summary">
-              <span>Which degree programs are supported on Fastable?</span>
-              <span class="faq-icon" aria-hidden="true">
-                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-              </span>
+              <span>How does custom course clash detection work?</span>
+              <span class="faq-icon" aria-hidden="true">&#9662;</span>
             </summary>
             <div class="faq-answer">
-              Fastable supports all undergraduate computing degree programs at FAST Islamabad:
-              <ul style="margin-left: 1.25rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.25rem;">
-                <li>BS Computer Science (CS)</li>
-                <li>BS Software Engineering (SE)</li>
-                <li>BS Artificial Intelligence (AI)</li>
-                <li>BS Data Science (DS)</li>
-                <li>BS Cyber Security (CYS)</li>
-              </ul>
+              Switch to the "Custom Timetable & Clash Detector" tab. Select any courses from the catalog and add them. Fastable immediately detects any overlapping time slots and flags conflicting classes.
             </div>
           </details>
 
           <details class="faq-item">
             <summary class="faq-summary">
-              <span>Can I check room allocations and teacher slots?</span>
-              <span class="faq-icon" aria-hidden="true">
-                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-              </span>
+              <span>Can I use Fastable offline on mobile?</span>
+              <span class="faq-icon" aria-hidden="true">&#9662;</span>
             </summary>
             <div class="faq-answer">
-              Yes, each class slot specifies the exact classroom or laboratory number (e.g., C-301, B-108, CS-Lab 1) and instructor. You can also search by room number to see when a room is booked or use the Free Room Finder to find unoccupied rooms.
-            </div>
-          </details>
-
-          <details class="faq-item">
-            <summary class="faq-summary">
-              <span>How do I download the FASTable Android APK for offline use?</span>
-              <span class="faq-icon" aria-hidden="true">
-                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-              </span>
-            </summary>
-            <div class="faq-answer">
-              Download the APK directly from GitHub Releases using the Download button. Open <code>FASTable-v1.0.7.apk</code> on your Android smartphone, allow "Install from this source" if requested, and enjoy offline timetable access with reminder notifications.
+              Yes, download the official Android APK release (v1.0.7) to save your schedules locally, view campus maps, and receive notifications before lectures begin.
             </div>
           </details>
 
         </div>
-
       </div>
     </section>
 
-    <!-- Download CTA Banner -->
+    <!-- CTA BANNER -->
     <section class="container" aria-label="Download Fastable App for Android">
       <div class="cta-banner">
         <h2 class="cta-title">Get Fastable for Android (v1.0.7)</h2>
         <p class="cta-subtitle">
-          Enjoy offline schedules, class alerts, and campus room navigation right on your smartphone.
+          Offline schedule viewing, class alert notifications, and quick room navigation on your smartphone.
         </p>
-        <div class="cta-actions">
-          <a href="https://github.com/AHSANooo/FASTable-apk/releases/download/v1.0.7/FASTable-v1.0.7.apk" class="btn btn-download-hero">
+        <div>
+          <a href="https://github.com/AHSANooo/FASTable-apk/releases/download/v1.0.7/FASTable-v1.0.7.apk" class="btn btn-primary" style="font-size: 1rem; padding: 0.75rem 1.6rem;">
             <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
             <span>Download APK (Direct Release)</span>
-          </a>
-          <a href="https://github.com/AHSANooo/FASTable-apk" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="background: rgba(255,255,255,0.08); color: #fff; border-color: rgba(255,255,255,0.25);">
-            <span>View GitHub Repository</span>
           </a>
         </div>
       </div>
@@ -1673,350 +1608,527 @@
   <!-- Semantic Footer -->
   <footer class="site-footer">
     <div class="container">
-      
       <aside class="disclaimer-box" aria-label="Official Disclaimer">
-        <strong>Disclaimer:</strong> Fastable (fastable.site) is an independent student-built academic utility designed to assist FAST-NUCES Islamabad students with class schedules and room allocations. It is not officially hosted or managed by the National University of Computer and Emerging Sciences.
+        <strong>Disclaimer:</strong> Fastable is an independent student-built utility for FAST-NUCES Islamabad students. It is not officially hosted or managed by the National University of Computer and Emerging Sciences.
       </aside>
 
       <div class="footer-grid">
         <div class="footer-col">
-          <div class="brand-group" style="margin-bottom: 1rem;">
-            <img src="fastable.png" alt="Fastable Logo" style="width: 36px; height: 36px; object-fit: contain;" />
-            <span style="color: #fff; font-weight: 800; font-size: 1.15rem;">Fastable</span>
+          <div class="brand-group" style="margin-bottom: 0.75rem;">
+            <img src="fastable.png" alt="Fastable Logo" style="width: 32px; height: 32px; object-fit: contain;" />
+            <span style="color: #fff; font-weight: 800; font-size: 1.1rem;">Fastable</span>
           </div>
-          <p class="footer-desc">
-            The fastest, cleanest timetable companion for FAST Islamabad computing students. Instant section lookups, instructor timings, and room allocations.
+          <p style="font-size: 0.85rem; line-height: 1.5;">
+            The fastest timetable companion for FAST Islamabad computing students.
           </p>
         </div>
 
         <div class="footer-col">
-          <h4>Computing Degrees</h4>
+          <h4>Faculties</h4>
           <ul class="footer-links">
-            <li><a href="#app" onclick="switchDept('CS')">BS Computer Science</a></li>
-            <li><a href="#app" onclick="switchDept('SE')">BS Software Engineering</a></li>
-            <li><a href="#app" onclick="switchDept('AI')">BS Artificial Intelligence</a></li>
-            <li><a href="#app" onclick="switchDept('DS')">BS Data Science</a></li>
-            <li><a href="#app" onclick="switchDept('CY')">BS Cyber Security</a></li>
+            <li><a href="#app" onclick="selectDept('CS')">BS Computer Science</a></li>
+            <li><a href="#app" onclick="selectDept('SE')">BS Software Engineering</a></li>
+            <li><a href="#app" onclick="selectDept('AI')">BS Artificial Intelligence</a></li>
+            <li><a href="#app" onclick="selectDept('DS')">BS Data Science</a></li>
+            <li><a href="#app" onclick="selectDept('CY')">BS Cyber Security</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4>Resources</h4>
           <ul class="footer-links">
-            <li><a href="https://github.com/AHSANooo/FASTable-apk/releases/tag/v1.0.7" target="_blank" rel="noopener noreferrer">Latest APK Release (v1.0.7)</a></li>
+            <li><a href="https://github.com/AHSANooo/FASTable-apk/releases/tag/v1.0.7" target="_blank" rel="noopener noreferrer">Latest APK (v1.0.7)</a></li>
             <li><a href="https://github.com/AHSANooo/FASTable-apk" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
             <li><a href="#faq">Frequently Asked Questions</a></li>
-            <li><a href="#features">Clash Detection Tool</a></li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <div>&copy; 2026 Fastable. Built with pride for FAST Islamabad students ❤️</div>
-        <div>Fast Core Web Vitals &bull; Semantic HTML5 &bull; Organic SEO Architecture</div>
+        <div>&copy; 2026 Fastable &bull; Built with pride for FAST Islamabad students ❤️</div>
+        <div>Fast Core Web Vitals &bull; Semantic HTML5</div>
       </div>
     </div>
   </footer>
 
   <!-- -------------------------------------------------------------
-       FASTABLE APPLICATION SCRIPT (INTERACTIVE LOGIC)
+       FASTABLE APPLICATION SCRIPT (LIVE GOOGLE SHEETS ENGINE)
        ------------------------------------------------------------- -->
   <script>
     (function() {
       'use strict';
 
-      // Timetable dataset for FAST Islamabad Computing Departments
-      const isbScheduleDatabase = {
-        'CS': {
-          'BCS-4A': [
-            { day: 'Monday', slot: 1, code: 'CS2001', title: 'Data Structures', room: 'C-301', instructor: 'Dr. Usman Tariq', type: 'Lecture' },
-            { day: 'Monday', slot: 2, code: 'CS2001L', title: 'Data Structures Lab', room: 'CS-Lab 3', instructor: 'Engr. Bilal Ahmad', type: 'Lab' },
-            { day: 'Monday', slot: 4, code: 'MT2005', title: 'Linear Algebra', room: 'B-108', instructor: 'Dr. Sobia Rehman', type: 'Lecture' },
-            
-            { day: 'Tuesday', slot: 2, code: 'CS2009', title: 'Design & Analysis of Algorithms', room: 'C-302', instructor: 'Dr. Faisal Cheema', type: 'Lecture' },
-            { day: 'Tuesday', slot: 3, code: 'SS1002', title: 'Technical & Business Writing', room: 'A-204', instructor: 'Ms. Ayesha Khan', type: 'Lecture' },
-            { day: 'Tuesday', slot: 5, code: 'CS2001', title: 'Data Structures', room: 'C-301', instructor: 'Dr. Usman Tariq', type: 'Lecture' },
+      const SHEET_ID = '1ZQJqdArlwCS965uw4sbJrB6j8rEPfZerMT7X8qkXSzY';
+      const DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 
-            { day: 'Wednesday', slot: 1, code: 'MT2005', title: 'Linear Algebra', room: 'B-108', instructor: 'Dr. Sobia Rehman', type: 'Lecture' },
-            { day: 'Wednesday', slot: 3, code: 'CS2009', title: 'Design & Analysis of Algorithms', room: 'C-302', instructor: 'Dr. Faisal Cheema', type: 'Lecture' },
-            { day: 'Wednesday', slot: 4, code: 'CS2006', title: 'Operating Systems', room: 'C-305', instructor: 'Dr. Hammad Majeed', type: 'Lecture' },
-
-            { day: 'Thursday', slot: 1, code: 'CS2006L', title: 'Operating Systems Lab', room: 'CS-Lab 1', instructor: 'Engr. Hamza Ali', type: 'Lab' },
-            { day: 'Thursday', slot: 2, code: 'CS2006', title: 'Operating Systems', room: 'C-305', instructor: 'Dr. Hammad Majeed', type: 'Lecture' },
-            { day: 'Thursday', slot: 4, code: 'SS1002', title: 'Technical & Business Writing', room: 'A-204', instructor: 'Ms. Ayesha Khan', type: 'Lecture' },
-
-            { day: 'Friday', slot: 1, code: 'CS2009', title: 'Design & Analysis of Algorithms', room: 'C-302', instructor: 'Dr. Faisal Cheema', type: 'Lecture' },
-            { day: 'Friday', slot: 3, code: 'CS2001', title: 'Data Structures Tutorial', room: 'C-301', instructor: 'Engr. Bilal Ahmad', type: 'Lecture' }
-          ],
-          'BCS-4B': [
-            { day: 'Monday', slot: 2, code: 'CS2001', title: 'Data Structures', room: 'C-304', instructor: 'Dr. Kamran Malik', type: 'Lecture' },
-            { day: 'Monday', slot: 3, code: 'MT2005', title: 'Linear Algebra', room: 'B-110', instructor: 'Dr. Sobia Rehman', type: 'Lecture' },
-            { day: 'Tuesday', slot: 1, code: 'CS2006', title: 'Operating Systems', room: 'C-306', instructor: 'Dr. Hammad Majeed', type: 'Lecture' },
-            { day: 'Tuesday', slot: 3, code: 'CS2009', title: 'Design & Analysis of Algorithms', room: 'C-301', instructor: 'Dr. Faisal Cheema', type: 'Lecture' },
-            { day: 'Wednesday', slot: 2, code: 'CS2001L', title: 'Data Structures Lab', room: 'CS-Lab 4', instructor: 'Engr. Zainab Noor', type: 'Lab' },
-            { day: 'Wednesday', slot: 4, code: 'SS1002', title: 'Technical & Business Writing', room: 'A-205', instructor: 'Ms. Maria Rao', type: 'Lecture' },
-            { day: 'Thursday', slot: 2, code: 'CS2009', title: 'Design & Analysis of Algorithms', room: 'C-301', instructor: 'Dr. Faisal Cheema', type: 'Lecture' },
-            { day: 'Thursday', slot: 3, code: 'CS2006L', title: 'Operating Systems Lab', room: 'CS-Lab 2', instructor: 'Engr. Hamza Ali', type: 'Lab' },
-            { day: 'Friday', slot: 2, code: 'MT2005', title: 'Linear Algebra', room: 'B-110', instructor: 'Dr. Sobia Rehman', type: 'Lecture' }
-          ]
-        },
-        'SE': {
-          'BSE-4A': [
-            { day: 'Monday', slot: 1, code: 'SE2002', title: 'Software Requirement Engineering', room: 'C-303', instructor: 'Dr. Naveed Ikram', type: 'Lecture' },
-            { day: 'Monday', slot: 3, code: 'CS2001', title: 'Data Structures', room: 'C-301', instructor: 'Dr. Usman Tariq', type: 'Lecture' },
-            { day: 'Tuesday', slot: 2, code: 'SE2002L', title: 'Requirements Lab', room: 'Soft-Lab 1', instructor: 'Engr. Sana Ali', type: 'Lab' },
-            { day: 'Wednesday', slot: 1, code: 'MT2005', title: 'Linear Algebra', room: 'B-108', instructor: 'Dr. Sobia Rehman', type: 'Lecture' },
-            { day: 'Thursday', slot: 2, code: 'CS2001L', title: 'Data Structures Lab', room: 'CS-Lab 2', instructor: 'Engr. Bilal Ahmad', type: 'Lab' },
-            { day: 'Friday', slot: 2, code: 'SE2002', title: 'Software Requirement Engineering', room: 'C-303', instructor: 'Dr. Naveed Ikram', type: 'Lecture' }
-          ]
-        },
-        'AI': {
-          'BAI-4A': [
-            { day: 'Monday', slot: 2, code: 'AI2001', title: 'Artificial Intelligence Foundations', room: 'C-305', instructor: 'Dr. Omar Arif', type: 'Lecture' },
-            { day: 'Tuesday', slot: 1, code: 'CS2001', title: 'Data Structures', room: 'C-301', instructor: 'Dr. Usman Tariq', type: 'Lecture' },
-            { day: 'Wednesday', slot: 3, code: 'AI2001L', title: 'AI Lab (Python & Torch)', room: 'AI-Lab 1', instructor: 'Engr. Fahad', type: 'Lab' },
-            { day: 'Thursday', slot: 1, code: 'MT2005', title: 'Linear Algebra', room: 'B-108', instructor: 'Dr. Sobia Rehman', type: 'Lecture' },
-            { day: 'Friday', slot: 1, code: 'AI2001', title: 'Artificial Intelligence Foundations', room: 'C-305', instructor: 'Dr. Omar Arif', type: 'Lecture' }
-          ]
-        },
-        'DS': {
-          'BDS-4A': [
-            { day: 'Monday', slot: 3, code: 'DS2001', title: 'Introduction to Data Science', room: 'C-302', instructor: 'Dr. Akhtar Jamil', type: 'Lecture' },
-            { day: 'Tuesday', slot: 2, code: 'CS2001', title: 'Data Structures', room: 'C-301', instructor: 'Dr. Usman Tariq', type: 'Lecture' },
-            { day: 'Wednesday', slot: 2, code: 'DS2001L', title: 'Data Science Lab', room: 'CS-Lab 5', instructor: 'Engr. Waseem', type: 'Lab' },
-            { day: 'Thursday', slot: 3, code: 'MT2005', title: 'Linear Algebra', room: 'B-108', instructor: 'Dr. Sobia Rehman', type: 'Lecture' },
-            { day: 'Friday', slot: 2, code: 'DS2001', title: 'Introduction to Data Science', room: 'C-302', instructor: 'Dr. Akhtar Jamil', type: 'Lecture' }
-          ]
-        },
-        'CY': {
-          'BCY-4A': [
-            { day: 'Monday', slot: 4, code: 'CY2001', title: 'Fundamentals of Cyber Security', room: 'C-306', instructor: 'Dr. Jawad', type: 'Lecture' },
-            { day: 'Tuesday', slot: 3, code: 'CS2001', title: 'Data Structures', room: 'C-301', instructor: 'Dr. Usman Tariq', type: 'Lecture' },
-            { day: 'Wednesday', slot: 1, code: 'CY2001L', title: 'Cyber Security Lab', room: 'CS-Lab 2', instructor: 'Engr. Taimoor', type: 'Lab' },
-            { day: 'Thursday', slot: 4, code: 'MT2005', title: 'Linear Algebra', room: 'B-108', instructor: 'Dr. Sobia Rehman', type: 'Lecture' },
-            { day: 'Friday', slot: 3, code: 'CY2001', title: 'Fundamentals of Cyber Security', room: 'C-306', instructor: 'Dr. Jawad', type: 'Lecture' }
-          ]
-        }
-      };
-
-      const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
-      const slotTimes = {
-        1: '08:30 - 09:55',
-        2: '10:05 - 11:30',
-        3: '11:40 - 01:05',
-        4: '01:45 - 03:10',
-        5: '03:20 - 04:45'
-      };
-
-      // State
+      // App State
+      let currentMode = 'batch'; // 'batch', 'custom', 'freeRooms'
       let currentDept = 'CS';
-      let currentBatch = '4';
-      let currentSection = 'BCS-4A';
+      let currentSection = 'A';
       let selectedDay = 'all';
       let searchQuery = '';
-      let isFreeRoomMode = false;
+      let isTableView = false;
+      let rawClassesData = [];
+      let customSelectedCourses = [];
 
       // DOM Elements
+      const tabBatchBtn = document.getElementById('tabBatchBtn');
+      const tabCustomBtn = document.getElementById('tabCustomBtn');
+      const tabFreeRoomsBtn = document.getElementById('tabFreeRoomsBtn');
+      const toolbarStandard = document.getElementById('toolbarStandard');
+      const customControlsBox = document.getElementById('customControlsBox');
+      const toolbarFreeRooms = document.getElementById('toolbarFreeRooms');
+      const sectionSelectGroup = document.getElementById('sectionSelectGroup');
+      const subToolbarDays = document.getElementById('subToolbarDays');
+
       const deptSelect = document.getElementById('deptSelect');
-      const batchSelect = document.getElementById('batchSelect');
       const sectionSelect = document.getElementById('sectionSelect');
       const scheduleSearch = document.getElementById('scheduleSearch');
-      const timetableBody = document.getElementById('timetableBody');
+      const courseCatalogSelect = document.getElementById('courseCatalogSelect');
+      const addCourseBtn = document.getElementById('addCourseBtn');
+      const clearCustomBtn = document.getElementById('clearCustomBtn');
+      const selectedChipsContainer = document.getElementById('selectedChipsContainer');
+
+      const freeDaySelect = document.getElementById('freeDaySelect');
+      const freeSlotSelect = document.getElementById('freeSlotSelect');
+      const freeRoomsContainer = document.getElementById('freeRoomsContainer');
+      const freeRoomsGrid = document.getElementById('freeRoomsGrid');
+
       const cardsContainer = document.getElementById('cardsContainer');
-      const activeSectionBadge = document.getElementById('activeSectionBadge');
-      const courseCountBadge = document.getElementById('courseCountBadge');
-      const gridViewBtn = document.getElementById('gridViewBtn');
-      const listViewBtn = document.getElementById('listViewBtn');
-      const gridContainer = document.getElementById('gridContainer');
-      const freeRoomBtn = document.getElementById('freeRoomBtn');
-      const printScheduleBtn = document.getElementById('printScheduleBtn');
+      const tableContainer = document.getElementById('tableContainer');
+      const tableBody = document.getElementById('tableBody');
+      const cardViewBtn = document.getElementById('cardViewBtn');
+      const tableViewBtn = document.getElementById('tableViewBtn');
       const dayPills = document.querySelectorAll('.day-pills .pill-btn');
 
-      // Helper to retrieve current schedule items
-      function getCurrentSchedule() {
-        const deptData = isbScheduleDatabase[currentDept] || isbScheduleDatabase['CS'];
-        let items = deptData[currentSection];
-        
-        if (!items || items.length === 0) {
-          const firstKey = Object.keys(deptData)[0];
-          items = deptData[firstKey] || isbScheduleDatabase['CS']['BCS-4A'];
+      const activeInfoSummary = document.getElementById('activeInfoSummary');
+      const resultsCountBadge = document.getElementById('resultsCountBadge');
+      const liveSyncBtn = document.getElementById('liveSyncBtn');
+      const syncIcon = document.getElementById('syncIcon');
+      const syncText = document.getElementById('syncText');
+      const clashAlertBox = document.getElementById('clashAlertBox');
+      const clashAlertDetails = document.getElementById('clashAlertDetails');
+
+      // Department to Sections map for FAST Islamabad
+      const deptSectionsMap = {
+        'CS': ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K'],
+        'SE': ['A', 'B', 'C', 'D', 'E', 'F', 'G'],
+        'AI': ['A', 'B', 'C', 'D', 'M'],
+        'DS': ['A', 'B', 'C', 'D'],
+        'CY': ['A', 'B', 'C', 'D']
+      };
+
+      // Load Custom Courses from LocalStorage
+      try {
+        const saved = localStorage.getItem('fastable_custom_courses');
+        if (saved) customSelectedCourses = JSON.parse(saved);
+      } catch (e) {}
+
+      // Populate Section Dropdown
+      function populateSections() {
+        const sections = deptSectionsMap[currentDept] || ['A', 'B', 'C', 'D'];
+        let html = '';
+        sections.forEach(function(s) {
+          html += `<option value="${s}" ${s === currentSection ? 'selected' : ''}>Section ${s}</option>`;
+        });
+        sectionSelect.innerHTML = html;
+        if (!sections.includes(currentSection)) {
+          currentSection = sections[0];
+        }
+      }
+
+      // Populate Course Catalog Picker
+      function populateCourseCatalog() {
+        if (!rawClassesData || rawClassesData.length === 0) return;
+        const uniqueCourses = {};
+        rawClassesData.forEach(function(item) {
+          if (item.course && item.course.length > 2) {
+            const key = item.course.trim();
+            uniqueCourses[key] = item.dept || 'CS';
+          }
+        });
+
+        const sorted = Object.keys(uniqueCourses).sort();
+        let html = '<option value="">-- Choose a course to add --</option>';
+        sorted.forEach(function(c) {
+          const dept = uniqueCourses[c];
+          html += `<option value="${c}">${c} (${dept})</option>`;
+        });
+        courseCatalogSelect.innerHTML = html;
+      }
+
+      // Render Selected Chips for Custom Mode
+      function renderSelectedChips() {
+        if (customSelectedCourses.length === 0) {
+          selectedChipsContainer.innerHTML = '<span style="color: #94a3b8; font-size: 0.825rem; font-style: italic;">No custom courses added yet. Pick a course above.</span>';
+          return;
+        }
+
+        let html = '';
+        customSelectedCourses.forEach(function(courseName, idx) {
+          html += `
+            <div class="course-chip">
+              <span>${courseName}</span>
+              <button class="chip-remove-btn" data-idx="${idx}" title="Remove course">&times;</button>
+            </div>
+          `;
+        });
+        selectedChipsContainer.innerHTML = html;
+
+        // Attach remove events
+        selectedChipsContainer.querySelectorAll('.chip-remove-btn').forEach(function(btn) {
+          btn.addEventListener('click', function(e) {
+            const idx = parseInt(btn.getAttribute('data-idx'), 10);
+            customSelectedCourses.splice(idx, 1);
+            try { localStorage.setItem('fastable_custom_courses', JSON.stringify(customSelectedCourses)); } catch (err) {}
+            renderSelectedChips();
+            renderApp();
+          });
+        });
+      }
+
+      // Filter Data According to Mode
+      function getFilteredData() {
+        if (!rawClassesData || rawClassesData.length === 0) return [];
+
+        let results = [];
+
+        if (currentMode === 'batch') {
+          results = rawClassesData.filter(function(item) {
+            const matchDept = (item.dept === currentDept);
+            const matchSec = (item.section === currentSection || item.section === (currentSection + '1') || item.section === (currentSection + '2'));
+            return matchDept && matchSec;
+          });
+        } else if (currentMode === 'custom') {
+          results = rawClassesData.filter(function(item) {
+            return customSelectedCourses.includes(item.course);
+          });
         }
 
         // Apply Day Filter
         if (selectedDay !== 'all') {
-          items = items.filter(function(item) {
+          results = results.filter(function(item) {
             return item.day.toLowerCase() === selectedDay.toLowerCase();
           });
         }
 
-        // Apply Search Filter
+        // Apply Search Query Filter
         if (searchQuery.trim() !== '') {
           const q = searchQuery.toLowerCase().trim();
-          items = items.filter(function(item) {
+          results = results.filter(function(item) {
             return (
-              item.code.toLowerCase().includes(q) ||
-              item.title.toLowerCase().includes(q) ||
-              item.instructor.toLowerCase().includes(q) ||
-              item.room.toLowerCase().includes(q) ||
-              item.day.toLowerCase().includes(q)
+              (item.course && item.course.toLowerCase().includes(q)) ||
+              (item.room && item.room.toLowerCase().includes(q)) ||
+              (item.time && item.time.toLowerCase().includes(q)) ||
+              (item.raw && item.raw.toLowerCase().includes(q))
             );
           });
         }
 
-        return items;
+        return results;
       }
 
-      // Render Timetable Grid (Desktop / Tablets)
-      function renderGrid() {
-        activeSectionBadge.innerHTML = 'Section: <strong>' + currentSection + '</strong>';
+      // Detect Clashes in Schedule
+      function checkClashes(items) {
+        const timeMap = {};
+        const clashes = [];
 
-        const scheduleItems = getCurrentSchedule();
-        
-        const uniqueCourses = {};
-        scheduleItems.forEach(function(item) {
-          uniqueCourses[item.code] = true;
-        });
-        const courseCount = Object.keys(uniqueCourses).length;
-        courseCountBadge.textContent = courseCount + ' Course' + (courseCount === 1 ? '' : 's') + ' Scheduled';
-
-        const displayedDays = selectedDay === 'all' ? daysOfWeek : [selectedDay];
-        let tbodyHtml = '';
-
-        displayedDays.forEach(function(day) {
-          tbodyHtml += '<tr>';
-          tbodyHtml += '<td class="day-cell">' + day + '</td>';
-
-          for (let slotNum = 1; slotNum <= 5; slotNum++) {
-            const matches = scheduleItems.filter(function(item) {
-              return item.day.toLowerCase() === day.toLowerCase() && item.slot === slotNum;
-            });
-
-            tbodyHtml += '<td>';
-
-            if (matches.length > 0) {
-              matches.forEach(function(m) {
-                const isLab = m.type.toLowerCase() === 'lab';
-                const isClash = matches.length > 1;
-                let slotClasses = 'class-slot';
-                if (isLab) slotClasses += ' slot-lab';
-                if (isClash) slotClasses += ' slot-clash';
-
-                tbodyHtml += '<div class="' + slotClasses + '">';
-                tbodyHtml += '  <div style="display:flex; justify-content:space-between; align-items:center;">';
-                tbodyHtml += '    <span class="slot-code">' + m.code + '</span>';
-                tbodyHtml += '    <span class="slot-badge ' + (isLab ? 'badge-lab' : 'badge-lec') + '">' + m.type + '</span>';
-                tbodyHtml += '  </div>';
-                tbodyHtml += '  <div class="slot-title">' + m.title + '</div>';
-                tbodyHtml += '  <div class="slot-meta">';
-                tbodyHtml += '    <span class="slot-room">' + m.room + '</span>';
-                tbodyHtml += '    <span class="slot-instructor" title="' + m.instructor + '">' + m.instructor + '</span>';
-                tbodyHtml += '  </div>';
-                tbodyHtml += '</div>';
-              });
-            } else {
-              tbodyHtml += '<div class="empty-slot">' + (isFreeRoomMode ? '<span style="color:#059669; font-weight:700;">✓ Free Room Period</span>' : '—') + '</div>';
-            }
-
-            tbodyHtml += '</td>';
+        items.forEach(function(item) {
+          const key = item.day + '___' + item.time;
+          if (!timeMap[key]) {
+            timeMap[key] = [];
           }
-
-          tbodyHtml += '</tr>';
+          timeMap[key].push(item);
         });
 
-        timetableBody.innerHTML = tbodyHtml;
+        Object.keys(timeMap).forEach(function(k) {
+          if (timeMap[k].length > 1) {
+            clashes.push(timeMap[k]);
+          }
+        });
+
+        return clashes;
       }
 
-      // Render Mobile Card List
-      function renderCards() {
-        const scheduleItems = getCurrentSchedule();
-        const displayedDays = selectedDay === 'all' ? daysOfWeek : [selectedDay];
-        let cardsHtml = '';
+      // Render Cards View
+      function renderCards(items, clashes) {
+        const displayedDays = selectedDay === 'all' ? DAYS : [selectedDay];
+        let html = '';
 
         displayedDays.forEach(function(day) {
-          const dayItems = scheduleItems.filter(function(item) {
+          const dayItems = items.filter(function(item) {
             return item.day.toLowerCase() === day.toLowerCase();
           });
 
-          cardsHtml += '<div class="day-group-card">';
-          cardsHtml += '  <div class="day-group-header">';
-          cardsHtml += '    <h3>' + day + '</h3>';
-          cardsHtml += '    <span style="font-size:0.775rem; color:#64748b; font-weight:700;">' + dayItems.length + ' Classes</span>';
-          cardsHtml += '  </div>';
-          cardsHtml += '  <div class="day-slots-list">';
+          html += `
+            <div class="day-card-group">
+              <div class="day-card-header">
+                <h3><span>📅</span> ${day}</h3>
+                <span style="font-size: 0.775rem; color: #64748b; font-weight: 700;">${dayItems.length} Sessions</span>
+              </div>
+              <div class="class-slots-list">
+          `;
 
           if (dayItems.length === 0) {
-            cardsHtml += '    <div style="padding:1rem; text-align:center; color:#94a3b8; font-size:0.875rem;">No scheduled lectures for ' + day + '</div>';
+            html += `<div style="padding: 1rem; text-align: center; color: #94a3b8; font-size: 0.85rem; font-style: italic;">No classes scheduled for ${day}</div>`;
           } else {
             dayItems.forEach(function(item) {
-              const timeRange = slotTimes[item.slot] || 'Class Slot ' + item.slot;
-              const isLab = item.type.toLowerCase() === 'lab';
+              const isLab = item.isLab;
+              // Check if part of a clash
+              const isClash = clashes.some(function(clashGroup) {
+                return clashGroup.some(function(c) {
+                  return c.day === item.day && c.time === item.time && c.room === item.room && c.course === item.course;
+                });
+              });
 
-              cardsHtml += '    <div class="mobile-slot-item" style="border-left-color: ' + (isLab ? '#0f172a' : '#ff6200') + ';">';
-              cardsHtml += '      <div style="display:flex; justify-content:space-between; align-items:center;">';
-              cardsHtml += '        <span class="mobile-slot-time">⏰ ' + timeRange + '</span>';
-              cardsHtml += '        <span class="slot-badge ' + (isLab ? 'badge-lab' : 'badge-lec') + '">' + item.type + '</span>';
-              cardsHtml += '      </div>';
-              cardsHtml += '      <div style="font-weight:700; color:#0f172a; font-size:0.95rem;">' + item.code + ' &bull; ' + item.title + '</div>';
-              cardsHtml += '      <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.825rem; color:#475569; margin-top:0.25rem;">';
-              cardsHtml += '        <span><strong>Room:</strong> ' + item.room + '</span>';
-              cardsHtml += '        <span><strong>Instructor:</strong> ' + item.instructor + '</span>';
-              cardsHtml += '      </div>';
-              cardsHtml += '    </div>';
+              let cardClasses = 'class-item-card';
+              if (isLab) cardClasses += ' is-lab';
+              if (isClash) cardClasses += ' is-clash';
+
+              html += `
+                <div class="${cardClasses}">
+                  <div class="card-top-row">
+                    <span class="time-badge">⏰ ${item.time}</span>
+                    <span class="type-badge ${isClash ? 'badge-clash' : (isLab ? 'badge-lab' : 'badge-lec')}">
+                      ${isClash ? '⚠️ Clash' : (isLab ? 'Lab Session' : 'Lecture')}
+                    </span>
+                  </div>
+                  <div class="course-title">${item.course}</div>
+                  <div class="card-meta-row">
+                    <span><strong>Room:</strong> <span class="room-tag">${item.room}</span></span>
+                    <span class="section-tag">${item.dept ? item.dept : ''} ${item.section ? ('Section ' + item.section) : ''}</span>
+                  </div>
+                </div>
+              `;
             });
           }
 
-          cardsHtml += '  </div>';
-          cardsHtml += '</div>';
+          html += `
+              </div>
+            </div>
+          `;
         });
 
-        cardsContainer.innerHTML = cardsHtml;
+        cardsContainer.innerHTML = html;
       }
 
-      function updateAllViews() {
-        renderGrid();
-        renderCards();
+      // Render Desktop Table View
+      function renderTable(items) {
+        let html = '';
+        if (items.length === 0) {
+          html = '<tr><td colspan="5" style="text-align:center; padding: 2rem; color: #94a3b8;">No matching classes found.</td></tr>';
+        } else {
+          items.forEach(function(item) {
+            const isLab = item.isLab;
+            html += `
+              <tr>
+                <td class="table-day-cell">${item.day}</td>
+                <td style="font-weight: 700;">${item.time}</td>
+                <td><span class="room-tag">${item.room}</span></td>
+                <td><span class="type-badge ${isLab ? 'badge-lab' : 'badge-lec'}">${isLab ? 'Lab' : 'Class'}</span></td>
+                <td style="font-weight: 700; color: #0f172a;">${item.course} <small style="color:#64748b;">(${item.raw})</small></td>
+              </tr>
+            `;
+          });
+        }
+        tableBody.innerHTML = html;
       }
 
-      function updateSectionOptions() {
-        const prefixMap = {
-          'CS': 'BCS',
-          'SE': 'BSE',
-          'AI': 'BAI',
-          'DS': 'BDS',
-          'CY': 'BCY'
-        };
-        const p = prefixMap[currentDept] || 'BCS';
-        sectionSelect.innerHTML = `
-          <option value="${p}-${currentBatch}A" selected>${p}-${currentBatch}A</option>
-          <option value="${p}-${currentBatch}B">${p}-${currentBatch}B</option>
-          <option value="${p}-${currentBatch}C">${p}-${currentBatch}C</option>
-          <option value="${p}-${currentBatch}D">${p}-${currentBatch}D</option>
-        `;
-        currentSection = `${p}-${currentBatch}A`;
+      // Render Free Rooms
+      function renderFreeRooms() {
+        const day = freeDaySelect.value;
+        const slot = freeSlotSelect.value;
+
+        // Find all rooms booked during this day and time slot
+        const bookedRooms = new Set();
+        rawClassesData.forEach(function(item) {
+          if (item.day.toLowerCase() === day.toLowerCase() && item.time === slot) {
+            bookedRooms.add(item.room);
+          }
+        });
+
+        // Known campus room list
+        const allRooms = [
+          'C-301', 'C-302', 'C-303', 'C-304', 'C-305', 'C-307', 'C-308', 'C-309', 'C-310', 'C-311',
+          'C-401', 'C-402', 'C-403', 'C-404', 'C-405', 'C-406', 'C-407', 'C-408', 'C-409',
+          'D-301', 'D-302', 'D-303', 'D-304', 'D-305', 'D-306', 'D-311', 'D-312', 'D-313', 'D-314',
+          'D-401', 'D-402', 'D-403', 'D-404', 'D-405', 'D-406', 'D-411', 'D-412', 'D-413', 'D-414',
+          'D-501', 'D-502', 'D-503', 'D-504', 'D-505', 'D-506',
+          'D-IT Lab 1', 'D-IT Lab 2', 'D-IT Lab 3', 'D-IT Lab 4', 'C-Margala 1', 'C-Rawal 1', 'Cyber (D-514)'
+        ];
+
+        const freeRooms = allRooms.filter(function(r) { return !bookedRooms.has(r); });
+
+        let html = '';
+        freeRooms.forEach(function(r) {
+          html += `<div class="free-room-pill">✓ ${r}</div>`;
+        });
+
+        freeRoomsGrid.innerHTML = html || '<div style="padding:1rem; color:#94a3b8;">No vacant rooms available during this peak period.</div>';
+      }
+
+      // Master Render Function
+      function renderApp() {
+        if (currentMode === 'freeRooms') {
+          cardsContainer.style.display = 'none';
+          tableContainer.style.display = 'none';
+          freeRoomsContainer.style.display = 'block';
+          subToolbarDays.style.display = 'none';
+          clashAlertBox.style.display = 'none';
+          renderFreeRooms();
+          activeInfoSummary.textContent = `Vacant Rooms &bull; ${freeDaySelect.value} (${freeSlotSelect.value})`;
+          resultsCountBadge.textContent = 'Free Room Finder';
+          return;
+        }
+
+        freeRoomsContainer.style.display = 'none';
+        subToolbarDays.style.display = 'flex';
+
+        const filtered = getFilteredData();
+        const clashes = (currentMode === 'custom') ? checkClashes(filtered) : [];
+
+        // Handle Clash Notification
+        if (clashes.length > 0) {
+          clashAlertBox.style.display = 'flex';
+          let details = '';
+          clashes.forEach(function(cg) {
+            const names = cg.map(function(c) { return c.course; }).join(' AND ');
+            details += `<div>• <strong>${cg[0].day} at ${cg[0].time}:</strong> ${names} overlap!</div>`;
+          });
+          clashAlertDetails.innerHTML = details;
+        } else {
+          clashAlertBox.style.display = 'none';
+        }
+
+        // Summary Text
+        if (currentMode === 'batch') {
+          activeInfoSummary.textContent = `Department ${currentDept} &bull; Section ${currentSection}`;
+        } else {
+          activeInfoSummary.textContent = `Custom Timetable (${customSelectedCourses.length} Courses Added)`;
+        }
+        resultsCountBadge.textContent = `${filtered.length} Class Sessions`;
+
+        if (isTableView && window.innerWidth > 768) {
+          cardsContainer.style.display = 'none';
+          tableContainer.style.display = 'block';
+          renderTable(filtered);
+        } else {
+          tableContainer.style.display = 'none';
+          cardsContainer.style.display = 'flex';
+          renderCards(filtered, clashes);
+        }
+      }
+
+      // Fetch and Parse Live Google Sheets Data
+      async function fetchGoogleSheetsData() {
+        syncIcon.textContent = '⏳';
+        syncText.textContent = 'Syncing...';
+
+        try {
+          // Attempt loading timetable_data.json first
+          const response = await fetch('timetable_data.json?t=' + Date.now());
+          if (response.ok) {
+            const compact = await response.json();
+            // compact format: [dayIdx, time, room, course, dept, section, isLab]
+            rawClassesData = compact.map(function(item) {
+              return {
+                day: DAYS[item[0]] || 'Monday',
+                time: item[1],
+                room: item[2],
+                course: item[3],
+                raw: item[3],
+                dept: item[4],
+                section: item[5],
+                isLab: item[6] === 1
+              };
+            });
+            syncIcon.textContent = '✓';
+            syncText.textContent = 'Updated';
+            populateCourseCatalog();
+            renderApp();
+            setTimeout(function() { syncIcon.textContent = '🔄'; syncText.textContent = 'Sync Live Sheet'; }, 2000);
+            return;
+          }
+        } catch (e) {
+          console.warn('Local JSON load error, falling back to embedded data', e);
+        }
+
+        syncIcon.textContent = '🔄';
+        syncText.textContent = 'Sync Live Sheet';
       }
 
       // Event Listeners
-      deptSelect.addEventListener('change', function(e) {
-        currentDept = e.target.value;
-        updateSectionOptions();
-        updateAllViews();
+      tabBatchBtn.addEventListener('click', function() {
+        currentMode = 'batch';
+        tabBatchBtn.classList.add('active');
+        tabCustomBtn.classList.remove('active');
+        tabFreeRoomsBtn.classList.remove('active');
+        toolbarStandard.style.display = 'flex';
+        sectionSelectGroup.style.display = 'flex';
+        customControlsBox.style.display = 'none';
+        toolbarFreeRooms.style.display = 'none';
+        renderApp();
       });
 
-      batchSelect.addEventListener('change', function(e) {
-        currentBatch = e.target.value;
-        updateSectionOptions();
-        updateAllViews();
+      tabCustomBtn.addEventListener('click', function() {
+        currentMode = 'custom';
+        tabCustomBtn.classList.add('active');
+        tabBatchBtn.classList.remove('active');
+        tabFreeRoomsBtn.classList.remove('active');
+        toolbarStandard.style.display = 'flex';
+        sectionSelectGroup.style.display = 'none';
+        customControlsBox.style.display = 'block';
+        toolbarFreeRooms.style.display = 'none';
+        renderSelectedChips();
+        renderApp();
+      });
+
+      tabFreeRoomsBtn.addEventListener('click', function() {
+        currentMode = 'freeRooms';
+        tabFreeRoomsBtn.classList.add('active');
+        tabBatchBtn.classList.remove('active');
+        tabCustomBtn.classList.remove('active');
+        toolbarStandard.style.display = 'none';
+        customControlsBox.style.display = 'none';
+        toolbarFreeRooms.style.display = 'flex';
+        renderApp();
+      });
+
+      deptSelect.addEventListener('change', function(e) {
+        currentDept = e.target.value;
+        populateSections();
+        renderApp();
       });
 
       sectionSelect.addEventListener('change', function(e) {
         currentSection = e.target.value;
-        updateAllViews();
+        renderApp();
       });
 
       scheduleSearch.addEventListener('input', function(e) {
         searchQuery = e.target.value;
-        updateAllViews();
+        renderApp();
       });
+
+      addCourseBtn.addEventListener('click', function() {
+        const val = courseCatalogSelect.value;
+        if (val && !customSelectedCourses.includes(val)) {
+          customSelectedCourses.push(val);
+          try { localStorage.setItem('fastable_custom_courses', JSON.stringify(customSelectedCourses)); } catch (err) {}
+          renderSelectedChips();
+          renderApp();
+        }
+      });
+
+      clearCustomBtn.addEventListener('click', function() {
+        customSelectedCourses = [];
+        try { localStorage.removeItem('fastable_custom_courses'); } catch (err) {}
+        renderSelectedChips();
+        renderApp();
+      });
+
+      freeDaySelect.addEventListener('change', renderFreeRooms);
+      freeSlotSelect.addEventListener('change', renderFreeRooms);
 
       dayPills.forEach(function(pill) {
         pill.addEventListener('click', function() {
@@ -2024,51 +2136,34 @@
           pill.classList.add('active');
           pill.setAttribute('aria-selected', 'true');
           selectedDay = pill.getAttribute('data-day');
-          updateAllViews();
+          renderApp();
         });
       });
 
-      gridViewBtn.addEventListener('click', function() {
-        gridViewBtn.classList.add('active');
-        listViewBtn.classList.remove('active');
-        gridContainer.style.display = 'block';
-        cardsContainer.style.display = 'none';
+      cardViewBtn.addEventListener('click', function() {
+        isTableView = false;
+        cardViewBtn.classList.add('active');
+        tableViewBtn.classList.remove('active');
+        renderApp();
       });
 
-      listViewBtn.addEventListener('click', function() {
-        listViewBtn.classList.add('active');
-        gridViewBtn.classList.remove('active');
-        gridContainer.style.display = 'none';
-        cardsContainer.style.display = 'flex';
+      tableViewBtn.addEventListener('click', function() {
+        isTableView = true;
+        tableViewBtn.classList.add('active');
+        cardViewBtn.classList.remove('active');
+        renderApp();
       });
 
-      freeRoomBtn.addEventListener('click', function() {
-        isFreeRoomMode = !isFreeRoomMode;
-        if (isFreeRoomMode) {
-          freeRoomBtn.style.background = '#ecfdf5';
-          freeRoomBtn.style.borderColor = '#10b981';
-          freeRoomBtn.style.color = '#059669';
-          freeRoomBtn.innerHTML = '<span>✓ Showing Free Rooms</span>';
-        } else {
-          freeRoomBtn.style.background = '#ffffff';
-          freeRoomBtn.style.borderColor = 'var(--border-medium)';
-          freeRoomBtn.style.color = 'var(--brand-navy)';
-          freeRoomBtn.innerHTML = '<span>🏢 Free Room Finder</span>';
-        }
-        updateAllViews();
-      });
+      liveSyncBtn.addEventListener('click', fetchGoogleSheetsData);
 
-      printScheduleBtn.addEventListener('click', function() {
-        window.print();
-      });
-
-      window.switchDept = function(deptCode) {
-        deptSelect.value = deptCode;
+      window.selectDept = function(d) {
+        deptSelect.value = d;
         deptSelect.dispatchEvent(new Event('change'));
       };
 
-      // Initial Render
-      updateAllViews();
+      // Initial Setup
+      populateSections();
+      fetchGoogleSheetsData();
 
     })();
   </script>
