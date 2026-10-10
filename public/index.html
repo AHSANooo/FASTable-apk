@@ -3,15 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-  
+
   <!-- Primary SEO Metadata -->
-  <title>FAST Islamabad Timetable | FAST-NUCES Class Schedules & Room Allocations</title>
+  <title>FAST Islamabad Timetable | FAST-NUCES Class Schedules &amp; Room Allocations</title>
   <meta name="description" content="Fastable is the fastest timetable viewer for FAST-NUCES Islamabad students. Search CS, SE, AI, DS, and CYS class schedules, sections, and room allocations." />
-  <meta name="keywords" content="FAST Islamabad timetable, FAST timetable, FAST NUCES timetable, NUCES timetable, FAST schedule, FAST Islamabad CS timetable, FAST Islamabad room allocation, FAST Islamabad clash detector, Fastable" />
+  <meta name="keywords" content="FAST Islamabad timetable, FAST timetable, FAST NUCES timetable, NUCES timetable, FAST schedule, FAST Islamabad CS timetable, FAST Islamabad room allocation, Fastable" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://fastable.site/" />
-  <!-- Google Search Console Verification -->
-  <!-- <meta name="google-site-verification" content="YOUR_GOOGLE_VERIFICATION_CODE" /> -->
   <meta name="author" content="Fastable Team" />
   <meta name="application-name" content="Fastable" />
   <meta name="theme-color" content="#0f172a" />
@@ -20,7 +18,7 @@
   <!-- Open Graph / Facebook Meta Tags -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://fastable.site/" />
-  <meta property="og:title" content="FAST Islamabad Timetable | FAST-NUCES Class Schedules & Room Allocations" />
+  <meta property="og:title" content="FAST Islamabad Timetable | FAST-NUCES Class Schedules &amp; Room Allocations" />
   <meta property="og:description" content="Fastable is the fastest timetable viewer for FAST-NUCES Islamabad students. Search CS, SE, AI, DS, and CYS class schedules, sections, and room allocations." />
   <meta property="og:image" content="https://fastable.site/fastable.png" />
   <meta property="og:site_name" content="Fastable" />
@@ -29,7 +27,7 @@
   <!-- Twitter Meta Tags -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:url" content="https://fastable.site/" />
-  <meta name="twitter:title" content="FAST Islamabad Timetable | FAST-NUCES Class Schedules & Room Allocations" />
+  <meta name="twitter:title" content="FAST Islamabad Timetable | FAST-NUCES Class Schedules &amp; Room Allocations" />
   <meta name="twitter:description" content="Fastable is the fastest timetable viewer for FAST-NUCES Islamabad students. Search CS, SE, AI, DS, and CYS class schedules, sections, and room allocations." />
   <meta name="twitter:image" content="https://fastable.site/fastable.png" />
 
@@ -60,7 +58,7 @@
           "FAST NUCES Islamabad section timetables (H-11/4 Campus)",
           "Department schedule filtering (CS, SE, AI, DS, CYS)",
           "Live search by course, teacher, or room number",
-          "Custom timetable builder with clash detector",
+          "Custom timetable builder",
           "Live Google Sheets synchronization"
         ],
         "aggregateRating": {
@@ -91,10 +89,10 @@
           },
           {
             "@type": "Question",
-            "name": "How does the custom timetable and clash detector work?",
+            "name": "How does the custom timetable work?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Switch to the Custom Course Selection tab, search for elective or cross-section courses, and add them to your personalized schedule. Fastable automatically detects overlapping time slots and flags conflicting classes."
+              "text": "Switch to the Custom Course Selection tab, search for elective or cross-section courses, and add them to your personalized schedule."
             }
           },
           {
@@ -208,26 +206,27 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 70px;
-      gap: 1.25rem;
+      height: 64px;
+      gap: 1rem;
     }
 
     .brand-group {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.65rem;
       text-decoration: none !important;
+      flex-shrink: 0;
     }
 
     .brand-logo-img {
-      width: 42px;
-      height: 42px;
+      width: 38px;
+      height: 38px;
       object-fit: contain;
       filter: drop-shadow(0 2px 4px rgba(255, 98, 0, 0.25));
     }
 
     .brand-text h1 {
-      font-size: 1.15rem;
+      font-size: 1rem;
       font-weight: 800;
       color: var(--brand-navy);
       line-height: 1.2;
@@ -235,20 +234,20 @@
     }
 
     .brand-tagline {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       color: var(--text-subtle);
       font-weight: 600;
       display: flex;
       align-items: center;
-      gap: 0.35rem;
+      gap: 0.3rem;
     }
 
     .campus-chip {
       background: var(--brand-orange-light);
       color: var(--brand-orange-hover);
-      padding: 0.1rem 0.45rem;
+      padding: 0.1rem 0.4rem;
       border-radius: var(--radius-full);
-      font-size: 0.675rem;
+      font-size: 0.65rem;
       font-weight: 700;
       border: 1px solid var(--brand-orange-border);
     }
@@ -262,9 +261,9 @@
 
     .nav-links a {
       color: var(--text-muted);
-      font-size: 0.9rem;
+      font-size: 0.875rem;
       font-weight: 600;
-      padding: 0.5rem 0.25rem;
+      padding: 0.4rem 0.25rem;
     }
     .nav-links a:hover {
       color: var(--brand-orange);
@@ -274,25 +273,26 @@
     .nav-actions {
       display: flex;
       align-items: center;
-      gap: 0.65rem;
+      gap: 0.5rem;
+      flex-shrink: 0;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.45rem;
+      gap: 0.4rem;
       font-family: inherit;
-      font-size: 0.875rem;
+      font-size: 0.85rem;
       font-weight: 700;
-      padding: 0.65rem 1.25rem;
+      padding: 0.6rem 1.1rem;
       border-radius: var(--radius-md);
       border: 1px solid transparent;
       cursor: pointer;
       transition: var(--transition);
       text-decoration: none !important;
       white-space: nowrap;
-      min-height: 44px;
+      min-height: 42px;
     }
 
     .btn-primary {
@@ -317,15 +317,15 @@
     }
 
     .btn-sm {
-      padding: 0.4rem 0.85rem;
-      font-size: 0.825rem;
-      min-height: 38px;
+      padding: 0.38rem 0.8rem;
+      font-size: 0.8rem;
+      min-height: 36px;
     }
 
     .badge-apk {
       background: rgba(255, 255, 255, 0.25);
       color: #ffffff;
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       padding: 0.1rem 0.4rem;
       border-radius: var(--radius-full);
       font-weight: 700;
@@ -335,7 +335,7 @@
        HERO & WORKSPACE AREA
        ------------------------------------------------------------- */
     .hero-section {
-      padding: 2.25rem 0 1.5rem 0;
+      padding: 2rem 0 1.5rem 0;
       text-align: center;
       background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
       border-bottom: 1px solid var(--border-subtle);
@@ -345,7 +345,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.45rem;
-      padding: 0.35rem 0.9rem;
+      padding: 0.35rem 0.85rem;
       background: var(--brand-orange-light);
       border: 1px solid var(--brand-orange-border);
       border-radius: var(--radius-full);
@@ -356,7 +356,7 @@
     }
 
     .hero-title {
-      font-size: clamp(1.75rem, 3.5vw, 2.4rem);
+      font-size: clamp(1.6rem, 3.5vw, 2.3rem);
       font-weight: 800;
       letter-spacing: -0.025em;
       color: var(--brand-navy);
@@ -365,15 +365,16 @@
     }
 
     .hero-lead {
-      font-size: 1rem;
+      font-size: 0.975rem;
       color: var(--text-muted);
-      max-width: 680px;
+      max-width: 640px;
       margin: 0 auto 1.5rem;
       line-height: 1.55;
+      padding: 0 1rem;
     }
 
     /* -------------------------------------------------------------
-       EXACT TWO TABS (Batch Timetable & Custom Course Selection)
+       TWO TABS (Batch Timetable & Custom Course Selection)
        ------------------------------------------------------------- */
     .app-card {
       background: var(--bg-surface);
@@ -393,8 +394,8 @@
 
     .main-tab-btn {
       flex: 1;
-      padding: 1.1rem 1.5rem;
-      font-size: 0.95rem;
+      padding: 1rem 1.25rem;
+      font-size: 0.9rem;
       font-weight: 800;
       color: var(--text-muted);
       background: transparent;
@@ -403,7 +404,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
+      gap: 0.45rem;
       transition: var(--transition);
       border-bottom: 3px solid transparent;
       margin-bottom: -2px;
@@ -421,72 +422,70 @@
     }
 
     /* -------------------------------------------------------------
-       HIGH-CONTRAST DROPDOWNS & CONTROLS
-       (NO BAD HOVER COLOR COMBINATIONS)
+       DROPDOWNS & CONTROLS
        ------------------------------------------------------------- */
     .app-toolbar {
-      padding: 1.5rem;
+      padding: 1.25rem;
       background: #ffffff;
       border-bottom: 1px solid var(--border-subtle);
       display: flex;
       flex-direction: column;
-      gap: 1.25rem;
+      gap: 1rem;
     }
 
     .filter-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
+      grid-template-columns: 1fr 1fr 1fr auto;
+      gap: 0.85rem;
       align-items: flex-end;
     }
 
     .form-group {
       display: flex;
       flex-direction: column;
-      gap: 0.4rem;
+      gap: 0.35rem;
+      min-width: 0;
     }
 
     .form-group label {
-      font-size: 0.8rem;
+      font-size: 0.775rem;
       font-weight: 700;
       color: var(--brand-navy);
       display: flex;
       align-items: center;
-      gap: 0.35rem;
+      gap: 0.3rem;
     }
 
-    /* Clean, high-contrast, crystal clear dropdowns (No bad hover colors) */
     .form-select, .form-input {
       appearance: none;
       -webkit-appearance: none;
       -moz-appearance: none;
       font-family: inherit;
-      font-size: 0.925rem;
+      font-size: 0.9rem;
       font-weight: 600;
-      padding: 0.72rem 2.5rem 0.72rem 1rem;
+      padding: 0.68rem 2.4rem 0.68rem 0.9rem;
       border: 1.5px solid #cbd5e1;
       border-radius: var(--radius-md);
       background-color: #ffffff;
       color: #0f172a;
       outline: none;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
       width: 100%;
-      min-height: 46px;
+      min-height: 44px;
       cursor: pointer;
       color-scheme: light;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
-      background-position: right 1rem center;
-      background-size: 16px;
+      background-position: right 0.85rem center;
+      background-size: 15px;
     }
 
     .form-input {
-      padding-right: 1rem;
+      padding-right: 0.9rem;
       background-image: none;
       cursor: text;
     }
 
-    /* Fixed hover: pristine white background with crisp dark text and orange accent */
     .form-select:hover, .form-input:hover {
       border-color: var(--brand-orange);
       background-color: #ffffff;
@@ -498,45 +497,41 @@
       border-color: var(--brand-orange);
       background-color: #ffffff;
       color: #0f172a;
-      box-shadow: 0 0 0 3px rgba(255, 98, 0, 0.25);
+      box-shadow: 0 0 0 3px rgba(255, 98, 0, 0.2);
     }
 
-    /* Native options: high contrast dark slate on crisp white */
     .form-select option {
       background-color: #ffffff;
       color: #0f172a;
-      padding: 10px 12px;
       font-weight: 500;
-      font-size: 0.925rem;
     }
 
-    /* Sub-Toolbar (Day Filter & Views) */
+    /* Sub-Toolbar */
     .app-subtoolbar {
-      padding: 0.85rem 1.5rem;
+      padding: 0.75rem 1.25rem;
       background: var(--bg-surface-alt);
       border-bottom: 1px solid var(--border-subtle);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 0.75rem;
+      gap: 0.6rem;
       flex-wrap: wrap;
     }
 
     .day-pills {
       display: flex;
       align-items: center;
-      gap: 0.35rem;
+      gap: 0.3rem;
       overflow-x: auto;
       padding-bottom: 2px;
       scrollbar-width: none;
+      flex: 1;
     }
-    .day-pills::-webkit-scrollbar {
-      display: none;
-    }
+    .day-pills::-webkit-scrollbar { display: none; }
 
     .pill-btn {
-      padding: 0.4rem 0.85rem;
-      font-size: 0.825rem;
+      padding: 0.35rem 0.8rem;
+      font-size: 0.8rem;
       font-weight: 700;
       border-radius: var(--radius-full);
       border: 1px solid var(--border-medium);
@@ -545,7 +540,7 @@
       cursor: pointer;
       transition: var(--transition);
       white-space: nowrap;
-      min-height: 34px;
+      min-height: 32px;
     }
     .pill-btn:hover {
       background: var(--brand-orange-light);
@@ -562,12 +557,13 @@
     .view-toggles {
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.35rem;
+      flex-shrink: 0;
     }
 
     .toggle-btn {
-      padding: 0.35rem 0.75rem;
-      font-size: 0.8rem;
+      padding: 0.3rem 0.7rem;
+      font-size: 0.775rem;
       font-weight: 700;
       border-radius: var(--radius-sm);
       border: 1px solid var(--border-medium);
@@ -576,8 +572,8 @@
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
-      min-height: 34px;
+      gap: 0.3rem;
+      min-height: 32px;
     }
     .toggle-btn.active {
       background: var(--brand-navy);
@@ -585,74 +581,183 @@
       border-color: var(--brand-navy);
     }
 
-    /* -------------------------------------------------------------
-       EMPTY STATE CARD (HIDDEN BY DEFAULT UNTIL SELECTED)
-       ------------------------------------------------------------- */
+    /* Loading State */
+    .loading-state {
+      padding: 3rem 1.5rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .spinner {
+      width: 36px;
+      height: 36px;
+      border: 3px solid var(--border-subtle);
+      border-top-color: var(--brand-orange);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Empty State */
     .empty-state-card {
-      padding: 4rem 1.5rem;
+      padding: 3.5rem 1.5rem;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 0.75rem;
+      gap: 0.65rem;
       background: #ffffff;
     }
 
     .empty-state-icon {
-      width: 64px;
-      height: 64px;
+      width: 60px;
+      height: 60px;
       border-radius: var(--radius-full);
       background: var(--brand-orange-light);
       color: var(--brand-orange);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.85rem;
+      font-size: 1.75rem;
       border: 1px solid var(--brand-orange-border);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.35rem;
     }
 
     .empty-state-card h3 {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       font-weight: 800;
       color: var(--brand-navy);
     }
 
     .empty-state-card p {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: var(--text-muted);
-      max-width: 480px;
+      max-width: 440px;
       line-height: 1.5;
     }
 
-    /* -------------------------------------------------------------
-       CUSTOM COURSE SELECTION STYLES
-       ------------------------------------------------------------- */
+    /* Custom Course Selection */
     .custom-selection-box {
-      padding: 1.5rem;
+      padding: 1.25rem;
       background: #ffffff;
       border-bottom: 1px solid var(--border-subtle);
       display: flex;
       flex-direction: column;
-      gap: 1.25rem;
+      gap: 1rem;
+    }
+
+    .custom-filter-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.85rem;
+    }
+
+    /* Searchable Course Picker */
+    .course-search-wrapper {
+      position: relative;
+    }
+
+    .course-search-input {
+      width: 100%;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 0.68rem 2.5rem 0.68rem 0.9rem;
+      border: 1.5px solid #cbd5e1;
+      border-radius: var(--radius-md);
+      background-color: #ffffff;
+      color: #0f172a;
+      outline: none;
+      min-height: 44px;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .course-search-input:focus {
+      border-color: var(--brand-orange);
+      box-shadow: 0 0 0 3px rgba(255, 98, 0, 0.2);
+    }
+    .course-search-icon {
+      position: absolute;
+      right: 0.9rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+      font-size: 1rem;
+    }
+
+    .course-dropdown-list {
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0;
+      right: 0;
+      background: #ffffff;
+      border: 1.5px solid var(--brand-orange);
+      border-radius: var(--radius-md);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      z-index: 100;
+      max-height: 280px;
+      overflow-y: auto;
+      display: none;
+    }
+
+    .course-dropdown-list.open {
+      display: block;
+    }
+
+    .course-dropdown-item {
+      padding: 0.6rem 0.9rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-main);
+      cursor: pointer;
+      border-bottom: 1px solid var(--border-subtle);
+      transition: background 0.1s;
+    }
+    .course-dropdown-item:last-child {
+      border-bottom: none;
+    }
+    .course-dropdown-item:hover, .course-dropdown-item.highlighted {
+      background: var(--brand-orange-light);
+      color: var(--brand-orange-hover);
+    }
+    .course-dropdown-item .item-dept-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      background: var(--bg-surface-alt);
+      color: var(--text-subtle);
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      margin-left: 0.5rem;
+    }
+    .course-dropdown-empty {
+      padding: 1rem 0.9rem;
+      color: var(--text-subtle);
+      font-size: 0.85rem;
+      text-align: center;
     }
 
     .selected-courses-panel {
       background: var(--bg-surface-alt);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-md);
-      padding: 1rem 1.25rem;
+      padding: 0.9rem 1.1rem;
     }
 
     .selected-summary-line {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1rem;
+      gap: 0.75rem;
       flex-wrap: wrap;
-      margin-bottom: 0.85rem;
-      font-size: 0.85rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.82rem;
       font-weight: 700;
       color: var(--brand-navy);
     }
@@ -660,59 +765,72 @@
     .selected-chips-list {
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 0.45rem;
     }
 
     .selected-course-row {
       background: #ffffff;
       border: 1px solid var(--border-medium);
       border-radius: var(--radius-sm);
-      padding: 0.65rem 0.85rem;
+      padding: 0.55rem 0.8rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 0.75rem;
+      gap: 0.6rem;
     }
 
     .selected-course-title {
-      font-size: 0.9rem;
+      font-size: 0.875rem;
       font-weight: 700;
       color: var(--brand-navy);
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .btn-remove-course {
       background: #fee2e2;
       border: 1px solid #fecdd3;
       color: #b91c1c;
-      padding: 0.25rem 0.65rem;
+      padding: 0.2rem 0.55rem;
       border-radius: 4px;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 700;
       cursor: pointer;
       transition: var(--transition);
+      flex-shrink: 0;
     }
     .btn-remove-course:hover {
       background: #fca5a5;
     }
 
-    .clash-alert-banner {
-      background: #fff1f2;
-      border: 1px solid #fecdd3;
+    /* Clash redirect banner */
+    .clash-redirect-banner {
+      background: #fff7ed;
+      border: 1px solid var(--brand-orange-border);
       border-radius: var(--radius-md);
       padding: 0.85rem 1.15rem;
-      color: #9f1239;
-      margin-bottom: 1rem;
       display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    .clash-redirect-text {
       font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--brand-orange-hover);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
-    /* -------------------------------------------------------------
-       TIMETABLE DISPLAY (CARDS & TABLE)
-       ------------------------------------------------------------- */
+    /* Timetable Display */
     .timetable-wrapper {
-      padding: 1.5rem;
+      padding: 1.25rem;
     }
 
     .day-card-group {
@@ -721,12 +839,12 @@
       border-radius: var(--radius-md);
       overflow: hidden;
       box-shadow: var(--shadow-xs);
-      margin-bottom: 1.25rem;
+      margin-bottom: 1rem;
     }
 
     .day-card-header {
       background: #f8fafc;
-      padding: 0.85rem 1.25rem;
+      padding: 0.75rem 1.1rem;
       border-bottom: 1px solid var(--border-subtle);
       display: flex;
       align-items: center;
@@ -734,7 +852,7 @@
     }
 
     .day-card-header h3 {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 800;
       color: var(--brand-navy);
       display: flex;
@@ -743,10 +861,10 @@
     }
 
     .class-slots-list {
-      padding: 0.85rem;
+      padding: 0.75rem;
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
+      gap: 0.65rem;
     }
 
     .class-item-card {
@@ -754,10 +872,10 @@
       border: 1px solid var(--border-subtle);
       border-left: 4px solid var(--brand-orange);
       border-radius: var(--radius-sm);
-      padding: 0.85rem 1rem;
+      padding: 0.75rem 0.9rem;
       display: flex;
       flex-direction: column;
-      gap: 0.4rem;
+      gap: 0.35rem;
       transition: var(--transition);
     }
 
@@ -772,11 +890,6 @@
       background: #fafbfc;
     }
 
-    .class-item-card.is-clash {
-      border-left-color: var(--accent-rose);
-      background: var(--accent-rose-subtle);
-    }
-
     .card-top-row {
       display: flex;
       align-items: center;
@@ -786,19 +899,19 @@
     }
 
     .time-badge {
-      font-size: 0.8rem;
+      font-size: 0.775rem;
       font-weight: 800;
       color: var(--brand-navy);
       background: var(--bg-surface-alt);
-      padding: 0.15rem 0.5rem;
+      padding: 0.15rem 0.45rem;
       border-radius: var(--radius-sm);
       display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
+      gap: 0.3rem;
     }
 
     .type-badge {
-      font-size: 0.675rem;
+      font-size: 0.65rem;
       font-weight: 800;
       text-transform: uppercase;
       padding: 0.15rem 0.45rem;
@@ -812,13 +925,9 @@
       background: #e2e8f0;
       color: var(--brand-navy);
     }
-    .badge-clash {
-      background: #fee2e2;
-      color: #991b1b;
-    }
 
     .course-title {
-      font-size: 1rem;
+      font-size: 0.975rem;
       font-weight: 800;
       color: var(--brand-navy);
       line-height: 1.3;
@@ -828,10 +937,10 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 0.75rem;
-      font-size: 0.825rem;
+      gap: 0.6rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
-      margin-top: 0.15rem;
+      margin-top: 0.1rem;
       flex-wrap: wrap;
     }
 
@@ -855,7 +964,7 @@
 
     .desktop-table {
       width: 100%;
-      min-width: 860px;
+      min-width: 700px;
       border-collapse: collapse;
       text-align: left;
     }
@@ -863,16 +972,16 @@
     .desktop-table th {
       background: #f1f5f9;
       color: var(--brand-navy);
-      font-size: 0.8rem;
+      font-size: 0.775rem;
       font-weight: 800;
       text-transform: uppercase;
-      padding: 0.75rem 1rem;
+      padding: 0.7rem 0.9rem;
       border: 1px solid var(--border-subtle);
     }
 
     .desktop-table td {
       border: 1px solid var(--border-subtle);
-      padding: 0.75rem 1rem;
+      padding: 0.7rem 0.9rem;
       vertical-align: top;
       background: #ffffff;
     }
@@ -883,14 +992,14 @@
       color: var(--brand-navy);
       text-align: center;
       vertical-align: middle !important;
-      width: 110px;
+      width: 100px;
     }
 
     /* -------------------------------------------------------------
-       CLEAN SEO & INFO SECTIONS (UNCLUTTERED)
+       SEO & INFO SECTIONS
        ------------------------------------------------------------- */
     .info-section {
-      padding: 3.5rem 0;
+      padding: 3.25rem 0;
       border-top: 1px solid var(--border-subtle);
       background: #ffffff;
     }
@@ -901,50 +1010,50 @@
 
     .section-header {
       text-align: center;
-      max-width: 720px;
-      margin: 0 auto 2.25rem;
+      max-width: 680px;
+      margin: 0 auto 2rem;
     }
 
     .section-eyebrow {
       text-transform: uppercase;
-      font-size: 0.775rem;
+      font-size: 0.75rem;
       font-weight: 800;
       letter-spacing: 0.08em;
       color: var(--brand-orange);
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.3rem;
       display: block;
     }
 
     .section-title {
-      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      font-size: clamp(1.4rem, 2.8vw, 2rem);
       font-weight: 800;
       color: var(--brand-navy);
       letter-spacing: -0.02em;
       line-height: 1.25;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
     }
 
     .section-desc {
-      font-size: 0.95rem;
+      font-size: 0.925rem;
       color: var(--text-muted);
       line-height: 1.5;
     }
 
     .clean-cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
     }
 
     .clean-card {
       background: #ffffff;
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
-      padding: 1.75rem;
+      padding: 1.6rem;
       box-shadow: var(--shadow-sm);
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
+      gap: 0.65rem;
       transition: var(--transition);
     }
 
@@ -955,36 +1064,36 @@
     }
 
     .card-icon {
-      width: 48px;
-      height: 48px;
+      width: 46px;
+      height: 46px;
       border-radius: var(--radius-md);
       background: var(--brand-orange-light);
       color: var(--brand-orange-hover);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.4rem;
+      font-size: 1.35rem;
     }
 
     .clean-card h3 {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 800;
       color: var(--brand-navy);
     }
 
     .clean-card p {
-      font-size: 0.9rem;
+      font-size: 0.875rem;
       color: var(--text-muted);
       line-height: 1.5;
     }
 
     /* FAQ Accordion */
     .faq-container {
-      max-width: 800px;
+      max-width: 780px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 0.85rem;
+      gap: 0.75rem;
     }
 
     .faq-item {
@@ -995,17 +1104,12 @@
       box-shadow: var(--shadow-xs);
     }
 
-    .faq-item:hover {
-      border-color: var(--brand-orange-border);
-    }
-
-    .faq-item[open] {
-      border-color: var(--brand-orange);
-    }
+    .faq-item:hover { border-color: var(--brand-orange-border); }
+    .faq-item[open] { border-color: var(--brand-orange); }
 
     .faq-summary {
-      padding: 1.1rem 1.25rem;
-      font-size: 0.975rem;
+      padding: 1rem 1.15rem;
+      font-size: 0.95rem;
       font-weight: 700;
       color: var(--brand-navy);
       cursor: pointer;
@@ -1016,26 +1120,23 @@
       gap: 1rem;
       user-select: none;
     }
-    .faq-summary::-webkit-details-marker {
-      display: none;
-    }
+    .faq-summary::-webkit-details-marker { display: none; }
 
     .faq-icon {
       color: var(--brand-orange);
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       transition: transform 0.2s ease;
+      flex-shrink: 0;
     }
-    .faq-item[open] .faq-icon {
-      transform: rotate(180deg);
-    }
+    .faq-item[open] .faq-icon { transform: rotate(180deg); }
 
     .faq-answer {
-      padding: 0 1.25rem 1.25rem 1.25rem;
-      font-size: 0.9rem;
+      padding: 0 1.15rem 1.15rem 1.15rem;
+      font-size: 0.875rem;
       color: var(--text-muted);
       line-height: 1.6;
       border-top: 1px solid #f1f5f9;
-      padding-top: 0.85rem;
+      padding-top: 0.8rem;
     }
 
     /* CTA Banner */
@@ -1043,7 +1144,7 @@
       background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
       color: #ffffff;
       border-radius: var(--radius-lg);
-      padding: 2.5rem 1.75rem;
+      padding: 2.25rem 1.5rem;
       text-align: center;
       box-shadow: var(--shadow-lg);
       margin: 2rem 0;
@@ -1051,16 +1152,16 @@
     }
 
     .cta-title {
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-size: clamp(1.5rem, 2.8vw, 2rem);
       font-weight: 800;
       margin-bottom: 0.5rem;
       color: #ffffff;
     }
 
     .cta-subtitle {
-      font-size: 0.95rem;
+      font-size: 0.925rem;
       color: #cbd5e1;
-      max-width: 600px;
+      max-width: 560px;
       margin: 0 auto 1.5rem;
       line-height: 1.5;
     }
@@ -1069,20 +1170,20 @@
     .site-footer {
       background: #0f172a;
       color: #94a3b8;
-      padding: 3.5rem 0 2rem 0;
+      padding: 3rem 0 2rem 0;
       border-top: 1px solid #1e293b;
     }
 
     .footer-grid {
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-columns: 2fr 1fr;
       gap: 2rem;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
     }
 
     .footer-col h4 {
       color: #ffffff;
-      font-size: 0.9rem;
+      font-size: 0.875rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -1097,7 +1198,7 @@
     }
     .footer-links a {
       color: #94a3b8;
-      font-size: 0.85rem;
+      font-size: 0.83rem;
     }
     .footer-links a:hover {
       color: var(--brand-orange);
@@ -1107,9 +1208,9 @@
     .disclaimer-box {
       background: #1e293b;
       border-radius: var(--radius-md);
-      padding: 0.85rem 1.15rem;
+      padding: 0.8rem 1.1rem;
       margin-bottom: 2rem;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: #94a3b8;
       line-height: 1.5;
       border-left: 3px solid var(--brand-orange);
@@ -1117,37 +1218,138 @@
 
     .footer-bottom {
       border-top: 1px solid #1e293b;
-      padding-top: 1.5rem;
+      padding-top: 1.25rem;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-      font-size: 0.8rem;
+      justify-content: center;
+      font-size: 0.78rem;
     }
 
+    /* Data status bar */
+    .data-status-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-subtle);
+      padding: 0.5rem 1.25rem;
+      background: #f8fafc;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #94a3b8;
+      flex-shrink: 0;
+    }
+    .status-dot.live { background: var(--accent-emerald); }
+    .status-dot.loading { background: var(--brand-orange); animation: pulse 1s infinite; }
+    .status-dot.error { background: var(--accent-rose); }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* ---------------------------------------------------------------
+       RESPONSIVE / MOBILE
+       --------------------------------------------------------------- */
+    /* Refresh button in status bar */
+    .status-refresh-btn {
+      background: #ffffff;
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-full);
+      padding: 0.2rem 0.6rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--brand-navy);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    .status-refresh-btn:hover {
+      background: var(--brand-orange-light);
+      color: var(--brand-orange-hover);
+      border-color: var(--brand-orange);
+    }
+
+    /* ---------------------------------------------------------------
+       RESPONSIVE / MOBILE OPTIMIZATION (Image 1 fix & mobile-first)
+       --------------------------------------------------------------- */
     @media (max-width: 768px) {
-      .footer-grid {
-        grid-template-columns: 1fr;
+      .site-header { width: 100%; overflow: hidden; }
+      .header-inner { height: 56px; gap: 0.5rem; }
+      .brand-group { gap: 0.5rem; min-width: 0; flex: 1; }
+      .brand-logo-img { width: 32px; height: 32px; flex-shrink: 0; }
+      .brand-text { min-width: 0; }
+      .brand-text h1 { 
+        font-size: 0.88rem; 
+        white-space: nowrap; 
+        overflow: hidden; 
+        text-overflow: ellipsis; 
+        max-width: 175px; 
       }
-      .nav-links {
-        display: none;
+      .brand-tagline { display: none !important; }
+      .nav-links { display: none; }
+      .badge-apk { display: none; }
+      .nav-actions { flex-shrink: 0; }
+      .nav-actions .btn { 
+        padding: 0.38rem 0.65rem; 
+        font-size: 0.75rem; 
+        min-height: 34px; 
+        border-radius: var(--radius-full);
       }
-      .grid-view-container {
-        display: none !important;
-      }
-      .cards-view {
-        display: flex !important;
-      }
-      .view-toggles {
-        display: none;
-      }
+
+      .hero-section { padding: 1.5rem 0 1rem 0; }
+      .hero-eyebrow { font-size: 0.72rem; padding: 0.25rem 0.65rem; }
+      .hero-title { font-size: 1.45rem; }
+      .hero-lead { font-size: 0.85rem; margin-bottom: 1rem; }
+
       .filter-grid {
         grid-template-columns: 1fr;
+        gap: 0.65rem;
       }
-      .clean-cards-grid {
+      .filter-grid .show-btn-col {
+        grid-column: 1;
+      }
+
+      .custom-filter-row {
         grid-template-columns: 1fr;
+        gap: 0.65rem;
       }
+
+      .main-tab-btn { font-size: 0.82rem; padding: 0.85rem 0.6rem; gap: 0.3rem; }
+
+      .grid-view-container { display: none !important; }
+      .cards-view { display: flex !important; }
+      .view-toggles { display: none; }
+
+      .clean-cards-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+
+      .app-subtoolbar { padding: 0.6rem 0.85rem; }
+      .timetable-wrapper { padding: 0.75rem; }
+      .app-toolbar { padding: 0.85rem; }
+      .custom-selection-box { padding: 0.85rem; }
+
+      .selected-summary-line { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+      .selected-summary-line div { width: 100%; display: flex; justify-content: space-between; }
+
+      .cta-banner { padding: 1.5rem 1rem; }
+    }
+
+    @media (max-width: 480px) {
+      .container { padding: 0 0.75rem; }
+      .brand-text h1 { max-width: 140px; font-size: 0.82rem; }
+      .nav-actions .btn { padding: 0.35rem 0.55rem; font-size: 0.72rem; }
+      .nav-actions .btn svg { width: 14px; height: 14px; }
+      .main-tab-btn { font-size: 0.78rem; padding: 0.75rem 0.4rem; }
+      .pill-btn { padding: 0.3rem 0.65rem; font-size: 0.75rem; }
     }
   </style>
 </head>
@@ -1180,7 +1382,7 @@
            class="btn btn-primary" 
            id="navDownloadBtn"
            title="Download FASTable Android APK v1.0.7">
-          <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
           <span>Download APK</span>
           <span class="badge-apk">v1.0.7</span>
         </a>
@@ -1198,13 +1400,13 @@
         </div>
         <h2 class="hero-title">FAST Islamabad Class Timetable</h2>
         <p class="hero-lead">
-          Official timetable viewer for FAST-NUCES Islamabad. Select your class to view schedules, or build a custom timetable with clash detection.
+          Official timetable viewer for FAST-NUCES Islamabad. Select your class to view schedules, or build a custom timetable.
         </p>
 
         <!-- Main App Container -->
         <div class="app-card" id="app" role="region" aria-label="FAST Islamabad Interactive Timetable Viewer">
-          
-          <!-- EXACT TWO TABS (FROM TIMETABLE-PROJECT-MAIN) -->
+
+          <!-- TWO TABS -->
           <div class="main-tabs-bar" role="tablist">
             <button class="main-tab-btn active" id="tabBatchBtn" role="tab" aria-selected="true">
               <span>📚 Batch Timetable</span>
@@ -1214,11 +1416,22 @@
             </button>
           </div>
 
+          <!-- Data Status Bar -->
+          <div class="data-status-bar" id="dataStatusBar">
+            <div style="display:flex; align-items:center; gap:0.5rem; flex:1; min-width:0;">
+              <span class="status-dot loading" id="statusDot"></span>
+              <span id="statusText" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Loading live timetable data…</span>
+            </div>
+            <button type="button" id="refreshDataBtn" class="status-refresh-btn" title="Refresh timetable from live Google Sheets">
+              <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+              <span>Refresh</span>
+            </button>
+          </div>
+
           <!-- TAB 1: BATCH TIMETABLE FILTERS -->
           <div class="app-toolbar" id="toolbarBatch">
             <div class="filter-grid">
-              
-              <!-- Department Selector -->
+
               <div class="form-group">
                 <label for="deptSelect">🏢 Department</label>
                 <select id="deptSelect" class="form-select" aria-label="Department Selector">
@@ -1231,29 +1444,23 @@
                 </select>
               </div>
 
-              <!-- Batch Year Selector -->
               <div class="form-group">
                 <label for="batchSelect">👥 Batch</label>
                 <select id="batchSelect" class="form-select" aria-label="Batch Selector">
                   <option value="">-- Select Batch --</option>
-                  <option value="2025">2025 (Freshmen / 1st Year)</option>
-                  <option value="2024">2024 (Sophomore / 2nd Year)</option>
-                  <option value="2023">2023 (Junior / 3rd Year)</option>
-                  <option value="2022">2022 (Senior / 4th Year)</option>
                 </select>
               </div>
 
-              <!-- Section Selector -->
               <div class="form-group">
                 <label for="sectionSelect">🔠 Section</label>
-                <select id="sectionSelect" class="form-select" aria-label="Section Code Selector">
+                <select id="sectionSelect" class="form-select" aria-label="Section Selector">
                   <option value="">-- Select Section --</option>
                 </select>
               </div>
 
-              <!-- Show Timetable Button -->
-              <div class="form-group">
-                <button type="button" class="btn btn-primary" id="showBatchBtn" style="width: 100%;">
+              <div class="form-group show-btn-col">
+                <label style="visibility:hidden;">Action</label>
+                <button type="button" class="btn btn-primary" id="showBatchBtn" style="width: 100%; min-width: 140px;">
                   <span>Show Timetable</span>
                 </button>
               </div>
@@ -1261,12 +1468,12 @@
             </div>
           </div>
 
-          <!-- TAB 2: CUSTOM COURSE SELECTION CONTROLS (Hidden by default) -->
+          <!-- TAB 2: CUSTOM COURSE SELECTION CONTROLS -->
           <div class="custom-selection-box" id="toolbarCustom" style="display: none;">
-            <div class="filter-grid" style="align-items: flex-end;">
-              
+
+            <div class="custom-filter-row">
               <div class="form-group">
-                <label for="customDeptFilter">🏢 Department</label>
+                <label for="customDeptFilter">🏢 Filter by Dept</label>
                 <select id="customDeptFilter" class="form-select">
                   <option value="">All Departments</option>
                   <option value="CS">CS</option>
@@ -1278,67 +1485,75 @@
               </div>
 
               <div class="form-group">
-                <label for="customBatchFilter">👥 Batch</label>
+                <label for="customBatchFilter">👥 Filter by Batch</label>
                 <select id="customBatchFilter" class="form-select">
                   <option value="">All Batches</option>
-                  <option value="2025">2025</option>
-                  <option value="2024">2024</option>
-                  <option value="2023">2023</option>
-                  <option value="2022">2022</option>
                 </select>
               </div>
+            </div>
 
-              <div class="form-group" style="grid-column: span 2;">
-                <label for="coursePickerSelect">🔍 Search & Select Courses</label>
-                <select id="coursePickerSelect" class="form-select">
-                  <option value="">-- Choose a course to add --</option>
-                </select>
+            <div class="form-group">
+              <label for="courseSearchInput">🔍 Search &amp; Add Course</label>
+              <div class="course-search-wrapper" id="courseSearchWrapper">
+                <input 
+                  type="text" 
+                  id="courseSearchInput" 
+                  class="course-search-input" 
+                  placeholder="Type to search courses (e.g. OOP, Data St, Algo)…"
+                  autocomplete="off"
+                  spellcheck="false"
+                />
+                <span class="course-search-icon">🔍</span>
+                <div class="course-dropdown-list" id="courseDropdownList" role="listbox"></div>
               </div>
-
             </div>
 
             <!-- Selected Courses Panel -->
             <div class="selected-courses-panel" id="selectedCoursesPanel">
               <div class="selected-summary-line">
                 <span>📝 Selected Courses (<span id="totalSelectedCount">0</span>)</span>
-                <div style="display: flex; gap: 0.5rem;">
-                  <button class="btn btn-secondary btn-sm" id="clearCustomBtn" type="button">🗑️ Clear</button>
-                  <button class="btn btn-primary btn-sm" id="showCustomBtn" type="button">📅 Show Custom Timetable</button>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                  <button class="btn btn-secondary btn-sm" id="clearCustomBtn" type="button">🗑️ Clear All</button>
+                  <button class="btn btn-primary btn-sm" id="showCustomBtn" type="button">📅 Show Timetable</button>
                 </div>
               </div>
               <div class="selected-chips-list" id="selectedChipsList">
                 <div style="color: #94a3b8; font-size: 0.85rem; font-style: italic;">
-                  No courses selected yet. Search and pick courses above to add them to your schedule.
+                  No courses selected yet. Search and pick courses above.
                 </div>
               </div>
             </div>
+
+            <!-- Clash Detector Redirect Banner -->
+            <div class="clash-redirect-banner" id="clashRedirectBanner" style="display:flex;">
+              <span class="clash-redirect-text">⚡ Want to check scheduling clashes between selected courses?</span>
+              <a href="https://clashes-detector.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" style="white-space:nowrap;">
+                Open Clash Detector ↗
+              </a>
+            </div>
           </div>
 
-          <!-- SUB-TOOLBAR: DAY PILLS & VIEW TOGGLES (Hidden until timetable is displayed) -->
+          <!-- SUB-TOOLBAR: DAY PILLS & VIEW TOGGLES -->
           <div class="app-subtoolbar" id="subToolbarDays" style="display: none;">
-            <div class="day-pills" role="tablist" aria-label="Filter schedule by day of week">
+            <div class="day-pills" role="tablist" aria-label="Filter schedule by day">
               <button class="pill-btn active" data-day="all" role="tab" aria-selected="true">All Days</button>
-              <button class="pill-btn" data-day="Monday" role="tab" aria-selected="false">Monday</button>
-              <button class="pill-btn" data-day="Tuesday" role="tab" aria-selected="false">Tuesday</button>
-              <button class="pill-btn" data-day="Wednesday" role="tab" aria-selected="false">Wednesday</button>
-              <button class="pill-btn" data-day="Thursday" role="tab" aria-selected="false">Thursday</button>
-              <button class="pill-btn" data-day="Friday" role="tab" aria-selected="false">Friday</button>
+              <button class="pill-btn" data-day="Monday" role="tab" aria-selected="false">Mon</button>
+              <button class="pill-btn" data-day="Tuesday" role="tab" aria-selected="false">Tue</button>
+              <button class="pill-btn" data-day="Wednesday" role="tab" aria-selected="false">Wed</button>
+              <button class="pill-btn" data-day="Thursday" role="tab" aria-selected="false">Thu</button>
+              <button class="pill-btn" data-day="Friday" role="tab" aria-selected="false">Fri</button>
             </div>
 
             <div class="view-toggles">
-              <button type="button" id="cardViewBtn" class="toggle-btn active" aria-label="Card view">
-                <span>Card View</span>
-              </button>
-              <button type="button" id="tableViewBtn" class="toggle-btn" aria-label="Table view">
-                <span>Table Grid</span>
-              </button>
+              <button type="button" id="cardViewBtn" class="toggle-btn active" aria-label="Card view">Card View</button>
+              <button type="button" id="tableViewBtn" class="toggle-btn" aria-label="Table view">Table Grid</button>
             </div>
           </div>
 
           <!-- TIMETABLE DISPLAY AREA -->
           <div class="timetable-wrapper">
-            
-            <!-- INITIAL EMPTY STATE PLACEHOLDER (SHOWN BY DEFAULT) -->
+
+            <!-- INITIAL EMPTY STATE -->
             <div class="empty-state-card" id="emptyStatePlaceholder">
               <div class="empty-state-icon">📋</div>
               <h3 id="emptyStateTitle">Select Your Class Details</h3>
@@ -1347,35 +1562,29 @@
               </p>
             </div>
 
-            <!-- Clash Detector Alert Box (Custom Tab) -->
-            <div id="clashAlertBox" class="clash-alert-banner" style="display: none;">
-              <span>⚠️</span>
-              <div>
-                <strong>Clash Detected!</strong>
-                <div id="clashAlertDetails" style="margin-top: 0.2rem;"></div>
-              </div>
+            <!-- Loading State -->
+            <div class="loading-state" id="loadingState" style="display:none;">
+              <div class="spinner"></div>
+              <p style="color: var(--text-muted); font-weight:600;">Loading timetable…</p>
             </div>
 
             <!-- Card View Container -->
-            <div class="cards-view" id="cardsContainer" style="display: none;">
-              <!-- Populated via JS -->
-            </div>
+            <div class="cards-view" id="cardsContainer" style="display: none; flex-direction: column; gap: 0;"></div>
 
             <!-- Table View Container -->
             <div class="grid-view-container" id="tableContainer">
               <table class="desktop-table">
                 <thead>
                   <tr>
-                    <th style="width: 110px;">Day</th>
+                    <th style="width: 100px;">Day</th>
                     <th>Time</th>
                     <th>Room</th>
                     <th>Type</th>
                     <th>Course</th>
+                    <th>Section</th>
                   </tr>
                 </thead>
-                <tbody id="tableBody">
-                  <!-- Populated via JS -->
-                </tbody>
+                <tbody id="tableBody"></tbody>
               </table>
             </div>
 
@@ -1385,12 +1594,12 @@
       </div>
     </section>
 
-    <!-- SECTION 2: CLEAN CAMPUS GUIDE & FACILITIES -->
+    <!-- SECTION 2: CAMPUS GUIDE & FACILITIES -->
     <section class="info-section alt-bg" id="campus">
       <div class="container">
         <header class="section-header">
           <span class="section-eyebrow">Islamabad Campus (H-11/4)</span>
-          <h2 class="section-title">Academic Blocks & Facilities</h2>
+          <h2 class="section-title">Academic Blocks &amp; Facilities</h2>
           <p class="section-desc">
             Room allocations and lab mapping for FAST School of Computing (FSC) students.
           </p>
@@ -1413,6 +1622,12 @@
             <div class="card-icon">💻</div>
             <h3>Specialized Computing Labs</h3>
             <p>D-IT Labs 1-4, Margala Labs, Rawal Labs, GPU Lab, and Cyber Lab (D-514) for practical lab sessions.</p>
+          </article>
+
+          <article class="clean-card">
+            <div class="card-icon">🏫</div>
+            <h3>Academic Blocks A &amp; B</h3>
+            <p>Mehran Labs 1-2, Call Labs 1-3, Khyber Labs, Rawal Lab 3, DLD Lab, and Main Campus Auditorium for laboratory sessions and events.</p>
           </article>
         </div>
       </div>
@@ -1437,21 +1652,57 @@
           </article>
 
           <article class="clean-card">
-            <div class="card-icon">⚠️</div>
-            <h3>Custom Clash Detector</h3>
-            <p>Search and select repeat or elective courses across batches with real-time overlap warnings.</p>
+            <div class="card-icon">🔍</div>
+            <h3>Custom Course Builder</h3>
+            <p>Search and select elective or repeat courses across batches to build your personalized schedule.</p>
           </article>
 
           <article class="clean-card">
             <div class="card-icon">📱</div>
             <h3>Android APK Companion</h3>
-            <p>Download the native Android app for offline cached schedules and timely lecture reminder alerts.</p>
+            <p>Download the native Android app for offline cached schedules, campus room guides, and timely lecture alerts.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 4: FREQUENTLY ASKED QUESTIONS -->
+    <!-- SECTION 3.5: THE THINKERS (Official FASTable Developers) -->
+    <section class="info-section alt-bg" id="about">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-eyebrow">Project Team</span>
+          <h2 class="section-title">The Thinkers Behind FASTable</h2>
+          <p class="section-desc">
+            Built by FAST-NUCES Islamabad students to eliminate timetable confusion and make schedules effortless for everyone.
+          </p>
+        </header>
+
+        <div class="clean-cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+          <article class="clean-card" style="text-align: center; align-items: center;">
+            <div class="card-icon" style="font-size: 1.4rem;">👨‍💻</div>
+            <h3>Muhammad Ahsan</h3>
+            <p style="color: var(--brand-orange); font-weight: 700; font-size: 0.83rem;">i230553@isb.nu.edu.pk</p>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">Lead Developer &bull; FAST-NUCES Islamabad</p>
+          </article>
+
+          <article class="clean-card" style="text-align: center; align-items: center;">
+            <div class="card-icon" style="font-size: 1.4rem;">👨‍💻</div>
+            <h3>Ali Ahmad Riaz</h3>
+            <p style="color: var(--brand-orange); font-weight: 700; font-size: 0.83rem;">i232528@isb.nu.edu.pk</p>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">Co-Developer &bull; FAST-NUCES Islamabad</p>
+          </article>
+
+          <article class="clean-card" style="text-align: center; align-items: center;">
+            <div class="card-icon" style="font-size: 1.4rem;">👨‍💻</div>
+            <h3>Farzeen Khan Tareen</h3>
+            <p style="color: var(--brand-orange); font-weight: 700; font-size: 0.83rem;">i230721@isb.nu.edu.pk</p>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">Co-Developer &bull; FAST-NUCES Islamabad</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: FAQ -->
     <section class="info-section alt-bg" id="faq">
       <div class="container">
         <header class="section-header">
@@ -1463,14 +1714,14 @@
         </header>
 
         <div class="faq-container">
-          
+
           <details class="faq-item">
             <summary class="faq-summary">
               <span>How do I find my FAST NUCES section timetable?</span>
               <span class="faq-icon" aria-hidden="true">&#9662;</span>
             </summary>
             <div class="faq-answer">
-              In the <strong>Batch Timetable</strong> tab, select your Department (e.g. CS), your Batch (e.g. 2024), and your Section (e.g. A), then click <strong>Show Timetable</strong>. The schedule immediately renders your weekly lectures, lab slots, and room allocations.
+              In the <strong>Batch Timetable</strong> tab, select your Department (e.g. CS), your Batch year (e.g. 2024), and your Section (e.g. A), then click <strong>Show Timetable</strong>. The schedule immediately renders your weekly lectures, lab slots, and room allocations from the live timetable sheet.
             </div>
           </details>
 
@@ -1486,11 +1737,11 @@
 
           <details class="faq-item">
             <summary class="faq-summary">
-              <span>How does custom course clash detection work?</span>
+              <span>How does the custom course selection work?</span>
               <span class="faq-icon" aria-hidden="true">&#9662;</span>
             </summary>
             <div class="faq-answer">
-              Switch to the <strong>Custom Course Selection</strong> tab, filter by department or batch, search for any courses you are taking, and click to add them. Once you click <strong>Show Custom Timetable</strong>, Fastable calculates whether any lecture or lab periods overlap and alerts you with a clash notification.
+              Switch to the <strong>Custom Course Selection</strong> tab, filter by department or batch, and type to search for any course. Click it to add to your list. Once you click <strong>Show Timetable</strong>, Fastable displays all sessions for your selected courses. Use the <strong>Clash Detector</strong> button to check for overlaps.
             </div>
           </details>
 
@@ -1516,8 +1767,8 @@
           Offline schedule viewing, class alert notifications, and quick room navigation on your smartphone.
         </p>
         <div>
-          <a href="https://github.com/AHSANooo/FASTable-apk/releases/download/v1.0.7/FASTable-v1.0.7.apk" class="btn btn-primary" style="font-size: 1rem; padding: 0.75rem 1.6rem;">
-            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+          <a href="https://github.com/AHSANooo/FASTable-apk/releases/download/v1.0.7/FASTable-v1.0.7.apk" class="btn btn-primary" style="font-size: 0.975rem; padding: 0.72rem 1.5rem;">
+            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
             <span>Download APK (Direct Release)</span>
           </a>
         </div>
@@ -1535,23 +1786,12 @@
       <div class="footer-grid">
         <div class="footer-col">
           <div class="brand-group" style="margin-bottom: 0.75rem;">
-            <img src="fastable.png" alt="Fastable Logo" style="width: 32px; height: 32px; object-fit: contain;" />
-            <span style="color: #fff; font-weight: 800; font-size: 1.1rem;">Fastable</span>
+            <img src="fastable.png" alt="Fastable Logo" style="width: 30px; height: 30px; object-fit: contain;" />
+            <span style="color: #fff; font-weight: 800; font-size: 1.05rem;">Fastable</span>
           </div>
-          <p style="font-size: 0.85rem; line-height: 1.5;">
-            The fastest timetable companion for FAST Islamabad computing students.
+          <p style="font-size: 0.83rem; line-height: 1.5;">
+            The fastest timetable companion for FAST Islamabad computing students. Live data, always up to date.
           </p>
-        </div>
-
-        <div class="footer-col">
-          <h4>Faculties</h4>
-          <ul class="footer-links">
-            <li><a href="#app">BS Computer Science</a></li>
-            <li><a href="#app">BS Software Engineering</a></li>
-            <li><a href="#app">BS Artificial Intelligence</a></li>
-            <li><a href="#app">BS Data Science</a></li>
-            <li><a href="#app">BS Cyber Security</a></li>
-          </ul>
         </div>
 
         <div class="footer-col">
@@ -1559,6 +1799,7 @@
           <ul class="footer-links">
             <li><a href="https://github.com/AHSANooo/FASTable-apk/releases/tag/v1.0.7" target="_blank" rel="noopener noreferrer">Latest APK (v1.0.7)</a></li>
             <li><a href="https://github.com/AHSANooo/FASTable-apk" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
+            <li><a href="https://clashes-detector.vercel.app/" target="_blank" rel="noopener noreferrer">Clash Detector Tool</a></li>
             <li><a href="#faq">Frequently Asked Questions</a></li>
           </ul>
         </div>
@@ -1566,580 +1807,1050 @@
 
       <div class="footer-bottom">
         <div>&copy; 2026 Fastable &bull; Built with pride for FAST Islamabad students ❤️</div>
-        <div>Fast Core Web Vitals &bull; Semantic HTML5</div>
       </div>
     </div>
   </footer>
 
-  <!-- -------------------------------------------------------------
-       FASTABLE APPLICATION SCRIPT (2 TABS ONLY, STRICT CONTROLS)
-       ------------------------------------------------------------- -->
+  <!-- ---------------------------------------------------------------
+       FASTABLE APPLICATION SCRIPT — LIVE DATA FROM GOOGLE SHEETS
+       --------------------------------------------------------------- -->
   <script>
-    (function() {
-      'use strict';
+  (function() {
+    'use strict';
 
-      const DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+    /* ===============================================================
+       FASTABLE APPLICATION SCRIPT — LIVE DATA & CLIENT-SIDE CACHING
+       =============================================================== */
+    const SHEET_ID = '1vlTuotLw34fedME3gNQj09cZw-todVomxAiu5P1wZ6Q';
+    const DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+    const CACHE_KEY = 'fastable_live_v4';
+    const CACHE_TTL_MS = 10 * 60 * 1000; // 10 minutes
 
-      // App State
-      let activeTab = 'batch'; // 'batch' or 'custom'
-      let rawClassesData = [];
-      let selectedDay = 'all';
-      let isTableView = false;
-      let customSelectedCourses = [];
-      let batchSubmitted = false;
-      let customSubmitted = false;
+    // Course to Batch Year Curriculum Map for FAST Computing Programs
+    const COURSE_YEAR_MAP = {
+      // 2026 (Freshmen / 1st Year)
+      'pf': '2026', 'programming fundamentals': '2026', 'calculus': '2026',
+      'ideology of pak': '2026', 'pakistan studies': '2026', 'islamic': '2026', 'islamiyat': '2026',
+      'func eng': '2026', 'functional english': '2026', 'english': '2026',
+      'iict': '2026', 'intro to ict': '2026', 'applied physics': '2026', 'ap': '2026',
+      'intro to se': '2026', 'intro to ds': '2026', 'prog for ai': '2026',
+      'stat & math': '2026', 'seerah': '2026', 'arts & humanities': '2026',
 
-      // DOM Elements - Tabs
-      const tabBatchBtn = document.getElementById('tabBatchBtn');
-      const tabCustomBtn = document.getElementById('tabCustomBtn');
-      const toolbarBatch = document.getElementById('toolbarBatch');
-      const toolbarCustom = document.getElementById('toolbarCustom');
+      // 2025 (Sophomores / 2nd Year)
+      'oop': '2025', 'object oriented': '2025', 'discrete': '2025', 'discrete structures': '2025',
+      'data st': '2025', 'data structures': '2025', 'dld': '2025', 'digital logic': '2025',
+      'sda': '2025', 'software design': '2025', 'la': '2025', 'linear algebra': '2025',
+      'coal': '2025', 'computer organization': '2025',
+      'math foundations of ai': '2025', 'dav': '2025', 'data analysis': '2025',
+      'pak studies': '2025', 'tbw': '2025', 'technical & business': '2025',
+      'uhq-i&ii': '2025', 'uhq-i & ii': '2025', 'uhq-ii': '2025',
 
-      // Batch Inputs
-      const deptSelect = document.getElementById('deptSelect');
-      const batchSelect = document.getElementById('batchSelect');
-      const sectionSelect = document.getElementById('sectionSelect');
-      const showBatchBtn = document.getElementById('showBatchBtn');
+      // 2024 (Juniors / 3rd Year)
+      'os': '2024', 'operating systems': '2024', 'comp net': '2024', 'computer networks': '2024',
+      'algo': '2024', 'algorithms': '2024', 'comp arch': '2024', 'computer architecture': '2024',
+      'comp wrch': '2024', 'db': '2024', 'database': '2024',
+      'ai': '2024', 'artificial intelligence': '2024', 'info sec': '2024', 'information security': '2024',
+      'web prog': '2024', 'web programming': '2024', 'knowl rep': '2024', 'knowledge rep': '2024',
+      'data ware': '2024', 'data ware & bi': '2024', 'fund of cv': '2024',
+      's/w const': '2024', 'software const': '2024', 's/w quality': '2024', 'software quality': '2024',
+      'cy sec': '2024', 'cyber security': '2024', 'info assur': '2024', 'adv stats': '2024',
 
-      // Custom Inputs
-      const customDeptFilter = document.getElementById('customDeptFilter');
-      const customBatchFilter = document.getElementById('customBatchFilter');
-      const coursePickerSelect = document.getElementById('coursePickerSelect');
-      const selectedChipsList = document.getElementById('selectedChipsList');
-      const totalSelectedCount = document.getElementById('totalSelectedCount');
-      const clearCustomBtn = document.getElementById('clearCustomBtn');
-      const showCustomBtn = document.getElementById('showCustomBtn');
+      // 2023 (Seniors / 4th Year)
+      'pdc': '2023', 'parallel': '2023', 'ppit': '2023', 'professional practices': '2023',
+      'ml': '2023', 'machine learning': '2023', 'deep learn': '2023', 'gen ai': '2023',
+      'agentic ai': '2023', 'cloud comp': '2023', 'nlp': '2023', 'smd': '2023',
+      'mlops': '2023', 'app hci': '2023', 'hci': '2023', 'blockchain': '2023',
+      'security ops': '2023', 'sec ops': '2023', 'vulnerability': '2023', 'formal methods': '2023',
+      'process mining': '2023', 'business research': '2023', 'multiagent': '2023',
+      'digital sustain': '2023', 'project': '2023', 'ai prod dev': '2023', 'adv ai': '2023',
+      'embed robo': '2023', 's/w re-engg': '2023', 'game design': '2023'
+    };
 
-      // Display Area Elements
-      const subToolbarDays = document.getElementById('subToolbarDays');
-      const emptyStatePlaceholder = document.getElementById('emptyStatePlaceholder');
-      const emptyStateTitle = document.getElementById('emptyStateTitle');
-      const emptyStateDesc = document.getElementById('emptyStateDesc');
-      const clashAlertBox = document.getElementById('clashAlertBox');
-      const clashAlertDetails = document.getElementById('clashAlertDetails');
-      const cardsContainer = document.getElementById('cardsContainer');
-      const tableContainer = document.getElementById('tableContainer');
-      const tableBody = document.getElementById('tableBody');
-      const cardViewBtn = document.getElementById('cardViewBtn');
-      const tableViewBtn = document.getElementById('tableViewBtn');
-      const dayPills = document.querySelectorAll('.day-pills .pill-btn');
+    function resolveBatchYear(courseName, parenContent) {
+      if (parenContent) {
+        const ym = parenContent.match(/,\s*(\d{2,4})\s*$/);
+        if (ym) {
+          const yr = ym[1];
+          return yr.length === 2 ? '20' + yr : yr;
+        }
+        const ym2 = parenContent.match(/\b(202[2-6]|2[2-6])\b/);
+        if (ym2) {
+          const yr = ym2[1];
+          return yr.length === 2 ? '20' + yr : yr;
+        }
+      }
 
-      // Sections mapping per department
-      const deptSectionsMap = {
-        'CS': ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K'],
-        'SE': ['A', 'B', 'C', 'D', 'E', 'F', 'G'],
-        'AI': ['A', 'B', 'C', 'D', 'M'],
-        'DS': ['A', 'B', 'C', 'D'],
-        'CY': ['A', 'B', 'C', 'D']
-      };
+      const clean = (courseName || '').replace(/[\d:\-\s]+$/, '').trim().toLowerCase()
+                                      .replace(/\b(lab|resch|session)\b/g, '').trim();
 
-      // Load Saved Custom Courses from LocalStorage
-      try {
-        const saved = localStorage.getItem('fastable_custom_courses');
-        if (saved) customSelectedCourses = JSON.parse(saved);
-      } catch (e) {}
+      for (const [prefix, batch] of Object.entries(COURSE_YEAR_MAP)) {
+        if (clean === prefix || clean.startsWith(prefix + ' ') || (' ' + clean + ' ').includes(' ' + prefix + ' ')) {
+          return batch;
+        }
+      }
 
-      // Update Section Options based on selected department and batch
-      function updateSectionOptions() {
-        const d = deptSelect.value;
-        const b = batchSelect.value;
-        if (!d) {
-          sectionSelect.innerHTML = '<option value="">-- Select Section --</option>';
-          return;
+      return '2026';
+    }
+
+    /* ===============================================================
+       APP STATE
+       =============================================================== */
+    let activeTab = 'batch';
+    let rawClassesData = [];
+    let allCourseOptions = [];
+    let selectedDay = 'all';
+    let isTableView = false;
+    let customSelectedCourses = [];
+    let batchSubmitted = false;
+    let customSubmitted = false;
+    let availableBatches = ['2026', '2025', '2024', '2023', '2022'];
+    let dataLoaded = false;
+
+    /* ===============================================================
+       DOM REFERENCES
+       =============================================================== */
+    const tabBatchBtn = document.getElementById('tabBatchBtn');
+    const tabCustomBtn = document.getElementById('tabCustomBtn');
+    const toolbarBatch = document.getElementById('toolbarBatch');
+    const toolbarCustom = document.getElementById('toolbarCustom');
+
+    const deptSelect = document.getElementById('deptSelect');
+    const batchSelect = document.getElementById('batchSelect');
+    const sectionSelect = document.getElementById('sectionSelect');
+    const showBatchBtn = document.getElementById('showBatchBtn');
+
+    const customDeptFilter = document.getElementById('customDeptFilter');
+    const customBatchFilter = document.getElementById('customBatchFilter');
+    const courseSearchInput = document.getElementById('courseSearchInput');
+    const courseDropdownList = document.getElementById('courseDropdownList');
+    const selectedChipsList = document.getElementById('selectedChipsList');
+    const totalSelectedCount = document.getElementById('totalSelectedCount');
+    const clearCustomBtn = document.getElementById('clearCustomBtn');
+    const showCustomBtn = document.getElementById('showCustomBtn');
+    const clashRedirectBanner = document.getElementById('clashRedirectBanner');
+
+    const statusDot = document.getElementById('statusDot');
+    const statusText = document.getElementById('statusText');
+    const refreshDataBtn = document.getElementById('refreshDataBtn');
+
+    const subToolbarDays = document.getElementById('subToolbarDays');
+    const emptyStatePlaceholder = document.getElementById('emptyStatePlaceholder');
+    const emptyStateTitle = document.getElementById('emptyStateTitle');
+    const emptyStateDesc = document.getElementById('emptyStateDesc');
+    const loadingState = document.getElementById('loadingState');
+    const cardsContainer = document.getElementById('cardsContainer');
+    const tableContainer = document.getElementById('tableContainer');
+    const tableBody = document.getElementById('tableBody');
+    const cardViewBtn = document.getElementById('cardViewBtn');
+    const tableViewBtn = document.getElementById('tableViewBtn');
+    const dayPills = document.querySelectorAll('.day-pills .pill-btn');
+
+    /* ===============================================================
+       STATUS BAR
+       =============================================================== */
+    function setStatus(state, msg) {
+      if (statusDot) statusDot.className = 'status-dot ' + state;
+      if (statusText) statusText.textContent = msg;
+    }
+
+    /* ===============================================================
+       GOOGLE SHEETS FETCH VIA JSONP & API PROXY
+       CORS-FREE: Google gviz responseHandler executes directly
+       =============================================================== */
+    function fetchSheetJSONP(sheetName) {
+      return new Promise(function(resolve, reject) {
+        const cbName = '__fastable_cb_' + sheetName.toLowerCase() + '_' + Math.floor(Math.random() * 1000000);
+        const url = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID +
+                    '/gviz/tq?tqx=responseHandler:' + cbName + '&sheet=' + encodeURIComponent(sheetName);
+
+        const timer = setTimeout(function() {
+          cleanup();
+          reject(new Error('Timeout loading ' + sheetName));
+        }, 12000);
+
+        function cleanup() {
+          clearTimeout(timer);
+          try { delete window[cbName]; } catch(e) { window[cbName] = undefined; }
+          if (script && script.parentNode) script.parentNode.removeChild(script);
         }
 
-        // Dynamically extract letter sections from rawClassesData if available
-        let sections = [];
-        if (rawClassesData && rawClassesData.length > 0) {
-          const secSet = new Set();
-          rawClassesData.forEach(function(item) {
-            if (item.dept === d && (!b || item.batch === b) && item.section) {
-              const baseLetter = item.section.charAt(0);
-              if (baseLetter && /[A-Z]/.test(baseLetter)) {
-                secSet.add(baseLetter);
-              }
-            }
-          });
-          sections = Array.from(secSet).sort();
-        }
-
-        if (sections.length === 0) {
-          sections = deptSectionsMap[d] || ['A', 'B', 'C', 'D'];
-        }
-
-        let html = '<option value="">-- Select Section --</option>';
-        sections.forEach(function(s) {
-          html += `<option value="${s}">Section ${s}</option>`;
-        });
-        sectionSelect.innerHTML = html;
-      }
-
-      function hideBatchTimetable() {
-        batchSubmitted = false;
-        emptyStatePlaceholder.style.display = 'flex';
-        emptyStateTitle.textContent = 'Select Your Class Details';
-        emptyStateDesc.innerHTML = 'Please select your <strong>Department</strong>, <strong>Batch</strong>, and <strong>Section</strong> above, then click <strong>Show Timetable</strong> to view your schedule.';
-        subToolbarDays.style.display = 'none';
-        cardsContainer.style.display = 'none';
-        tableContainer.style.display = 'none';
-        clashAlertBox.style.display = 'none';
-      }
-
-      // Populate Course Picker for Tab 2
-      function updateCoursePicker() {
-        if (!rawClassesData || rawClassesData.length === 0) return;
-
-        const filterDept = customDeptFilter.value;
-        const filterBatch = customBatchFilter.value;
-
-        // Collect matching unique courses
-        const courseMap = {};
-        rawClassesData.forEach(function(item) {
-          const matchDept = (!filterDept || item.dept === filterDept);
-          const matchBatch = (!filterBatch || item.batch === filterBatch);
-
-          if (matchDept && matchBatch && item.course) {
-            const courseKey = item.course.trim();
-            const label = `${courseKey} (${item.dept}-${item.section || 'All'}, ${item.batch})`;
-            courseMap[label] = courseKey;
-          }
-        });
-
-        const sortedLabels = Object.keys(courseMap).sort();
-        let html = '<option value="">-- Choose a course to add --</option>';
-        sortedLabels.forEach(function(label) {
-          const cName = courseMap[label];
-          html += `<option value="${cName}">${label}</option>`;
-        });
-        coursePickerSelect.innerHTML = html;
-      }
-
-      // Render Selected Courses in Tab 2
-      function renderSelectedCustomCourses() {
-        totalSelectedCount.textContent = customSelectedCourses.length;
-
-        if (customSelectedCourses.length === 0) {
-          selectedChipsList.innerHTML = `
-            <div style="color: #94a3b8; font-size: 0.85rem; font-style: italic;">
-              No courses selected yet. Search and pick courses above to add them to your schedule.
-            </div>
-          `;
-          return;
-        }
-
-        let html = '';
-        customSelectedCourses.forEach(function(cName, idx) {
-          html += `
-            <div class="selected-course-row">
-              <span class="selected-course-title">📖 ${cName}</span>
-              <button class="btn-remove-course" data-idx="${idx}" type="button">❌ Remove</button>
-            </div>
-          `;
-        });
-        selectedChipsList.innerHTML = html;
-
-        // Attach Remove Handlers
-        selectedChipsList.querySelectorAll('.btn-remove-course').forEach(function(btn) {
-          btn.addEventListener('click', function() {
-            const idx = parseInt(btn.getAttribute('data-idx'), 10);
-            customSelectedCourses.splice(idx, 1);
-            try { localStorage.setItem('fastable_custom_courses', JSON.stringify(customSelectedCourses)); } catch (e) {}
-            renderSelectedCustomCourses();
-            if (customSubmitted) {
-              renderCustomTimetable();
-            }
-          });
-        });
-      }
-
-      // Detect Time Clashes between courses
-      function detectClashes(items) {
-        const slotMap = {};
-        const clashGroups = [];
-
-        items.forEach(function(item) {
-          const key = item.day + '___' + item.time;
-          if (!slotMap[key]) slotMap[key] = [];
-          slotMap[key].push(item);
-        });
-
-        Object.keys(slotMap).forEach(function(k) {
-          if (slotMap[k].length > 1) {
-            clashGroups.push(slotMap[k]);
-          }
-        });
-
-        return clashGroups;
-      }
-
-      // Render Schedule Cards View
-      function renderCards(items, clashes) {
-        const displayedDays = (selectedDay === 'all') ? DAYS : [selectedDay];
-        let html = '';
-
-        displayedDays.forEach(function(day) {
-          const dayItems = items.filter(function(item) {
-            return item.day.toLowerCase() === day.toLowerCase();
-          });
-
-          html += `
-            <div class="day-card-group">
-              <div class="day-card-header">
-                <h3><span>📅</span> ${day}</h3>
-                <span style="font-size: 0.775rem; color: #64748b; font-weight: 700;">${dayItems.length} Sessions</span>
-              </div>
-              <div class="class-slots-list">
-          `;
-
-          if (dayItems.length === 0) {
-            html += `<div style="padding: 1.25rem; text-align: center; color: #94a3b8; font-size: 0.85rem; font-style: italic;">No classes scheduled for ${day}</div>`;
+        window[cbName] = function(jsonResponse) {
+          cleanup();
+          if (jsonResponse && jsonResponse.table) {
+            resolve(jsonResponse.table);
           } else {
-            dayItems.forEach(function(item) {
-              const isLab = item.isLab;
-              const isClash = clashes.some(function(cg) {
-                return cg.some(function(c) {
-                  return c.day === item.day && c.time === item.time && c.room === item.room && c.course === item.course;
-                });
-              });
-
-              let cardClasses = 'class-item-card';
-              if (isLab) cardClasses += ' is-lab';
-              if (isClash) cardClasses += ' is-clash';
-
-              html += `
-                <div class="${cardClasses}">
-                  <div class="card-top-row">
-                    <span class="time-badge">⏰ ${item.time}</span>
-                    <span class="type-badge ${isClash ? 'badge-clash' : (isLab ? 'badge-lab' : 'badge-lec')}">
-                      ${isClash ? '⚠️ Clash' : (isLab ? 'Lab' : 'Lecture')}
-                    </span>
-                  </div>
-                  <div class="course-title">${item.course}</div>
-                  <div class="card-meta-row">
-                    <span><strong>Room:</strong> <span class="room-tag">${item.room}</span></span>
-                    <span style="font-weight:700; color:var(--brand-navy);">${item.dept ? item.dept : ''} ${item.section ? ('Section ' + item.section) : ''} (${item.batch})</span>
-                  </div>
-                </div>
-              `;
-            });
+            reject(new Error('Invalid table data for ' + sheetName));
           }
+        };
 
-          html += `
-              </div>
-            </div>
-          `;
-        });
+        const script = document.createElement('script');
+        script.src = url;
+        script.onerror = function() {
+          cleanup();
+          reject(new Error('Script load failed for ' + sheetName));
+        };
+        document.head.appendChild(script);
+      });
+    }
 
-        cardsContainer.innerHTML = html;
-      }
-
-      // Render Schedule Table View
-      function renderTable(items) {
-        let html = '';
-        if (items.length === 0) {
-          html = '<tr><td colspan="5" style="text-align:center; padding: 2rem; color: #94a3b8;">No matching classes found.</td></tr>';
-        } else {
-          items.forEach(function(item) {
-            const isLab = item.isLab;
-            html += `
-              <tr>
-                <td class="table-day-cell">${item.day}</td>
-                <td style="font-weight: 700;">${item.time}</td>
-                <td><span class="room-tag">${item.room}</span></td>
-                <td><span class="type-badge ${isLab ? 'badge-lab' : 'badge-lec'}">${isLab ? 'Lab' : 'Lecture'}</span></td>
-                <td style="font-weight: 700; color: #0f172a;">${item.course}</td>
-              </tr>
-            `;
-          });
-        }
-        tableBody.innerHTML = html;
-      }
-
-      // Render Batch Timetable (Tab 1)
-      function renderBatchTimetable() {
-        const d = deptSelect.value;
-        const b = batchSelect.value;
-        const s = sectionSelect.value;
-
-        // Check if all fields are selected
-        if (!d || !b || !s) {
-          emptyStatePlaceholder.style.display = 'flex';
-          emptyStateTitle.textContent = 'Select Your Class Details';
-          emptyStateDesc.innerHTML = 'Please select your <strong>Department</strong>, <strong>Batch</strong>, and <strong>Section</strong> above, then click <strong>Show Timetable</strong> to view your schedule.';
-          subToolbarDays.style.display = 'none';
-          cardsContainer.style.display = 'none';
-          tableContainer.style.display = 'none';
-          clashAlertBox.style.display = 'none';
-          return;
-        }
-
-        // Filter data strictly by dept, batch, and section
-        let filtered = rawClassesData.filter(function(item) {
-          const matchDept = (item.dept === d);
-          const matchBatch = (item.batch === b);
-          const matchSec = (item.section === s || item.section === (s + '1') || item.section === (s + '2'));
-          return matchDept && matchBatch && matchSec;
-        });
-
-        // Day filter
-        if (selectedDay !== 'all') {
-          filtered = filtered.filter(function(item) {
-            return item.day.toLowerCase() === selectedDay.toLowerCase();
-          });
-        }
-
-        emptyStatePlaceholder.style.display = 'none';
-        subToolbarDays.style.display = 'flex';
-        clashAlertBox.style.display = 'none';
-
-        if (isTableView && window.innerWidth > 768) {
-          cardsContainer.style.display = 'none';
-          tableContainer.style.display = 'block';
-          renderTable(filtered);
-        } else {
-          tableContainer.style.display = 'none';
-          cardsContainer.style.display = 'flex';
-          renderCards(filtered, []);
-        }
-      }
-
-      // Render Custom Timetable (Tab 2)
-      function renderCustomTimetable() {
-        if (customSelectedCourses.length === 0) {
-          emptyStatePlaceholder.style.display = 'flex';
-          emptyStateTitle.textContent = 'No Courses Selected';
-          emptyStateDesc.innerHTML = 'Search and pick courses from the catalog above, then click <strong>Show Custom Timetable</strong> to view your personalized schedule with clash detection.';
-          subToolbarDays.style.display = 'none';
-          cardsContainer.style.display = 'none';
-          tableContainer.style.display = 'none';
-          clashAlertBox.style.display = 'none';
-          return;
-        }
-
-        // Filter data for all selected custom courses
-        let filtered = rawClassesData.filter(function(item) {
-          return customSelectedCourses.includes(item.course);
-        });
-
-        // Day filter
-        if (selectedDay !== 'all') {
-          filtered = filtered.filter(function(item) {
-            return item.day.toLowerCase() === selectedDay.toLowerCase();
-          });
-        }
-
-        const clashes = detectClashes(filtered);
-
-        // Clash Alert Banner
-        if (clashes.length > 0) {
-          clashAlertBox.style.display = 'flex';
-          let details = '';
-          clashes.forEach(function(cg) {
-            const names = cg.map(function(c) { return c.course; }).join(' AND ');
-            details += `<div>• <strong>${cg[0].day} at ${cg[0].time}:</strong> ${names} overlap!</div>`;
-          });
-          clashAlertDetails.innerHTML = details;
-        } else {
-          clashAlertBox.style.display = 'none';
-        }
-
-        emptyStatePlaceholder.style.display = 'none';
-        subToolbarDays.style.display = 'flex';
-
-        if (isTableView && window.innerWidth > 768) {
-          cardsContainer.style.display = 'none';
-          tableContainer.style.display = 'block';
-          renderTable(filtered);
-        } else {
-          tableContainer.style.display = 'none';
-          cardsContainer.style.display = 'flex';
-          renderCards(filtered, clashes);
-        }
-      }
-
-      // Fetch Data
-      async function loadData() {
+    async function fetchSheetData(sheetName) {
+      if (location.protocol !== 'file:') {
         try {
-          const res = await fetch('timetable_data.json?t=' + Date.now());
-          if (res.ok) {
-            const data = await res.json();
-            // Format: [dayIdx, time, room, course, dept, section, isLab, batch]
-            rawClassesData = data.map(function(item) {
-              return {
-                day: DAYS[item[0]] || 'Monday',
-                time: item[1],
-                room: item[2],
-                course: item[3],
-                dept: item[4],
-                section: item[5],
-                isLab: (item[6] === 1),
-                batch: item[7] || '2024'
-              };
-            });
-            updateSectionOptions();
-            updateCoursePicker();
+          const resp = await fetch('/api/timetable?day=' + encodeURIComponent(sheetName));
+          if (resp.ok) {
+            const data = await resp.json();
+            if (Array.isArray(data)) {
+              return { _parsed: data };
+            }
           }
         } catch (e) {
-          console.error('Error loading data:', e);
+          // Fall back to JSONP
         }
       }
 
-      // Event Listeners - Tabs Switcher
-      tabBatchBtn.addEventListener('click', function() {
-        activeTab = 'batch';
-        tabBatchBtn.classList.add('active');
-        tabCustomBtn.classList.remove('active');
-        toolbarBatch.style.display = 'flex';
-        toolbarCustom.style.display = 'none';
+      const table = await fetchSheetJSONP(sheetName);
+      return { _parsed: parseSheetData(table, sheetName) };
+    }
 
-        if (batchSubmitted) {
-          renderBatchTimetable();
-        } else {
-          hideBatchTimetable();
+    /* ===============================================================
+       DUAL-ROOM & LAB TIME PARSER
+       =============================================================== */
+    function parseSheetData(tableData, dayName) {
+      const results = [];
+      const rows = (tableData && tableData.rows) ? tableData.rows : [];
+      if (rows.length < 6) return results;
+
+      let timeRowIndex = -1;
+      let labRowIndex = -1;
+
+      for (let i = 0; i < rows.length; i++) {
+        const cells = rows[i].c || [];
+        const col0 = cells[0] && cells[0].v ? String(cells[0].v).trim().toLowerCase() : '';
+        if (col0.includes('room') && col0.includes('time')) {
+          timeRowIndex = i;
         }
-      });
-
-      tabCustomBtn.addEventListener('click', function() {
-        activeTab = 'custom';
-        tabCustomBtn.classList.add('active');
-        tabBatchBtn.classList.remove('active');
-        toolbarBatch.style.display = 'none';
-        toolbarCustom.style.display = 'block';
-        renderSelectedCustomCourses();
-
-        if (customSubmitted && customSelectedCourses.length > 0) {
-          renderCustomTimetable();
-        } else {
-          emptyStatePlaceholder.style.display = 'flex';
-          emptyStateTitle.textContent = 'No Courses Selected';
-          emptyStateDesc.innerHTML = 'Search and pick courses from the catalog above, then click <strong>Show Custom Timetable</strong> to view your personalized schedule with clash detection.';
-          subToolbarDays.style.display = 'none';
-          cardsContainer.style.display = 'none';
-          tableContainer.style.display = 'none';
-          clashAlertBox.style.display = 'none';
+        if (col0 === 'lab') {
+          labRowIndex = i;
         }
-      });
+      }
 
-      // Department change updates section options & hides timetable until show is clicked
-      deptSelect.addEventListener('change', function() {
-        updateSectionOptions();
-        hideBatchTimetable();
-      });
+      if (timeRowIndex < 0) return results;
 
-      // Batch change updates section options & hides timetable until show is clicked
-      batchSelect.addEventListener('change', function() {
-        updateSectionOptions();
-        hideBatchTimetable();
-      });
+      const timeHeaderRow = rows[timeRowIndex].c || [];
+      const timesPart1 = {};
+      const timesPart2 = {};
+      let room2Col = null;
 
-      // Section change hides timetable until show is clicked
-      sectionSelect.addEventListener('change', function() {
-        hideBatchTimetable();
-      });
-
-      // Show Batch Timetable Button
-      showBatchBtn.addEventListener('click', function() {
-        const d = deptSelect.value;
-        const b = batchSelect.value;
-        const s = sectionSelect.value;
-
-        if (!d || !b || !s) {
-          emptyStatePlaceholder.style.display = 'flex';
-          emptyStateTitle.textContent = '⚠️ All Fields Required';
-          emptyStateDesc.innerHTML = '<span style="color:#ef4444; font-weight:700;">Please select all fields:</span> <strong>Department</strong>, <strong>Batch</strong>, and <strong>Section</strong> must all be selected before viewing the timetable.';
-          subToolbarDays.style.display = 'none';
-          cardsContainer.style.display = 'none';
-          tableContainer.style.display = 'none';
-          clashAlertBox.style.display = 'none';
-          return;
-        }
-
-        batchSubmitted = true;
-        renderBatchTimetable();
-      });
-
-      // Tab 2 Filters change updates picker
-      customDeptFilter.addEventListener('change', updateCoursePicker);
-      customBatchFilter.addEventListener('change', updateCoursePicker);
-
-      // Course Picker Adds Course
-      coursePickerSelect.addEventListener('change', function() {
-        const val = coursePickerSelect.value;
-        if (val && !customSelectedCourses.includes(val)) {
-          customSelectedCourses.push(val);
-          try { localStorage.setItem('fastable_custom_courses', JSON.stringify(customSelectedCourses)); } catch (e) {}
-          renderSelectedCustomCourses();
-          coursePickerSelect.value = '';
-        }
-      });
-
-      // Clear Custom Courses
-      clearCustomBtn.addEventListener('click', function() {
-        customSelectedCourses = [];
-        try { localStorage.removeItem('fastable_custom_courses'); } catch (e) {}
-        customSubmitted = false;
-        renderSelectedCustomCourses();
-        emptyStatePlaceholder.style.display = 'flex';
-        emptyStateTitle.textContent = 'No Courses Selected';
-        emptyStateDesc.innerHTML = 'Search and pick courses from the catalog above, then click <strong>Show Custom Timetable</strong> to view your personalized schedule with clash detection.';
-        subToolbarDays.style.display = 'none';
-        cardsContainer.style.display = 'none';
-        tableContainer.style.display = 'none';
-        clashAlertBox.style.display = 'none';
-      });
-
-      // Show Custom Timetable Button
-      showCustomBtn.addEventListener('click', function() {
-        if (customSelectedCourses.length === 0) {
-          emptyStatePlaceholder.style.display = 'flex';
-          emptyStateTitle.textContent = '⚠️ Select At Least One Course';
-          emptyStateDesc.innerHTML = '<span style="color:#ef4444; font-weight:700;">No courses selected:</span> Please choose at least one course from the catalog dropdown above before displaying your custom timetable.';
-          subToolbarDays.style.display = 'none';
-          cardsContainer.style.display = 'none';
-          tableContainer.style.display = 'none';
-          clashAlertBox.style.display = 'none';
-          return;
-        }
-        customSubmitted = true;
-        renderCustomTimetable();
-      });
-
-      // Day Pills Click Handlers
-      dayPills.forEach(function(pill) {
-        pill.addEventListener('click', function() {
-          dayPills.forEach(function(p) { p.classList.remove('active'); p.setAttribute('aria-selected', 'false'); });
-          pill.classList.add('active');
-          pill.setAttribute('aria-selected', 'true');
-          selectedDay = pill.getAttribute('data-day');
-
-          if (activeTab === 'batch') {
-            renderBatchTimetable();
-          } else {
-            renderCustomTimetable();
+      for (let c = 1; c < timeHeaderRow.length; c++) {
+        const cell = timeHeaderRow[c];
+        if (cell && cell.v) {
+          const val = String(cell.v).trim();
+          if (val.toLowerCase().includes('room')) {
+            room2Col = c;
+          } else if (val.includes(':') || val.includes('-')) {
+            if (room2Col === null) {
+              timesPart1[c] = val;
+            } else {
+              timesPart2[c] = val;
+            }
           }
+        }
+      }
+
+      const timesSorted1 = Object.keys(timesPart1).map(Number).sort(function(a,b){ return a-b; });
+      const timesSorted2 = Object.keys(timesPart2).map(Number).sort(function(a,b){ return a-b; });
+
+      const labTimeSlots = [];
+      if (labRowIndex >= 0) {
+        const labRow = rows[labRowIndex].c || [];
+        for (let c = 1; c < labRow.length; c++) {
+          const cell = labRow[c];
+          if (cell && cell.v) {
+            const ts = String(cell.v).trim();
+            if (ts.includes(':') || ts.includes('-')) {
+              labTimeSlots.push({ col: c, time: ts });
+            }
+          }
+        }
+      }
+
+      function getTimeForCol(colIdx, isLab) {
+        if (isLab) {
+          for (let i = labTimeSlots.length - 1; i >= 0; i--) {
+            if (labTimeSlots[i].col <= colIdx) return labTimeSlots[i].time;
+          }
+          return 'Unknown';
+        }
+        if (room2Col !== null && colIdx >= room2Col) {
+          let t = null;
+          for (let i = 0; i < timesSorted2.length; i++) {
+            if (timesSorted2[i] <= colIdx) t = timesPart2[timesSorted2[i]];
+            else break;
+          }
+          return t || 'Unknown';
+        } else {
+          let t = null;
+          for (let i = 0; i < timesSorted1.length; i++) {
+            if (timesSorted1[i] <= colIdx) t = timesPart1[timesSorted1[i]];
+            else break;
+          }
+          return t || 'Unknown';
+        }
+      }
+
+      function parseCellEntry(rawEntry) {
+        if (!rawEntry) return null;
+        let entry = rawEntry.trim();
+
+        let embeddedTime = null;
+        const timeMatch = entry.match(/\b(\d{1,2}:\d{2}\s*-\s*\d{1,2}:\d{2})\b/);
+        if (timeMatch) {
+          embeddedTime = timeMatch[1].replace(/\s+/g, '');
+          entry = entry.replace(timeMatch[0], '').trim();
+        }
+
+        const parenMatch = entry.match(/\(([^)]+)\)/);
+        let dept = '', section = '', parenContent = '';
+        let courseName = entry;
+
+        if (parenMatch) {
+          parenContent = parenMatch[1].trim();
+          courseName = entry.replace(/\s*\([^)]+\)\s*/, '').trim();
+
+          const deptSecPart = parenContent.split(',')[0].trim();
+          const dsMatch = deptSecPart.match(/^([A-Z]{2,4}(?:\/[A-Z]{2,4})*)-([A-Z]\d*)$/);
+          if (dsMatch) {
+            dept = dsMatch[1].split('/')[0];
+            section = dsMatch[2].charAt(0);
+          } else {
+            const deptOnly = deptSecPart.match(/^([A-Z]{2,4}(?:\/[A-Z]{2,4})*)$/);
+            if (deptOnly) dept = deptOnly[1].split('/')[0];
+          }
+        }
+
+        const skipWords = ['tutorial batch', 'fids', 'fcs', 'fis boys', 'ee', 'reserved', 'fsm', 'orientation'];
+        if (skipWords.some(function(w) { return courseName.toLowerCase().includes(w); })) return null;
+        if (!dept && !section) return null;
+
+        courseName = courseName.replace(/Karakoram-\d+\s*Lab/gi, '')
+                               .replace(/\s+/g, ' ').trim();
+
+        const batchYear = resolveBatchYear(courseName, parenContent);
+        return { courseName: courseName || rawEntry.trim(), dept: dept, section: section, batchYear: batchYear, embeddedTime: embeddedTime };
+      }
+
+      for (let rowIdx = timeRowIndex + 1; rowIdx < rows.length; rowIdx++) {
+        const row = rows[rowIdx];
+        if (!row || !row.c) continue;
+        const cells = row.c;
+        const col0Val = cells[0] && cells[0].v ? String(cells[0].v).trim() : '';
+        if (!col0Val) continue;
+        if (col0Val.toLowerCase() === 'lab') continue;
+        if (col0Val.toLowerCase().includes('room') && col0Val.toLowerCase().includes('time')) continue;
+
+        const isLabRow = (labRowIndex >= 0 && rowIdx > labRowIndex);
+        const room1 = col0Val;
+        const room2 = (room2Col !== null && cells.length > room2Col && cells[room2Col] && cells[room2Col].v)
+          ? String(cells[room2Col].v).trim()
+          : null;
+
+        for (let c = 1; c < cells.length; c++) {
+          if (room2Col !== null && c === room2Col) continue;
+          const cell = cells[c];
+          if (!cell || !cell.v) continue;
+          const rawVal = String(cell.v).trim();
+          if (!rawVal) continue;
+
+          const parsed = parseCellEntry(rawVal);
+          if (!parsed) continue;
+
+          const timeSlot = parsed.embeddedTime || getTimeForCol(c, isLabRow);
+          const room = (room2Col !== null && c > room2Col && room2) ? room2 : room1;
+          const isLabEntry = isLabRow || parsed.courseName.toLowerCase().includes(' lab');
+          const courseKey = parsed.courseName + '|' + parsed.dept + '|' + parsed.section + '|' + parsed.batchYear;
+
+          results.push({
+            day: dayName,
+            time: timeSlot,
+            room: room,
+            course: parsed.courseName,
+            dept: parsed.dept,
+            section: parsed.section,
+            isLab: isLabEntry,
+            batch: parsed.batchYear,
+            courseKey: courseKey
+          });
+        }
+      }
+
+      return results;
+    }
+
+    /* ===============================================================
+       FETCH ALL SHEETS & PROCESS
+       =============================================================== */
+    async function fetchAllSheets() {
+      setStatus('loading', 'Fetching live timetable from Google Sheets…');
+
+      const allData = [];
+      const batchSet = new Set();
+
+      for (let i = 0; i < DAYS.length; i++) {
+        const day = DAYS[i];
+        try {
+          setStatus('loading', 'Loading ' + day + '…');
+          const res = await fetchSheetData(day);
+          const entries = res._parsed || [];
+          entries.forEach(function(e) {
+            allData.push(e);
+            if (e.batch) batchSet.add(e.batch);
+          });
+        } catch (err) {
+          console.warn('Failed to fetch ' + day + ':', err);
+        }
+      }
+
+      const batches = Array.from(batchSet).sort().reverse();
+      if (!batches.includes('2026')) batches.unshift('2026');
+
+      return { data: allData, batches: batches };
+    }
+
+    /* ===============================================================
+       CACHING
+       =============================================================== */
+    function saveToCache(data, batches) {
+      try {
+        localStorage.setItem(CACHE_KEY, JSON.stringify({
+          ts: Date.now(),
+          data: data,
+          batches: batches
+        }));
+      } catch (e) {}
+    }
+
+    function loadFromCache() {
+      try {
+        const cached = localStorage.getItem(CACHE_KEY);
+        if (!cached) return null;
+        const obj = JSON.parse(cached);
+        if (Date.now() - obj.ts > CACHE_TTL_MS) return null;
+        return obj;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    /* ===============================================================
+       POPULATE DYNAMIC DROPDOWNS
+       =============================================================== */
+    function populateBatchDropdowns(batches) {
+      availableBatches = batches && batches.length > 0 ? batches : ['2026', '2025', '2024', '2023', '2022'];
+      const yearLabels = {
+        '2026': 'Freshmen / 1st Year',
+        '2025': 'Sophomore / 2nd Year',
+        '2024': 'Junior / 3rd Year',
+        '2023': 'Senior / 4th Year',
+        '2022': 'Super Senior / Electives'
+      };
+
+      let batchHtml = '<option value="">-- Select Batch --</option>';
+      let customBatchHtml = '<option value="">All Batches</option>';
+
+      availableBatches.forEach(function(yr) {
+        const label = yearLabels[yr] ? yr + ' (' + yearLabels[yr] + ')' : yr;
+        batchHtml += '<option value="' + yr + '">' + label + '</option>';
+        customBatchHtml += '<option value="' + yr + '">' + yr + '</option>';
+      });
+
+      batchSelect.innerHTML = batchHtml;
+      customBatchFilter.innerHTML = customBatchHtml;
+    }
+
+    function updateSectionOptions() {
+      const d = deptSelect.value;
+      const b = batchSelect.value;
+
+      if (!d) {
+        sectionSelect.innerHTML = '<option value="">-- Select Section --</option>';
+        return;
+      }
+
+      const secSet = new Set();
+      rawClassesData.forEach(function(item) {
+        const matchDept = (item.dept === d);
+        const matchBatch = (!b || item.batch === b);
+        if (matchDept && matchBatch && item.section && /^[A-Z]$/.test(item.section)) {
+          secSet.add(item.section);
+        }
+      });
+
+      const sections = Array.from(secSet).sort();
+      let html = '<option value="">-- Select Section --</option>';
+      if (sections.length === 0) {
+        ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J'].forEach(function(s) {
+          html += '<option value="' + s + '">Section ' + s + '</option>';
+        });
+      } else {
+        sections.forEach(function(s) {
+          html += '<option value="' + s + '">Section ' + s + '</option>';
+        });
+      }
+      sectionSelect.innerHTML = html;
+    }
+
+    /* ===============================================================
+       SEARCHABLE COURSE PICKER
+       =============================================================== */
+    function buildCourseOptions() {
+      const filterDept = customDeptFilter.value;
+      const filterBatch = customBatchFilter.value;
+
+      const seen = new Set();
+      allCourseOptions = [];
+
+      const filtered = rawClassesData.filter(function(item) {
+        if (!item.course || !item.dept || !item.section) return false;
+        if (filterDept && item.dept !== filterDept) return false;
+        if (filterBatch && item.batch !== filterBatch) return false;
+        return true;
+      });
+
+      filtered.forEach(function(item) {
+        if (!seen.has(item.courseKey)) {
+          seen.add(item.courseKey);
+          allCourseOptions.push({
+            label: item.course + ' (' + item.dept + '-' + item.section + ', ' + item.batch + ')',
+            key: item.courseKey,
+            course: item
+          });
+        }
+      });
+
+      allCourseOptions.sort(function(a, b) {
+        return a.label.toLowerCase().localeCompare(b.label.toLowerCase());
+      });
+    }
+
+    function renderCourseDropdown(query) {
+      const q = (query || '').toLowerCase().trim();
+      const MAX_ITEMS = 60;
+
+      let matches = allCourseOptions;
+      if (q) {
+        matches = allCourseOptions.filter(function(opt) {
+          return opt.label.toLowerCase().includes(q);
+        });
+      }
+
+      if (matches.length === 0) {
+        courseDropdownList.innerHTML = '<div class="course-dropdown-empty">No courses found matching "' + escHtml(q) + '".</div>';
+      } else {
+        let html = '';
+        const shown = matches.slice(0, MAX_ITEMS);
+        shown.forEach(function(opt) {
+          const alreadyAdded = customSelectedCourses.some(function(c) { return c.key === opt.key; });
+          if (!alreadyAdded) {
+            html += '<div class="course-dropdown-item" data-key="' + escHtml(opt.key) + '">' +
+                    '<span><strong>' + escHtml(opt.course.course) + '</strong></span>' +
+                    '<span class="item-dept-badge">' + escHtml(opt.course.dept) + '-' + 
+                    escHtml(opt.course.section) + ' &bull; Batch ' + escHtml(opt.course.batch) + '</span>' +
+                    '</div>';
+          }
+        });
+        if (!html) {
+          html = '<div class="course-dropdown-empty">All matching courses are already selected.</div>';
+        }
+        if (matches.length > MAX_ITEMS) {
+          html += '<div class="course-dropdown-empty" style="color: var(--brand-orange); font-style:normal; font-weight:700;">Type to filter among ' + matches.length + ' results…</div>';
+        }
+        courseDropdownList.innerHTML = html;
+      }
+
+      courseDropdownList.querySelectorAll('.course-dropdown-item').forEach(function(item) {
+        item.addEventListener('click', function() {
+          const key = item.getAttribute('data-key');
+          addCourseByKey(key);
+          courseSearchInput.value = '';
+          closeCourseDropdown();
+        });
+      });
+    }
+
+    function openCourseDropdown() {
+      buildCourseOptions();
+      renderCourseDropdown(courseSearchInput.value);
+      courseDropdownList.classList.add('open');
+    }
+
+    function closeCourseDropdown() {
+      courseDropdownList.classList.remove('open');
+    }
+
+    function addCourseByKey(key) {
+      if (customSelectedCourses.some(function(c) { return c.key === key; })) return;
+      const opt = allCourseOptions.find(function(o) { return o.key === key; });
+      if (!opt) return;
+      customSelectedCourses.push({
+        key: opt.key,
+        name: opt.course.course,
+        dept: opt.course.dept,
+        section: opt.course.section,
+        batch: opt.course.batch
+      });
+      saveCourses();
+      renderSelectedCourses();
+    }
+
+    function saveCourses() {
+      try { localStorage.setItem('fastable_custom_v4', JSON.stringify(customSelectedCourses)); } catch(e) {}
+    }
+
+    function escHtml(str) {
+      return String(str || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    /* ===============================================================
+       RENDER SELECTED COURSES PANEL
+       =============================================================== */
+    function renderSelectedCourses() {
+      totalSelectedCount.textContent = customSelectedCourses.length;
+
+      if (customSelectedCourses.length === 0) {
+        selectedChipsList.innerHTML = '<div style="color: #94a3b8; font-size: 0.85rem; font-style: italic;">No courses selected yet. Search and pick courses above.</div>';
+        return;
+      }
+
+      let html = '';
+      customSelectedCourses.forEach(function(c, idx) {
+        html += '<div class="selected-course-row">' +
+                '<span class="selected-course-title">📖 ' + escHtml(c.name) + 
+                ' <span style="font-weight:600; color: var(--brand-navy); font-size:0.8rem;">(' + 
+                escHtml(c.dept) + '-' + escHtml(c.section) + ', ' + escHtml(c.batch) + ')</span></span>' +
+                '<button class="btn-remove-course" data-idx="' + idx + '" type="button">✕ Remove</button>' +
+                '</div>';
+      });
+      selectedChipsList.innerHTML = html;
+
+      selectedChipsList.querySelectorAll('.btn-remove-course').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          const idx = parseInt(btn.getAttribute('data-idx'), 10);
+          customSelectedCourses.splice(idx, 1);
+          saveCourses();
+          renderSelectedCourses();
+          if (customSubmitted) renderCustomTimetable();
+        });
+      });
+    }
+
+    /* ===============================================================
+       HELPERS & TIMETABLE RENDERING
+       =============================================================== */
+    function showEmpty(title, desc) {
+      emptyStatePlaceholder.style.display = 'flex';
+      loadingState.style.display = 'none';
+      emptyStateTitle.textContent = title;
+      emptyStateDesc.innerHTML = desc;
+      subToolbarDays.style.display = 'none';
+      cardsContainer.style.display = 'none';
+      tableContainer.style.display = 'none';
+    }
+
+    function hideBatchTimetable() {
+      batchSubmitted = false;
+      showEmpty('Select Your Class Details',
+        'Please select your <strong>Department</strong>, <strong>Batch</strong>, and <strong>Section</strong> above, then click <strong>Show Timetable</strong> to view your schedule.');
+    }
+
+    function parseTimeForSort(timeStr) {
+      if (!timeStr) return 9999;
+      const m = String(timeStr).match(/(\d{1,2}):(\d{2})/);
+      if (!m) return 9999;
+      return parseInt(m[1], 10) * 60 + parseInt(m[2], 10);
+    }
+
+    function renderBatchTimetable() {
+      const d = deptSelect.value;
+      const b = batchSelect.value;
+      const s = sectionSelect.value;
+
+      if (!d || !b || !s) {
+        showEmpty('⚠️ All Fields Required',
+          '<span style="color:#ef4444; font-weight:700;">Please select all fields:</span> <strong>Department</strong>, <strong>Batch</strong>, and <strong>Section</strong> must all be selected.');
+        return;
+      }
+
+      let filtered = rawClassesData.filter(function(item) {
+        return item.dept === d && item.batch === b && item.section === s;
+      });
+
+      if (selectedDay !== 'all') {
+        filtered = filtered.filter(function(item) {
+          return item.day.toLowerCase() === selectedDay.toLowerCase();
+        });
+      }
+
+      const dayOrder = { Monday:0, Tuesday:1, Wednesday:2, Thursday:3, Friday:4 };
+      filtered.sort(function(a, b) {
+        const dayDiff = (dayOrder[a.day] || 0) - (dayOrder[b.day] || 0);
+        if (dayDiff !== 0) return dayDiff;
+        return parseTimeForSort(a.time) - parseTimeForSort(b.time);
+      });
+
+      emptyStatePlaceholder.style.display = 'none';
+      loadingState.style.display = 'none';
+      subToolbarDays.style.display = 'flex';
+
+      if (filtered.length === 0) {
+        cardsContainer.style.display = 'flex';
+        cardsContainer.innerHTML = '<div class="empty-state-card" style="padding: 2rem;"><div class="empty-state-icon">🔍</div><h3>No Classes Found</h3><p>No classes scheduled for ' + d + '-' + s + ' (' + b + ')' + (selectedDay !== 'all' ? ' on ' + selectedDay : '') + '. Try another section.</p></div>';
+        tableContainer.style.display = 'none';
+        return;
+      }
+
+      if (isTableView && window.innerWidth > 768) {
+        cardsContainer.style.display = 'none';
+        tableContainer.style.display = 'block';
+        renderTable(filtered);
+      } else {
+        tableContainer.style.display = 'none';
+        cardsContainer.style.display = 'flex';
+        cardsContainer.style.flexDirection = 'column';
+        renderCards(filtered);
+      }
+    }
+
+    function renderCustomTimetable() {
+      if (customSelectedCourses.length === 0) {
+        showEmpty('No Courses Selected',
+          'Search and pick courses from the catalog above, then click <strong>Show Timetable</strong>.');
+        return;
+      }
+
+      let filtered = [];
+      customSelectedCourses.forEach(function(sel) {
+        const matches = rawClassesData.filter(function(item) {
+          return item.courseKey === sel.key;
+        });
+        matches.forEach(function(m) {
+          const exists = filtered.some(function(f) {
+            return f.day === m.day && f.time === m.time && f.room === m.room && f.courseKey === m.courseKey;
+          });
+          if (!exists) filtered.push(m);
         });
       });
 
-      // View Toggles
-      cardViewBtn.addEventListener('click', function() {
-        isTableView = false;
-        cardViewBtn.classList.add('active');
-        tableViewBtn.classList.remove('active');
-        if (activeTab === 'batch') renderBatchTimetable(); else renderCustomTimetable();
+      if (selectedDay !== 'all') {
+        filtered = filtered.filter(function(item) {
+          return item.day.toLowerCase() === selectedDay.toLowerCase();
+        });
+      }
+
+      const dayOrder = { Monday:0, Tuesday:1, Wednesday:2, Thursday:3, Friday:4 };
+      filtered.sort(function(a, b) {
+        const dayDiff = (dayOrder[a.day] || 0) - (dayOrder[b.day] || 0);
+        if (dayDiff !== 0) return dayDiff;
+        return parseTimeForSort(a.time) - parseTimeForSort(b.time);
       });
 
-      tableViewBtn.addEventListener('click', function() {
-        isTableView = true;
-        tableViewBtn.classList.add('active');
-        cardViewBtn.classList.remove('active');
-        if (activeTab === 'batch') renderBatchTimetable(); else renderCustomTimetable();
+      emptyStatePlaceholder.style.display = 'none';
+      loadingState.style.display = 'none';
+      subToolbarDays.style.display = 'flex';
+
+      if (filtered.length === 0) {
+        cardsContainer.style.display = 'flex';
+        cardsContainer.innerHTML = '<div class="empty-state-card" style="padding: 2rem;"><div class="empty-state-icon">🔍</div><h3>No Classes Found</h3><p>No scheduled sessions found for the selected courses' + (selectedDay !== 'all' ? ' on ' + selectedDay : '') + '.</p></div>';
+        tableContainer.style.display = 'none';
+        return;
+      }
+
+      if (isTableView && window.innerWidth > 768) {
+        cardsContainer.style.display = 'none';
+        tableContainer.style.display = 'block';
+        renderTable(filtered);
+      } else {
+        tableContainer.style.display = 'none';
+        cardsContainer.style.display = 'flex';
+        cardsContainer.style.flexDirection = 'column';
+        renderCards(filtered);
+      }
+    }
+
+    function renderCards(items) {
+      const displayedDays = (selectedDay === 'all') ? DAYS : [selectedDay];
+      let html = '';
+
+      displayedDays.forEach(function(day) {
+        const dayItems = items.filter(function(item) {
+          return item.day.toLowerCase() === day.toLowerCase();
+        });
+
+        html += '<div class="day-card-group">' +
+                '<div class="day-card-header">' +
+                '<h3><span>📅</span> ' + day + '</h3>' +
+                '<span style="font-size: 0.75rem; color: #64748b; font-weight: 700;">' + dayItems.length + ' Sessions</span>' +
+                '</div>' +
+                '<div class="class-slots-list">';
+
+        if (dayItems.length === 0) {
+          html += '<div style="padding: 1.1rem; text-align: center; color: #94a3b8; font-size: 0.85rem; font-style: italic;">No classes scheduled for ' + day + '</div>';
+        } else {
+          dayItems.forEach(function(item) {
+            const cardClasses = 'class-item-card' + (item.isLab ? ' is-lab' : '');
+            const typeBadge = item.isLab ? 'badge-lab' : 'badge-lec';
+            const typeLabel = item.isLab ? 'Lab' : 'Lecture';
+            const sectionInfo = (item.dept && item.section) ? item.dept + '-' + item.section + ' (' + item.batch + ')' : (item.batch || '');
+
+            html += '<div class="' + cardClasses + '">' +
+                    '<div class="card-top-row">' +
+                    '<span class="time-badge">⏰ ' + escHtml(item.time) + '</span>' +
+                    '<span class="type-badge ' + typeBadge + '">' + typeLabel + '</span>' +
+                    '</div>' +
+                    '<div class="course-title">' + escHtml(item.course) + '</div>' +
+                    '<div class="card-meta-row">' +
+                    '<span><strong>Room:</strong> <span class="room-tag">' + escHtml(item.room) + '</span></span>' +
+                    '<span style="font-weight:700; color:var(--brand-navy); font-size:0.78rem;">' + escHtml(sectionInfo) + '</span>' +
+                    '</div>' +
+                    '</div>';
+          });
+        }
+
+        html += '</div></div>';
       });
 
-      // Initial Setup
-      updateSectionOptions();
-      loadData();
+      cardsContainer.innerHTML = html;
+    }
 
-    })();
+    function renderTable(items) {
+      let html = '';
+      if (items.length === 0) {
+        html = '<tr><td colspan="6" style="text-align:center; padding: 2rem; color: #94a3b8;">No matching classes found.</td></tr>';
+      } else {
+        items.forEach(function(item) {
+          const typeBadge = item.isLab ? 'badge-lab' : 'badge-lec';
+          const sectionInfo = (item.dept && item.section) ? item.dept + '-' + item.section : '';
+          html += '<tr>' +
+                  '<td class="table-day-cell">' + escHtml(item.day) + '</td>' +
+                  '<td style="font-weight: 700;">' + escHtml(item.time) + '</td>' +
+                  '<td><span class="room-tag">' + escHtml(item.room) + '</span></td>' +
+                  '<td><span class="type-badge ' + typeBadge + '">' + (item.isLab ? 'Lab' : 'Lecture') + '</span></td>' +
+                  '<td style="font-weight: 700; color: #0f172a;">' + escHtml(item.course) + '</td>' +
+                  '<td style="font-size:0.82rem;">' + escHtml(sectionInfo) + ' (' + escHtml(item.batch) + ')</td>' +
+                  '</tr>';
+        });
+      }
+      tableBody.innerHTML = html;
+    }
+
+    /* ===============================================================
+       LOAD DATA ENGINE (Cache-first with live background refresh)
+       =============================================================== */
+    async function loadData(forceRefresh) {
+      if (!forceRefresh) {
+        const cached = loadFromCache();
+        if (cached && cached.data && cached.data.length > 0) {
+          rawClassesData = cached.data;
+          availableBatches = cached.batches || ['2026', '2025', '2024', '2023', '2022'];
+          dataLoaded = true;
+
+          populateBatchDropdowns(availableBatches);
+          updateSectionOptions();
+          buildCourseOptions();
+          renderSelectedCourses();
+
+          const ageMin = Math.round((Date.now() - cached.ts) / 60000);
+          setStatus('live', 'Live data • updated ' + ageMin + 'm ago (' + rawClassesData.length + ' sessions)');
+          return;
+        }
+      }
+
+      setStatus('loading', 'Connecting to Google Sheets…');
+
+      try {
+        const result = await fetchAllSheets();
+        rawClassesData = result.data;
+        availableBatches = result.batches;
+        dataLoaded = true;
+
+        saveToCache(rawClassesData, availableBatches);
+        populateBatchDropdowns(availableBatches);
+        updateSectionOptions();
+        buildCourseOptions();
+        renderSelectedCourses();
+
+        const ts = new Date().toLocaleTimeString('en-PK', { hour:'2-digit', minute:'2-digit' });
+        setStatus('live', 'Live data • updated at ' + ts + ' (' + rawClassesData.length + ' sessions)');
+      } catch (err) {
+        console.error('Failed to load live data:', err);
+        setStatus('error', 'Could not refresh data. Check internet connection.');
+        if (!dataLoaded) {
+          showEmpty('⚠️ Could Not Load Timetable',
+            'Unable to fetch live timetable from Google Sheets. <a href="javascript:location.reload()">Click here to refresh</a>.');
+        }
+      }
+    }
+
+    /* ===============================================================
+       EVENT LISTENERS
+       =============================================================== */
+    if (refreshDataBtn) {
+      refreshDataBtn.addEventListener('click', function() {
+        try { localStorage.removeItem(CACHE_KEY); } catch(e) {}
+        loadData(true);
+      });
+    }
+
+    tabBatchBtn.addEventListener('click', function() {
+      activeTab = 'batch';
+      tabBatchBtn.classList.add('active'); tabBatchBtn.setAttribute('aria-selected', 'true');
+      tabCustomBtn.classList.remove('active'); tabCustomBtn.setAttribute('aria-selected', 'false');
+      toolbarBatch.style.display = 'flex';
+      toolbarCustom.style.display = 'none';
+      if (batchSubmitted) renderBatchTimetable(); else hideBatchTimetable();
+    });
+
+    tabCustomBtn.addEventListener('click', function() {
+      activeTab = 'custom';
+      tabCustomBtn.classList.add('active'); tabCustomBtn.setAttribute('aria-selected', 'true');
+      tabBatchBtn.classList.remove('active'); tabBatchBtn.setAttribute('aria-selected', 'false');
+      toolbarBatch.style.display = 'none';
+      toolbarCustom.style.display = 'block';
+      buildCourseOptions();
+      renderSelectedCourses();
+      if (customSubmitted && customSelectedCourses.length > 0) {
+        renderCustomTimetable();
+      } else {
+        showEmpty('No Courses Selected',
+          'Search and pick courses from the catalog above, then click <strong>Show Timetable</strong>.');
+      }
+    });
+
+    deptSelect.addEventListener('change', function() { updateSectionOptions(); hideBatchTimetable(); });
+    batchSelect.addEventListener('change', function() { updateSectionOptions(); hideBatchTimetable(); });
+    sectionSelect.addEventListener('change', function() { hideBatchTimetable(); });
+
+    showBatchBtn.addEventListener('click', function() {
+      if (!dataLoaded) {
+        showEmpty('⏳ Loading Data…', 'Please wait while timetable data is being fetched.');
+        return;
+      }
+      batchSubmitted = true;
+      renderBatchTimetable();
+    });
+
+    customDeptFilter.addEventListener('change', function() { buildCourseOptions(); renderCourseDropdown(courseSearchInput.value); });
+    customBatchFilter.addEventListener('change', function() { buildCourseOptions(); renderCourseDropdown(courseSearchInput.value); });
+
+    courseSearchInput.addEventListener('input', function() {
+      if (!courseSearchInput.value.trim() && document.activeElement !== courseSearchInput) {
+        closeCourseDropdown();
+        return;
+      }
+      openCourseDropdown();
+      renderCourseDropdown(courseSearchInput.value);
+    });
+
+    courseSearchInput.addEventListener('focus', function() {
+      openCourseDropdown();
+    });
+
+    document.addEventListener('click', function(e) {
+      const wrapper = document.getElementById('courseSearchWrapper');
+      if (wrapper && !wrapper.contains(e.target)) {
+        closeCourseDropdown();
+      }
+    });
+
+    courseSearchInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeCourseDropdown();
+        courseSearchInput.blur();
+        return;
+      }
+      if (e.key === 'Enter') {
+        const highlighted = courseDropdownList.querySelector('.highlighted');
+        if (highlighted) {
+          highlighted.click();
+        }
+        e.preventDefault();
+        return;
+      }
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        const items = Array.from(courseDropdownList.querySelectorAll('.course-dropdown-item'));
+        if (items.length === 0) return;
+        const cur = courseDropdownList.querySelector('.highlighted');
+        let nextIdx = 0;
+        if (cur) {
+          const curIdx = items.indexOf(cur);
+          cur.classList.remove('highlighted');
+          nextIdx = e.key === 'ArrowDown' ? Math.min(curIdx + 1, items.length - 1) : Math.max(curIdx - 1, 0);
+        } else if (e.key === 'ArrowUp') {
+          nextIdx = items.length - 1;
+        }
+        items[nextIdx].classList.add('highlighted');
+        items[nextIdx].scrollIntoView({ block: 'nearest' });
+      }
+    });
+
+    clearCustomBtn.addEventListener('click', function() {
+      customSelectedCourses = [];
+      saveCourses();
+      customSubmitted = false;
+      renderSelectedCourses();
+      showEmpty('No Courses Selected', 'Search and pick courses from the catalog above, then click <strong>Show Timetable</strong>.');
+    });
+
+    showCustomBtn.addEventListener('click', function() {
+      if (customSelectedCourses.length === 0) {
+        showEmpty('⚠️ Select At Least One Course',
+          '<span style="color:#ef4444; font-weight:700;">No courses selected:</span> Please choose at least one course from the catalog above.');
+        return;
+      }
+      customSubmitted = true;
+      renderCustomTimetable();
+    });
+
+    dayPills.forEach(function(pill) {
+      pill.addEventListener('click', function() {
+        dayPills.forEach(function(p) { p.classList.remove('active'); p.setAttribute('aria-selected', 'false'); });
+        pill.classList.add('active');
+        pill.setAttribute('aria-selected', 'true');
+        selectedDay = pill.getAttribute('data-day');
+        if (activeTab === 'batch' && batchSubmitted) renderBatchTimetable();
+        else if (activeTab === 'custom' && customSubmitted) renderCustomTimetable();
+      });
+    });
+
+    cardViewBtn.addEventListener('click', function() {
+      isTableView = false;
+      cardViewBtn.classList.add('active'); tableViewBtn.classList.remove('active');
+      if (activeTab === 'batch' && batchSubmitted) renderBatchTimetable();
+      else if (activeTab === 'custom' && customSubmitted) renderCustomTimetable();
+    });
+
+    tableViewBtn.addEventListener('click', function() {
+      isTableView = true;
+      tableViewBtn.classList.add('active'); cardViewBtn.classList.remove('active');
+      if (activeTab === 'batch' && batchSubmitted) renderBatchTimetable();
+      else if (activeTab === 'custom' && customSubmitted) renderCustomTimetable();
+    });
+
+    /* ===============================================================
+       RESTORE SAVED COURSES & INITIALIZE
+       =============================================================== */
+    try {
+      const saved = localStorage.getItem('fastable_custom_v4');
+      if (saved) customSelectedCourses = JSON.parse(saved);
+    } catch(e) {}
+
+    loadData(false);
+
+  })();
   </script>
 
 </body>
