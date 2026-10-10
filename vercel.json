@@ -1,3 +1,16 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.fastable.site"
+        }
+      ],
+      "destination": "https://fastable.site/$1",
+      "permanent": true
+    }
+  ]
 }
