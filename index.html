@@ -1666,37 +1666,23 @@
       </div>
     </section>
 
-    <!-- SECTION 3.5: THE THINKERS (Official FASTable Developers) -->
+    <!-- SECTION 3.5: THE THINKERS (Official FASTable Developer) -->
     <section class="info-section alt-bg" id="about">
       <div class="container">
         <header class="section-header">
-          <span class="section-eyebrow">Project Team</span>
-          <h2 class="section-title">The Thinkers Behind FASTable</h2>
+          <span class="section-eyebrow">Project Creator</span>
+          <h2 class="section-title">The Thinker Behind FASTable</h2>
           <p class="section-desc">
-            Built by FAST-NUCES Islamabad students to eliminate timetable confusion and make schedules effortless for everyone.
+            Built by FAST-NUCES Islamabad to eliminate timetable confusion and make schedules effortless for everyone.
           </p>
         </header>
 
-        <div class="clean-cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
-          <article class="clean-card" style="text-align: center; align-items: center;">
-            <div class="card-icon" style="font-size: 1.4rem;">👨‍💻</div>
+        <div style="display: flex; justify-content: center; width: 100%;">
+          <article class="clean-card" style="text-align: center; align-items: center; max-width: 360px; width: 100%;">
+            <div class="card-icon" style="font-size: 1.6rem;">👨‍💻</div>
             <h3>Muhammad Ahsan</h3>
-            <p style="color: var(--brand-orange); font-weight: 700; font-size: 0.83rem;">i230553@isb.nu.edu.pk</p>
-            <p style="font-size: 0.8rem; color: var(--text-muted);">Lead Developer &bull; FAST-NUCES Islamabad</p>
-          </article>
-
-          <article class="clean-card" style="text-align: center; align-items: center;">
-            <div class="card-icon" style="font-size: 1.4rem;">👨‍💻</div>
-            <h3>Ali Ahmad Riaz</h3>
-            <p style="color: var(--brand-orange); font-weight: 700; font-size: 0.83rem;">i232528@isb.nu.edu.pk</p>
-            <p style="font-size: 0.8rem; color: var(--text-muted);">Co-Developer &bull; FAST-NUCES Islamabad</p>
-          </article>
-
-          <article class="clean-card" style="text-align: center; align-items: center;">
-            <div class="card-icon" style="font-size: 1.4rem;">👨‍💻</div>
-            <h3>Farzeen Khan Tareen</h3>
-            <p style="color: var(--brand-orange); font-weight: 700; font-size: 0.83rem;">i230721@isb.nu.edu.pk</p>
-            <p style="font-size: 0.8rem; color: var(--text-muted);">Co-Developer &bull; FAST-NUCES Islamabad</p>
+            <p style="color: var(--brand-orange); font-weight: 700; font-size: 0.85rem;">i230553@isb.nu.edu.pk</p>
+            <p style="font-size: 0.82rem; color: var(--text-muted);">Developer &amp; Creator &bull; FAST-NUCES Islamabad</p>
           </article>
         </div>
       </div>
@@ -1823,7 +1809,7 @@
        =============================================================== */
     const SHEET_ID = '1vlTuotLw34fedME3gNQj09cZw-todVomxAiu5P1wZ6Q';
     const DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
-    const CACHE_KEY = 'fastable_live_v4';
+    const CACHE_KEY = 'fastable_live_v5';
     const CACHE_TTL_MS = 10 * 60 * 1000; // 10 minutes
 
     // Course to Batch Year Curriculum Map for FAST Computing Programs
@@ -2190,8 +2176,30 @@
        FETCH ALL SHEETS & PROCESS
        =============================================================== */
     async function fetchAllSheets() {
-      setStatus('loading', 'Fetching live timetable from Google Sheets…');
+      setStatus('loading', 'Fetching live timetable…');
 
+      // 1. Prefer single fast call to /api/timetable (pre-parsed with exact Google Sheet batch colors)
+      if (location.protocol !== 'file:') {
+        try {
+          const resp = await fetch('/api/timetable');
+          if (resp.ok) {
+            const data = await resp.json();
+            if (Array.isArray(data) && data.length > 50) {
+              const batchSet = new Set();
+              data.forEach(function(e) {
+                if (e.batch && e.batch !== 'Repeat') batchSet.add(e.batch);
+              });
+              const batches = Array.from(batchSet).sort().reverse();
+              if (!batches.includes('2026')) batches.unshift('2026');
+              return { data: data, batches: batches };
+            }
+          }
+        } catch (e) {
+          console.warn('API endpoint error, falling back to per-sheet loader:', e);
+        }
+      }
+
+      // 2. Fallback: day-by-day fetching
       const allData = [];
       const batchSet = new Set();
 
@@ -2203,7 +2211,7 @@
           const entries = res._parsed || [];
           entries.forEach(function(e) {
             allData.push(e);
-            if (e.batch) batchSet.add(e.batch);
+            if (e.batch && e.batch !== 'Repeat') batchSet.add(e.batch);
           });
         } catch (err) {
           console.warn('Failed to fetch ' + day + ':', err);

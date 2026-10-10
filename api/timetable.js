@@ -1,291 +1,313 @@
-export const config = {
-  runtime: 'edge',
-};
+const crypto = require('crypto');
 
 const SHEET_ID = '1vlTuotLw34fedME3gNQj09cZw-todVomxAiu5P1wZ6Q';
 const DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
-const CACHE_TTL = 300; // 5 minutes
+const CACHE_DURATION_MS = 15 * 60 * 1000; // 15 minutes in-memory cache
 
-// Curriculum year mapping for FAST computing courses
-const COURSE_YEAR_MAP = {
-  // 2026 (Freshmen / 1st Year)
-  'pf': '2026', 'programming fundamentals': '2026', 'calculus': '2026',
-  'ideology of pak': '2026', 'pakistan studies': '2026', 'islamic': '2026', 'islamiyat': '2026',
-  'func eng': '2026', 'functional english': '2026', 'english': '2026',
-  'iict': '2026', 'intro to ict': '2026', 'applied physics': '2026', 'ap': '2026',
-  'intro to se': '2026', 'intro to ds': '2026', 'prog for ai': '2026',
-  'stat & math': '2026', 'seerah': '2026', 'arts & humanities': '2026',
+const DEFAULT_PROJECT_ID = 'time-table-project-450013';
+const DEFAULT_CLIENT_EMAIL = 'timetable-bot-876@time-table-project-450013.iam.gserviceaccount.com';
+const DEFAULT_PRIVATE_KEY = `-----BEGIN PRIVATE KEY-----
+MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC7Gp4+xHPlQPJL
+G3VGg2r4WHosjiheeADEZiLw5hyBSYva9TxfIS+gWEICCQTCc4dhCyBH/Ukb7Okw
+wpvUVRjYlWp/zbYTXFDx1tGquxC/WHk8b2CsNUi/2682HbpBmlSpJqaYuxbbMSsI
+7U0e2R6oxbVIygSSxxG7x2H5E6lrQLjPCOGTgPdCyHpjj4NmjAA7beonefTB3nXM
+MxMjNldfrhJ3V9MC/mMFOtWJaj6beYvIxId6m+9iuBogdzHkYmhMymZ1JP5I4GO7
+iVrbYB2IsjJTsnl/x4rXEd748Fg3xlgh+QpUkCkOG9j3KH9b9LukMM852o+IAJ3S
+Ob6ctbHFAgMBAAECggEAJloO7MvE+82DvLx8nf8LGqu8I0ziXnbXpWpQKDPqzN9/
+8NpKzS8WvZXJtfQWSyt2KQCoVclHxpcZt3p0iaIFzUNXSKooc7B9EQ1Y/deJV8dx
+Vl94H+RuLJGBySRvzMmvJ9r51B2pUjWyXgqSP8v+elbIUYrDRDjU3DpCzVTn6clJ
+ObH1LWViHEDyvBxVRYK1N+DdpLRJaisfw8hJsm7xvHO6Gc2XW27y3/gYCl4PgsYx
+dUFCtZaCJSSdO9nqcEVWZK2yBP4m5iRwR/KWOvrg/yxy+n5IkLtZQ5ED69edpA5V
+Hyr8XuC8ZQZ9UwDQm/WwZGqLnUclPdRq8ScUbxIe8QKBgQDf20Yd1Swu76wNV8GI
+AZZbfS+l8FlB9b+5Y2jZqh3jeVEI7kG7wotrJSwpEVwsgATb3zQ+Ffpm/tKkNMMF
+VBL1wQimqdK/Bf/fm5Q+os4GamtTTlFyylNXeV/cBgRTalzwsJqRh+RovPAPJ2s1
+4T2SKj5h3XHqS+Llk3IdLqQELQKBgQDV+FwKituGFJp/JiPOhLy51mCKLmHI53TT
+lZAe3//u0YQVbSejnUnFYr17XDh0mJuRdeTckmkv0hjZiA2ByrbbMjxUGbfD0xLb
+MCr2InZwdKmaC7+fi1l2x/rC334oC3OnPFAQbYShw5S6R8G3MaB32HhWyDB0vFPT
+j9ZvpB9q+QKBgEo7CBE0cyZNS5xREVfsTtOfu4EnJjH9L8pl8IrdInQf8oMnnpyI
+cnrhJLepjgsjmHjglw5Pc21b6rWQ2WqW6oKbtCawAbZeYu7fRFVQ30i5WUWSnueV
+t/U1xlfLlvuiNZeKuHaxvUgN/vzHcYG4YxZo8664I+Ixr9e5AQo0QScxAoGAILN0
+XagbJMLBWe1aS5W9wikhV/z+tNWq5StWe2GAm98pcJzeEgNX4vLUQqY1epxYKkL6
+VzuJF+XkJlrEtbFlgNqMnc3QZ/06RIV4C2X48/bgdMqW3qtNYPnvORkvDq+xXT26
+fsg+HPrnIBEXaggLnkVXHuw5e53MseipvSY4JwECgYBAhy/9OXmC8ADXjaRtdgLr
+Gqr8WisuwQQRCmlaku9OJpKky9/2uI1mvwMXMExWXfq4yZDopw6qSm8PSv5Xs2Ft
+5W+YEsOEiqh0pu/QfTd1Dh7GNnbWEERl3RBj6EyUGxINwdL+TcwDDfpLlF3q0nls
+TCFebCl7qM0DA8AujtR9Ag==
+-----END PRIVATE KEY-----`;
 
-  // 2025 (Sophomores / 2nd Year)
-  'oop': '2025', 'object oriented': '2025', 'discrete': '2025', 'discrete structures': '2025',
-  'data st': '2025', 'data structures': '2025', 'dld': '2025', 'digital logic': '2025',
-  'sda': '2025', 'software design': '2025', 'la': '2025', 'linear algebra': '2025',
-  'coal': '2025', 'computer organization': '2025',
-  'math foundations of ai': '2025', 'dav': '2025', 'data analysis': '2025',
-  'pak studies': '2025', 'tbw': '2025', 'technical & business': '2025',
-  'uhq-i&ii': '2025', 'uhq-i & ii': '2025', 'uhq-ii': '2025',
+let cachedSessions = null;
+let cacheTimestamp = 0;
 
-  // 2024 (Juniors / 3rd Year)
-  'os': '2024', 'operating systems': '2024', 'comp net': '2024', 'computer networks': '2024',
-  'algo': '2024', 'algorithms': '2024', 'comp arch': '2024', 'computer architecture': '2024',
-  'comp wrch': '2024', 'db': '2024', 'database': '2024',
-  'ai': '2024', 'artificial intelligence': '2024', 'info sec': '2024', 'information security': '2024',
-  'web prog': '2024', 'web programming': '2024', 'knowl rep': '2024', 'knowledge rep': '2024',
-  'data ware': '2024', 'data ware & bi': '2024', 'fund of cv': '2024',
-  's/w const': '2024', 'software const': '2024', 's/w quality': '2024', 'software quality': '2024',
-  'cy sec': '2024', 'cyber security': '2024', 'info assur': '2024', 'adv stats': '2024',
-
-  // 2023 (Seniors / 4th Year)
-  'pdc': '2023', 'parallel': '2023', 'ppit': '2023', 'professional practices': '2023',
-  'ml': '2023', 'machine learning': '2023', 'deep learn': '2023', 'gen ai': '2023',
-  'agentic ai': '2023', 'cloud comp': '2023', 'nlp': '2023', 'smd': '2023',
-  'mlops': '2023', 'app hci': '2023', 'hci': '2023', 'blockchain': '2023',
-  'security ops': '2023', 'sec ops': '2023', 'vulnerability': '2023', 'formal methods': '2023',
-  'process mining': '2023', 'business research': '2023', 'multiagent': '2023',
-  'digital sustain': '2023', 'project': '2023', 'ai prod dev': '2023', 'adv ai': '2023',
-  'embed robo': '2023', 's/w re-engg': '2023', 'game design': '2023',
-};
-
-function resolveBatchYear(courseName, parenContent) {
-  if (parenContent) {
-    const ym = parenContent.match(/,\s*(\d{2,4})\s*$/);
-    if (ym) {
-      const yr = ym[1];
-      return yr.length === 2 ? '20' + yr : yr;
-    }
-    const ym2 = parenContent.match(/\b(202[2-6]|2[2-6])\b/);
-    if (ym2) {
-      const yr = ym2[1];
-      return yr.length === 2 ? '20' + yr : yr;
-    }
-  }
-
-  const clean = courseName.replace(/[\d:\-\s]+$/, '').trim().toLowerCase()
-                          .replace(/\b(lab|resch|session)\b/g, '').trim();
-
-  for (const [prefix, batch] of Object.entries(COURSE_YEAR_MAP)) {
-    if (clean === prefix || clean.startsWith(prefix + ' ') || (' ' + clean + ' ').includes(' ' + prefix + ' ')) {
-      return batch;
-    }
-  }
-
-  return '2026';
+function getPrivateKey() {
+  const pk = process.env.GOOGLE_PRIVATE_KEY || DEFAULT_PRIVATE_KEY;
+  return pk.replace(/\\n/g, '\n').trim();
 }
 
-export default async function handler(request) {
-  const url = new URL(request.url);
-  const day = url.searchParams.get('day');
-  const corsHeaders = {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET,OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type',
-    'Cache-Control': `public, s-maxage=${CACHE_TTL}, stale-while-revalidate=600`,
-  };
+async function getAccessToken() {
+  const now = Math.floor(Date.now() / 1000);
+  const header = Buffer.from(JSON.stringify({ alg: 'RS256', typ: 'JWT' })).toString('base64url');
+  const claim = Buffer.from(JSON.stringify({
+    iss: process.env.GOOGLE_CLIENT_EMAIL || DEFAULT_CLIENT_EMAIL,
+    scope: 'https://www.googleapis.com/auth/spreadsheets.readonly',
+    aud: 'https://oauth2.googleapis.com/token',
+    exp: now + 3600,
+    iat: now,
+  })).toString('base64url');
 
-  if (request.method === 'OPTIONS') {
-    return new Response(null, { status: 204, headers: corsHeaders });
-  }
+  const sign = crypto.createSign('RSA-SHA256');
+  sign.update(header + '.' + claim);
+  const signature = sign.sign(getPrivateKey(), 'base64url');
+  const jwt = header + '.' + claim + '.' + signature;
 
-  try {
-    if (day && DAYS.includes(day)) {
-      const data = await fetchSheetDay(day);
-      return new Response(JSON.stringify(data), {
-        status: 200,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      });
-    } else {
-      const results = await Promise.all(DAYS.map(fetchSheetDay));
-      const allEntries = results.flat();
-      return new Response(JSON.stringify(allEntries), {
-        status: 200,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      });
-    }
-  } catch (err) {
-    return new Response(JSON.stringify({ error: err.message }), {
-      status: 500,
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-    });
-  }
-}
-
-async function fetchSheetDay(dayName) {
-  const sheetUrl = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(dayName)}`;
-  const resp = await fetch(sheetUrl, {
-    headers: { 'User-Agent': 'Fastable/2.0' },
+  const res = await fetch('https://oauth2.googleapis.com/token', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer&assertion=' + jwt,
   });
-  if (!resp.ok) throw new Error(`HTTP ${resp.status} fetching ${dayName}`);
-  const text = await resp.text();
-  const jsonStr = text.replace(/^[^{]*/, '').replace(/\)\s*;?\s*$/, '');
-  const gvizData = JSON.parse(jsonStr);
-  return parseSheetData(gvizData.table, dayName);
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error('Google OAuth failed: ' + err);
+  }
+  const json = await res.json();
+  return json.access_token;
 }
 
-function parseSheetData(tableData, dayName) {
-  const results = [];
-  const rows = tableData?.rows || [];
-  if (rows.length < 6) return results;
+function getBg(cell) {
+  const bg = cell && cell.effectiveFormat && cell.effectiveFormat.backgroundColor;
+  if (!bg) return '';
+  return (bg.red||0).toFixed(2) + (bg.green||0).toFixed(2) + (bg.blue||0).toFixed(2);
+}
 
-  let timeRowIndex = -1;
-  let labRowIndex = -1;
+function cleanRoom(text) {
+  if (!text) return 'Unknown';
+  let s = String(text).trim();
+  s = s.replace(/^(room\s*no\.?|room\s*number|room|location|venue)\s*/i, '').trim();
+  if (s.toLowerCase().startsWith('no.') || s.toLowerCase().startsWith('no ')) s = s.slice(3).trim();
+  s = s.replace(/[.,;:]+$/, '').trim();
+  return s || 'Unknown';
+}
 
-  for (let i = 0; i < rows.length; i++) {
-    const cells = rows[i].c || [];
-    const col0 = cells[0]?.v ? String(cells[0].v).trim().toLowerCase() : '';
-    if (col0.includes('room') && col0.includes('time')) {
-      timeRowIndex = i;
-    }
-    if (col0 === 'lab') {
-      labRowIndex = i;
-    }
+function parseEmbeddedTime(courseEntry) {
+  if (!courseEntry) return { courseName: courseEntry, time: null };
+  const m = courseEntry.match(/\b(\d{1,2}:\d{2}(?:\s*-\s*\d{1,2}:\d{2})?)\b/);
+  if (m) {
+    const time = m[1].replace(/\s+/g, '');
+    let clean = courseEntry.replace(m[0], '').replace(/\s+/g, ' ').trim();
+    if (clean.endsWith('-')) clean = clean.slice(0, -1).trim();
+    return { courseName: clean, time };
+  }
+  return { courseName: courseEntry, time: null };
+}
+
+function parseBatch(batchStr) {
+  if (!batchStr) return { dept: '', year: '' };
+  const m = batchStr.match(/BS\s+([A-Z]{2,4})\s*\(?(\d{4})?\)?/i);
+  if (m) {
+    return { dept: m[1].toUpperCase(), year: m[2] || '' };
+  }
+  const ym = batchStr.match(/\b(202[2-6])\b/);
+  const dm = batchStr.match(/\b(CS|SE|AI|DS|CY)\b/i);
+  return {
+    dept: dm ? dm[1].toUpperCase() : '',
+    year: ym ? ym[1] : (batchStr.toLowerCase().includes('repeat') ? 'Repeat' : '')
+  };
+}
+
+async function fetchSpreadsheetData() {
+  const token = await getAccessToken();
+  const ranges = DAYS.map(d => `${d}!A1:AN100`).join('&ranges=');
+  const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}?ranges=${ranges}&includeGridData=true`;
+  const resp = await fetch(url, { headers: { Authorization: 'Bearer ' + token } });
+  if (!resp.ok) {
+    const err = await resp.text();
+    throw new Error('Google Sheets API failed (' + resp.status + '): ' + err);
+  }
+  return resp.json();
+}
+
+async function getOrFetchTimetable(forceRefresh = false) {
+  const now = Date.now();
+  if (!forceRefresh && cachedSessions && (now - cacheTimestamp) < CACHE_DURATION_MS) {
+    return cachedSessions;
   }
 
-  if (timeRowIndex < 0) return results;
+  const spreadsheet = await fetchSpreadsheetData();
 
-  const timeHeaderRow = rows[timeRowIndex].c || [];
-  const timesPart1 = {};
-  const timesPart2 = {};
-  let room2Col = null;
-
-  for (let c = 1; c < timeHeaderRow.length; c++) {
-    const cell = timeHeaderRow[c];
-    if (cell?.v) {
-      const val = String(cell.v).trim();
-      if (val.toLowerCase().includes('room')) {
-        room2Col = c;
-      } else if (val.includes(':') || val.includes('-')) {
-        if (room2Col === null) {
-          timesPart1[c] = val;
-        } else {
-          timesPart2[c] = val;
+  // 1. Extract Batch Color Map
+  const batchColors = {};
+  for (const sheet of (spreadsheet.sheets || [])) {
+    const rows = sheet.data?.[0]?.rowData || [];
+    for (let r = 0; r < Math.min(5, rows.length); r++) {
+      for (const cell of (rows[r].values || [])) {
+        const v = cell && cell.formattedValue;
+        const color = getBg(cell);
+        if (v && v.includes('BS') && color && color !== '1.001.001.00') {
+          batchColors[color] = v.trim();
         }
       }
     }
   }
 
-  const timesSorted1 = Object.keys(timesPart1).map(Number).sort((a, b) => a - b);
-  const timesSorted2 = Object.keys(timesPart2).map(Number).sort((a, b) => a - b);
+  const allSessions = [];
 
-  const labTimeSlots = [];
-  if (labRowIndex >= 0) {
-    const labRow = rows[labRowIndex].c || [];
-    for (let c = 1; c < labRow.length; c++) {
-      const cell = labRow[c];
-      if (cell?.v) {
-        const ts = String(cell.v).trim();
-        if (ts.includes(':') || ts.includes('-')) {
-          labTimeSlots.push({ col: c, time: ts });
+  for (const sheet of (spreadsheet.sheets || [])) {
+    const dayName = sheet.properties?.title;
+    if (!DAYS.includes(dayName)) continue;
+
+    const rows = sheet.data?.[0]?.rowData || [];
+    if (rows.length < 6) continue;
+
+    let classTimeRowIdx = -1;
+    let labTimeRowIdx = -1;
+
+    for (let r = 0; r < Math.min(10, rows.length); r++) {
+      const vals = rows[r].values || [];
+      const col0 = vals[0]?.formattedValue ? String(vals[0].formattedValue).trim().toLowerCase() : '';
+      if (col0.includes('room') && (col0.includes('time') || vals.some(c => /\b\d{1,2}:\d{2}\b/.test(c?.formattedValue || '')))) {
+        classTimeRowIdx = r;
+      }
+      if (col0 === 'lab' || col0.startsWith('lab')) {
+        labTimeRowIdx = r;
+      }
+    }
+
+    if (classTimeRowIdx < 0) classTimeRowIdx = 4;
+
+    const classTimesRow = rows[classTimeRowIdx]?.values || [];
+    const labTimesRow = (labTimeRowIdx >= 0) ? (rows[labTimeRowIdx]?.values || []) : [];
+
+    const classTimeMap = {};
+    const labTimeMap = {};
+    let lastClassTime = 'Unknown';
+    let lastLabTime = 'Unknown';
+
+    for (let c = 1; c < classTimesRow.length; c++) {
+      const cv = classTimesRow[c]?.formattedValue;
+      if (cv && /\b\d{1,2}:\d{2}\b/.test(cv)) {
+        lastClassTime = cv.trim();
+      }
+      classTimeMap[c] = lastClassTime;
+    }
+
+    for (let c = 1; c < labTimesRow.length; c++) {
+      const lv = labTimesRow[c]?.formattedValue;
+      if (lv && /\b\d{1,2}:\d{2}\b/.test(lv)) {
+        lastLabTime = lv.trim();
+      }
+      labTimeMap[c] = lastLabTime;
+    }
+
+    for (let r = classTimeRowIdx + 1; r < rows.length; r++) {
+      const rowVals = rows[r].values || [];
+      if (rowVals.length === 0) continue;
+      const col0 = rowVals[0]?.formattedValue ? String(rowVals[0].formattedValue).trim() : '';
+      if (!col0 || col0.toLowerCase() === 'lab' || col0.toLowerCase().includes('room')) continue;
+
+      const isLabRow = (labTimeRowIdx >= 0 && r > labTimeRowIdx);
+      const room = cleanRoom(col0);
+
+      for (let c = 1; c < rowVals.length; c++) {
+        const cell = rowVals[c];
+        const val = cell?.formattedValue;
+        if (!val || !val.trim()) continue;
+
+        const cellColor = getBg(cell);
+        const batchName = batchColors[cellColor];
+        if (!batchName) continue; // Skip non-batch cells
+
+        const { dept: batchDept, year: batchYear } = parseBatch(batchName);
+
+        const embedded = parseEmbeddedTime(val.trim());
+        let entryText = embedded.courseName;
+        const timeSlot = embedded.time || (isLabRow ? (labTimeMap[c] || 'Unknown') : (classTimeMap[c] || 'Unknown'));
+
+        let section = '';
+        let dept = batchDept;
+        const parenMatch = entryText.match(/\(([^)]+)\)/);
+        if (parenMatch) {
+          const p = parenMatch[1].trim();
+          const dsMatch = p.match(/^([A-Z]{2,4})-([A-Z]\d*)$/i);
+          if (dsMatch) {
+            dept = dsMatch[1].toUpperCase();
+            section = dsMatch[2].charAt(0).toUpperCase();
+          } else {
+            const secOnly = p.match(/^([A-Z]\d*)$/i);
+            if (secOnly) {
+              section = secOnly[1].charAt(0).toUpperCase();
+            } else {
+              const secDash = p.match(/-([A-Z]\d*)$/i);
+              if (secDash) section = secDash[1].charAt(0).toUpperCase();
+            }
+          }
+        }
+
+        let cleanCourse = entryText.replace(/\s*\([^)]+\)\s*/g, ' ').replace(/\s+/g, ' ').trim();
+        cleanCourse = cleanCourse.replace(/Karakoram-\d+\s*Lab/gi, '').replace(/\b(resch)\b/gi, '').trim();
+
+        if (section) {
+          allSessions.push({
+            day: dayName,
+            time: timeSlot,
+            room: room,
+            course: cleanCourse,
+            dept: dept,
+            section: section,
+            batch: batchYear,
+            batchName: batchName,
+            isLab: isLabRow || cleanCourse.toLowerCase().includes('lab'),
+            courseKey: `${cleanCourse}|${dept}|${section}|${batchYear}`,
+          });
         }
       }
     }
   }
 
-  function getTimeForCol(colIdx, isLab) {
-    if (isLab) {
-      for (let i = labTimeSlots.length - 1; i >= 0; i--) {
-        if (labTimeSlots[i].col <= colIdx) return labTimeSlots[i].time;
-      }
-      return 'Unknown';
-    }
-    if (room2Col !== null && colIdx >= room2Col) {
-      let t = null;
-      for (const tc of timesSorted2) {
-        if (tc <= colIdx) t = timesPart2[tc];
-        else break;
-      }
-      return t || 'Unknown';
-    } else {
-      let t = null;
-      for (const tc of timesSorted1) {
-        if (tc <= colIdx) t = timesPart1[tc];
-        else break;
-      }
-      return t || 'Unknown';
-    }
-  }
-
-  function parseCellEntry(rawEntry) {
-    if (!rawEntry) return null;
-    let entry = rawEntry.trim();
-
-    let embeddedTime = null;
-    const timeMatch = entry.match(/\b(\d{1,2}:\d{2}\s*-\s*\d{1,2}:\d{2})\b/);
-    if (timeMatch) {
-      embeddedTime = timeMatch[1].replace(/\s+/g, '');
-      entry = entry.replace(timeMatch[0], '').trim();
-    }
-
-    const parenMatch = entry.match(/\(([^)]+)\)/);
-    let dept = '', section = '', parenContent = '';
-    let courseName = entry;
-
-    if (parenMatch) {
-      parenContent = parenMatch[1];
-      courseName = entry.replace(/\s*\([^)]+\)\s*/, '').trim();
-
-      const deptSecPart = parenContent.split(',')[0].trim();
-      const dsMatch = deptSecPart.match(/^([A-Z]{2,4}(?:\/[A-Z]{2,4})*)-([A-Z]\d*)$/);
-      if (dsMatch) {
-        dept = dsMatch[1].split('/')[0];
-        section = dsMatch[2].charAt(0);
-      } else {
-        const deptOnly = deptSecPart.match(/^([A-Z]{2,4}(?:\/[A-Z]{2,4})*)$/);
-        if (deptOnly) dept = deptOnly[1].split('/')[0];
-      }
-    }
-
-    const skipWords = ['tutorial batch', 'fids', 'fcs', 'fis boys', 'ee', 'reserved', 'fsm', 'orientation'];
-    if (skipWords.some(w => courseName.toLowerCase().includes(w))) return null;
-    if (!dept && !section) return null;
-
-    const batchYear = resolveBatchYear(courseName, parenContent);
-
-    return { courseName: courseName || rawEntry.trim(), dept, section, batchYear, embeddedTime };
-  }
-
-  for (let rowIdx = timeRowIndex + 1; rowIdx < rows.length; rowIdx++) {
-    const row = rows[rowIdx];
-    if (!row?.c) continue;
-    const cells = row.c;
-    const col0Val = cells[0]?.v ? String(cells[0].v).trim() : '';
-    if (!col0Val) continue;
-    if (col0Val.toLowerCase() === 'lab') continue;
-    if (col0Val.toLowerCase().includes('room') && col0Val.toLowerCase().includes('time')) continue;
-
-    const isLabRow = labRowIndex >= 0 && rowIdx > labRowIndex;
-    const room1 = col0Val;
-    const room2 = (room2Col !== null && cells.length > room2Col && cells[room2Col]?.v)
-      ? String(cells[room2Col].v).trim()
-      : null;
-
-    for (let c = 1; c < cells.length; c++) {
-      if (room2Col !== null && c === room2Col) continue;
-      const cell = cells[c];
-      if (!cell?.v) continue;
-      const rawVal = String(cell.v).trim();
-      if (!rawVal) continue;
-
-      const parsed = parseCellEntry(rawVal);
-      if (!parsed) continue;
-
-      const timeSlot = parsed.embeddedTime || getTimeForCol(c, isLabRow);
-      const room = (room2Col !== null && c > room2Col && room2) ? room2 : room1;
-      const isLabEntry = isLabRow || parsed.courseName.toLowerCase().includes(' lab');
-      const courseKey = `${parsed.courseName}|${parsed.dept}|${parsed.section}|${parsed.batchYear}`;
-
-      results.push({
-        day: dayName,
-        time: timeSlot,
-        room,
-        course: parsed.courseName,
-        dept: parsed.dept,
-        section: parsed.section,
-        isLab: isLabEntry,
-        batch: parsed.batchYear,
-        courseKey,
-      });
-    }
-  }
-
-  return results;
+  cachedSessions = allSessions;
+  cacheTimestamp = now;
+  return allSessions;
 }
+
+module.exports = async function handler(req, res) {
+  if (res && res.setHeader) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS');
+    res.setHeader('Cache-Control', 'public, s-maxage=600, stale-while-revalidate=1200');
+
+    if (req.method === 'OPTIONS') {
+      return res.status(204).end();
+    }
+
+    try {
+      const data = await getOrFetchTimetable(req.query?.refresh === '1');
+      const day = req.query?.day;
+      const filtered = (day && DAYS.includes(day)) ? data.filter(s => s.day === day) : data;
+      return res.status(200).json(filtered);
+    } catch (err) {
+      console.error('api/timetable error:', err);
+      return res.status(500).json({ error: err.message });
+    }
+  } else {
+    const url = new URL(req.url);
+    const day = url.searchParams.get('day');
+    const refresh = url.searchParams.get('refresh') === '1';
+    const corsHeaders = {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET,OPTIONS',
+      'Content-Type': 'application/json',
+      'Cache-Control': 'public, s-maxage=600, stale-while-revalidate=1200',
+    };
+
+    if (req.method === 'OPTIONS') {
+      return new Response(null, { status: 204, headers: corsHeaders });
+    }
+
+    try {
+      const data = await getOrFetchTimetable(refresh);
+      const filtered = (day && DAYS.includes(day)) ? data.filter(s => s.day === day) : data;
+      return new Response(JSON.stringify(filtered), { status: 200, headers: corsHeaders });
+    } catch (err) {
+      console.error('api/timetable error:', err);
+      return new Response(JSON.stringify({ error: err.message }), { status: 500, headers: corsHeaders });
+    }
+  }
+};
